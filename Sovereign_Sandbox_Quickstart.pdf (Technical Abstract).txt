@@ -1,0 +1,14 @@
+#Sovereign_Sandbox_Quickstart.pdf (Technical Abstract)
+
+
+Purpose: To allow university CS labs and technical entrepreneurs to test the architecture rapidly.
+
+Section 1: Architecture Overview: High-level view of the Sovereign Engine's deterministic, auditable design.
+
+Section 2: Sandbox Deployment: Steps to utilize the Sovereign_SDK_Sandbox_Installer.py.
+
+Section 3: Integration Requirements: Brief technical requirements for future production-level scaling.
+
+Section 4: Support Protocol: How to engage the "Sovereign Guide" agent for technical assistance during the testing phase.
+
+
