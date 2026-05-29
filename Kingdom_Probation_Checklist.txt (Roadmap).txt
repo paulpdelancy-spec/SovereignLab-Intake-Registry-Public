@@ -1,0 +1,11 @@
+#Kingdom_Probation_Checklist.txt (Roadmap)
+
+Purpose: A day-by-day roadmap for the 23-day Kingdom Probation cycle to keep partners focused and compliant.
+
+Days 1–7: Verification Phase: Submitting credentials for the 4-Step Verification Matrix.
+
+Days 8–15: Operational Audit: Aligning partner workflows with Sovereign Engine "Gold Standard" protocols.
+
+Days 16–22: Impact Integration: Connecting the partner's reporting mechanisms to the Stewardship_Impact_Dashboard.py.
+
+Day 23: Stewardship Commissioning: Final verification and formal entry into the ecosystem.
