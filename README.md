@@ -4,7 +4,8 @@ Welcome to the SovereignLab repository. We believe that technology should serve 
 
 ## 23-DAY VERIFIED STEWARDSHIP LEDGER
 
-[Insert 23-Day Ledger Content Here]
+https://codeberg.org/PCumberbatch/SovereignLab-Intake-Registry-Public/commit/dac0b8063eb1595f22fa5b7b138250cf287c9e43
+
 
 ## Our Non-Parasitic Stewardship Covenant
 
