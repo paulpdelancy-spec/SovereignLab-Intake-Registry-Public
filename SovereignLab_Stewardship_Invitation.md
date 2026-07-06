@@ -6,7 +6,7 @@ Over the past two weeks, we transitioned the **SovereignLab** from a conceptual 
 ## The Stewardship Journey: A 14-Day Retrospective
 
 ### The 7-Day Trial (Foundational Integrity)
-Our initial focus was establishing the "Heartbeat." We successfully deployed the **Sovereign Sentinel**, moving from manual monitoring to an autonomous, 1-hour recursive training loop. The primary achievement was ensuring our AI agents function as trustees of data, not just processors of it.
+Our initial focus was establishing the "Heartbeat." We successfully deployed the **Sovereign Sentinel**, moving from manual monitoring to an autonomous, recursive training loop. The primary achievement was ensuring our AI agents function as trustees of data, not just processors of it.
 
 ### The 7-Day Extension (Hardening & Resilience)
 During the extension, we hardened the architecture. We implemented the **4-Step Verification Matrix**, ensuring that every automated decision is audited, syntax-verified, and aligned with our core principle: *"Do No Harm."* We have successfully moved from "automation" to "self-governing stewardship."
