@@ -1,0 +1,68 @@
+# SovereignLab — What We Do, What You Get, What It Costs
+
+**Updated July 2026**
+
+This notice describes SovereignLab as it actually operates today. Where anything below changes, we'll update this notice rather than let it go stale.
+
+## What SovereignLab does
+
+SovereignLab monitors public sources and compiles what it finds into periodic reports, across six coverage areas:
+
+- **Financial Exchange** — markets, exchanges, monetary policy
+- **Sports**
+- **Civic** — government, policy, oversight
+- **Ed-Tech** — education technology and practice
+- **Infrastructure** — construction, transportation, public works
+- **Economics and Statistics** — official releases from statistical agencies including the U.S. Bureau of Labor Statistics, Bureau of Economic Analysis, USDA, EIA, Eurostat, and others, alongside real Federal Reserve (FRED) economic indicators
+
+Every report is built the same way:
+- Public RSS feeds and public web pages are checked on a schedule
+- Findings are scored using a transparent, keyword-based relevance method — not a claimed AI judgment process
+- A small number of non-English sources are included, translated to English via a free machine-translation service; translated content is always labeled as translated, and the translation is more literal than a premium service would produce — an honest tradeoff of using something free, not something hidden from readers
+- The most relevant, non-duplicate findings are selected for each cycle
+- **A human reviews every report before it's ever made available to a subscriber.** Nothing is sent automatically.
+
+## What a subscriber can expect
+
+- Reports on the cadence you choose (see pricing below), each one reviewed by a person before release
+- Honest labeling throughout: automated extraction is marked as such, translated content is marked as such, and when a source can't be reached, the report says so rather than filling the gap
+- No independent fact-checking beyond the human review step — reports are a starting point for your own research and decisions, not a substitute for it
+- No long-term lock-in; monthly or annual billing, cancel anytime
+
+## Pricing
+
+**Per-day frequency tiers** — choose how many reports you receive per day, each drawing on a rolling window of recent findings:
+
+| Reports/day | Monthly | Annual |
+|---|---|---|
+| 1 | $10 | $120 |
+| 2 | $19 | $228 |
+| 3 | $28 | $336 |
+| 4 | $36 | $432 |
+| 5 | $45 | $540 |
+| 6 | $54 | $648 |
+
+**Digest tiers** — fewer, more deeply synthesized reports drawing on a wider window of the same sources (a 12-hour digest draws on roughly 3x the raw data behind a single 4-hour report):
+
+| Tier | Monthly | Annual |
+|---|---|---|
+| 12-Hour Digest (2/day) | $15 | $180 |
+| 8-Hour Digest (3/day) | $24 | $288 |
+
+All plans are billed through Stripe. Links are provided at checkout or on request.
+
+## Call for research
+
+We publish ethical AI research contributed by outside researchers. Submit your work by the **last week of each quarter** to be considered for publication on LinkedIn, GitHub, and Codeberg by the **end of the first week of the following quarter**. Contact paul.pdelancy@gmail.com to submit.
+
+## For university and institutional partners
+
+We offer a no-cost sandbox trial: provide a handful of public sources relevant to your interests, and we run them through the real system to produce one sample report — clearly marked as an evaluation sample, with no obligation attached. Reach out and we'll walk you through it.
+
+## A standing correction
+
+Earlier materials associated with this project — including language describing a "4-Step Verification Matrix" and claims of validation by named reviewers — did not accurately describe how the system worked. That language has been removed everywhere we've found it. If you received earlier materials referencing verification processes, review frameworks, or organizational language implying something more elaborate than what's described above, please treat this notice as the correction. Any prior licensing or partnership documents describing more elaborate technical claims than what's above should be considered superseded by this notice.
+
+---
+
+*Questions about subscriptions, partnerships, or this notice: paul.pdelancy@gmail.com*
