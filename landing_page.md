@@ -88,7 +88,7 @@ Findings are drafted by automated extraction from public sources and reviewed be
 Yes. All subscriptions are self-service and cancel-anytime through Stripe — no calls, no retention flow.
 
 **Do you sell or share my data?**
-No. See our [Privacy Policy] for full details. *(link once drafted)*
+No. See our [Privacy Policy](https://github.com/paulpdelancy-spec/SovereignLab-Intake-Registry-Public/blob/main/Privacy_Policy.md) for full details.
 
 **How is this different from a general news aggregator?**
 We track a fixed set of six sectors continuously, deduplicate against your own reading history, and score every item transparently — an aggregator shows you everything; SovereignLab shows you only what's new and relevant.
@@ -100,4 +100,6 @@ We publish ethical AI research contributed by outside researchers. Submit your w
 
 ---
 
-*(Footer — placeholder pending CAN-SPAM compliance pass: physical business mailing address, unsubscribe link, Terms of Service, Privacy Policy. To be finalized in the next step.)*
+**SovereignLab**
+7308 Legacy Lane, Oklahoma City, OK 73132, USA
+[Terms of Service](https://github.com/paulpdelancy-spec/SovereignLab-Intake-Registry-Public/blob/main/Terms_of_Service.md) · [Privacy Policy](https://github.com/paulpdelancy-spec/SovereignLab-Intake-Registry-Public/blob/main/Privacy_Policy.md)
