@@ -6,7 +6,7 @@ Civic policy, Ed-Tech, Economics & Statistics, Financial Exchange, Infrastructur
 
 Every finding is drawn from public sources — RSS feeds, government data (FRED, BLS, BEA, EIA), and direct outlet reporting — scored transparently, reviewed by a human before it ever reaches you, and never fabricated. If we don't have a real finding for a sector that cycle, we tell you that plainly instead of padding the report.
 
-**[Get your first report free →]**
+**[Get your first report free →](mailto:paul.pdelancy@gmail.com?subject=SovereignLab%20Free%20Tier%20Signup&body=Please%20add%20me%20to%20the%20free%20biweekly%20SovereignLab%20digest.)**
 
 ---
 
@@ -34,32 +34,32 @@ Most intelligence products make you choose: broad and shallow, or deep and narro
 ### Free
 **$0 — one report every 2 weeks**
 A real, full-quality SovereignLab report delivered biweekly. No credit card required. The best way to see what you'd get before committing to a faster cadence.
-**[Start free →]**
+**[Start free →](mailto:paul.pdelancy@gmail.com?subject=SovereignLab%20Free%20Tier%20Signup&body=Please%20add%20me%20to%20the%20free%20biweekly%20SovereignLab%20digest.)**
 
 ### Digest Tiers
-*Fewer, more deeply synthesized reports drawing on a wider window of the same sources.*
+*Fewer reports, each drawing from a longer time window of the same continuously-scored sources — wider-spanning findings per sector, not a narrower or deeper analysis.*
 
 | Tier | Cadence | Monthly | Annual |
 |---|---|---|---|
-| 12-Hour Digest | 2x/day | $15 | $180 |
-| 8-Hour Digest | 3x/day | $24 | $288 |
-| 24-Hour Digest | 1x/day | $14 | $168 |
-| 7-Day Digest | 1x/week | $39 | $468 |
-| 30-Day Digest | 1x/month | $99 | $1,188 |
+| 12-Hour Digest | 2x/day | [$15](https://buy.stripe.com/9B6bJ23jmdq7eXe8Nu8g00p) | [$180](https://buy.stripe.com/aFafZi7zC99R02k7Jq8g00q) |
+| 8-Hour Digest | 3x/day | [$24](https://buy.stripe.com/14A6oI8DG2Lt4iA2p68g00o) | [$288](https://buy.stripe.com/bJe14o1be99ReXe3ta8g00n) |
+| 24-Hour Digest | 1x/day | [$14](https://buy.stripe.com/7sY9AU2fi71J9CUd3K8g00r) | [$168](https://buy.stripe.com/cNi9AU1beeubbL2fbS8g00s) |
+| 7-Day Digest | 1x/week | [$39](https://buy.stripe.com/14A3cw07afyf16o7Jq8g00x) | [$468](https://buy.stripe.com/6oU7sMdY05XF4iA8Nu8g00u) |
+| 30-Day Digest | 1x/month | [$99](https://buy.stripe.com/eVqaEY5ru0Dl2as1l28g00v) | [$1,188](https://buy.stripe.com/4gM00kdY04TB6qI8Nu8g00w) |
 
 ### High-Frequency Tiers
 *For subscribers who want to act on findings as they happen.*
 
 | Tier | Reports/Day | Monthly | Annual |
 |---|---|---|---|
-| 1 Report/Day | 1 | $10 | $120 |
-| 2 Reports/Day | 2 | $19 | $228 |
-| 3 Reports/Day | 3 | $28 | $336 |
-| 4 Reports/Day | 4 | $36 | $432 |
-| 5 Reports/Day | 5 | $45 | $540 |
-| 6 Reports/Day | 6 | $54 | $648 |
+| 1 Report/Day | 1 | [$10](https://buy.stripe.com/9B66oIcTW85N16o4xe8g00a) | [$120](https://buy.stripe.com/7sY5kE5rufyf9CUe7O8g00b) |
+| 2 Reports/Day | 2 | [$19](https://buy.stripe.com/fZu7sMcTW5XF9CUgfW8g00c) | [$228](https://buy.stripe.com/4gM8wQ5rubhZ4iAd3K8g00d) |
+| 3 Reports/Day | 3 | [$28](https://buy.stripe.com/aFabJ25rubhZ16obZG8g00e) | [$336](https://buy.stripe.com/8x25kE3jmcm3dTa4xe8g00f) |
+| 4 Reports/Day | 4 | [$36](https://buy.stripe.com/5kQ8wQ2fi0DleXe0gY8g00g) | [$432](https://buy.stripe.com/aFa4gA8DGadV8yQfbS8g00h) |
+| 5 Reports/Day | 5 | [$45](https://buy.stripe.com/4gM6oIdY04TB16o1l28g00i) | [$540](https://buy.stripe.com/6oUbJ2aLOcm37uM3ta8g00j) |
+| 6 Reports/Day | 6 | [$54](https://buy.stripe.com/6oU8wQ4nqfyfaGYe7O8g00k) | [$648](https://buy.stripe.com/3cIdRa8DG4TBeXe3ta8g00l) |
 
-**[Compare all tiers and subscribe →]**
+*Each price above is a direct, one-click Stripe checkout link.*
 
 ---
 
