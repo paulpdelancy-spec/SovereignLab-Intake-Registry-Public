@@ -1,4 +1,4 @@
-# SovereignLab — Cross-Sector Intelligence, Delivered on Your Schedule
+SovereignLab — Cross-Sector Intelligence, Delivered on Your Schedule
 
 **Six sectors. One feed. Decisions made faster.**
 
@@ -6,7 +6,7 @@ Civic policy, Ed-Tech, Economics & Statistics, Financial Exchange, Infrastructur
 
 Every finding is drawn from public sources — RSS feeds, government data (FRED, BLS, BEA, EIA), and direct outlet reporting — scored transparently, reviewed by a human before it ever reaches you, and never fabricated. If we don't have a real finding for a sector that cycle, we tell you that plainly instead of padding the report.
 
-**[Get your first report free →](mailto:paul.pdelancy@gmail.com?subject=SovereignLab%20Free%20Tier%20Signup&body=Please%20add%20me%20to%20the%20free%20biweekly%20SovereignLab%20digest.)**
+**[Get your first report free →](signup.html)**
 
 ---
 
@@ -16,14 +16,14 @@ Most intelligence products make you choose: broad and shallow, or deep and narro
 
 - **Cross-sector by design.** Government policy shifts, infrastructure funding, market moves, and education trends rarely happen in isolation — SovereignLab is built to catch the connections a single-topic newsletter misses.
 - **Transparent scoring, not a black box.** Every finding carries a relevance score and its original source. You can see exactly why something made the cut.
-- **Human-reviewed, always.** Every report is checked by a person before publication — see our [Editorial Process](#editorial-process) below.
+- **Human-reviewed, always.** Every report is checked before publication — see our [Editorial Process](#editorial-process) below.
 - **No filler.** If a sector has nothing genuinely new to report, we say so — we don't manufacture a bullet point to fill space.
 
 ---
 
 ## See a Real Report
 
-*(Insert a real, recent sample report here before publishing — pick one of your strongest recent approvals, e.g. the 2026-08-04 19:58 4-Hour report with the OpenAI/Civic and CBS Sports findings. Showing real output builds more trust than any amount of description.)*
+*(Insert a real, recent sample report here before publishing — pick one of your strongest recent approvals. Showing real output builds more trust than any amount of description.)*
 
 **[View a sample report →]**
 
@@ -34,7 +34,7 @@ Most intelligence products make you choose: broad and shallow, or deep and narro
 ### Free
 **$0 — one report every 2 weeks**
 A real, full-quality SovereignLab report delivered biweekly. No credit card required. The best way to see what you'd get before committing to a faster cadence.
-**[Start free →](mailto:paul.pdelancy@gmail.com?subject=SovereignLab%20Free%20Tier%20Signup&body=Please%20add%20me%20to%20the%20free%20biweekly%20SovereignLab%20digest.)**
+**[Start free →](signup.html)**
 
 ### Digest Tiers
 *Fewer reports, each drawing from a longer time window of the same continuously-scored sources — wider-spanning findings per sector, not a narrower or deeper analysis.*
@@ -75,7 +75,7 @@ A real, full-quality SovereignLab report delivered biweekly. No credit card requ
 
 ## Editorial Process {#editorial-process}
 
-Every report starts as an AI-drafted summary of public sources, automatically scored for relevance and checked for duplication against everything already published. Before anything reaches a subscriber, it passes a review gate — either a human reviewer, or an automated quality check built from real human review history, applied only to shorter-cycle reports and only when it clears a defined bar (multiple sectors reporting real findings, genuinely new content present). Nothing is ever sent without clearing this gate. You can always tell which: every report states whether a finding is fresh or a recurring item still worth knowing about.
+Every report starts as an AI-drafted summary of public sources, automatically scored for relevance and checked for duplication against everything already published. Before anything reaches a subscriber, it passes a review gate — either a human reviewer, or a bounded automated quality check (applied only to our shortest-cycle reports, and only when every sector clears a strict, explicit bar for freshness and completeness) — never a report that merely looks acceptable. Nothing is ever sent without clearing this gate. You can always tell which: every report states whether a finding is fresh or a recurring item still worth knowing about.
 
 ---
 
