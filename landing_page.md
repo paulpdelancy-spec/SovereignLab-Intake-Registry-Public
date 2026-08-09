@@ -6,7 +6,7 @@ Civic policy, Ed-Tech, Economics & Statistics, Financial Exchange, Infrastructur
 
 Every finding is drawn from public sources — RSS feeds, government data (FRED, BLS, BEA, EIA), and direct outlet reporting — scored transparently, reviewed by a human before it ever reaches you, and never fabricated. If we don't have a real finding for a sector that cycle, we tell you that plainly instead of padding the report.
 
-**[Get your first report free →](signup.html)**
+**[Get your first report free →](SignUp_2Free_Reports.html)**
 
 ---
 
@@ -34,7 +34,7 @@ Most intelligence products make you choose: broad and shallow, or deep and narro
 ### Free
 **$0 — one report every 2 weeks**
 A real, full-quality SovereignLab report delivered biweekly. No credit card required. The best way to see what you'd get before committing to a faster cadence.
-**[Start free →](signup.html)**
+**[Start free →](SignUp_2Free_Reports.html)**
 
 ### Digest Tiers
 *Fewer reports, each drawing from a longer time window of the same continuously-scored sources — wider-spanning findings per sector, not a narrower or deeper analysis.*
