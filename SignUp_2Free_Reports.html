@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SovereignLab — Free Digest Signup</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --ink: #0B1220;
+    --ink-2: #121B2C;
+    --paper: #F3F1EA;
+    --paper-dim: #C9CCD3;
+    --steel: #8B96A5;
+    --hairline: #263042;
+    --signal: #3EB489;
+    --signal-dim: #2A8563;
+    --amber: #E8A33D;
+    --focus: #6FD3B0;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Newsreader', Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a { color: inherit; }
+
+  /* ---------- Ticker ---------- */
+  .ticker-wrap {
+    background: var(--ink-2);
+    border-bottom: 1px solid var(--hairline);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+  }
+
+  .ticker {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll-left 32s linear infinite;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--steel);
+  }
+
+  .ticker span { margin: 0 28px; }
+  .ticker .dot { color: var(--signal); margin-right: 8px; }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker { animation: none; padding-left: 24px; }
+  }
+
+  /* ---------- Main ---------- */
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 24px;
+  }
+
+  .card {
+    max-width: 620px;
+    width: 100%;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    line-height: 1.08;
+    margin: 0 0 20px;
+    letter-spacing: -0.01em;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--signal);
+  }
+
+  .lede {
+    font-size: 1.15rem;
+    line-height: 1.55;
+    color: var(--paper-dim);
+    margin: 0 0 36px;
+    max-width: 54ch;
+  }
+
+  /* ---------- Form ---------- */
+  form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  input[type="email"] {
+    flex: 1 1 280px;
+    background: var(--ink-2);
+    border: 1px solid var(--hairline);
+    color: var(--paper);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    padding: 16px 18px;
+    border-radius: 3px;
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+
+  input[type="email"]::placeholder { color: var(--steel); }
+
+  input[type="email"]:focus {
+    border-color: var(--focus);
+    box-shadow: 0 0 0 3px rgba(111, 211, 176, 0.15);
+  }
+
+  input[type="text"].hp { display: none; }
+
+  button {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: var(--signal);
+    color: var(--ink);
+    border: none;
+    padding: 16px 26px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease;
+    white-space: nowrap;
+  }
+
+  button:hover { background: var(--focus); }
+  button:active { transform: translateY(1px); }
+  button:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .fine-print {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--steel);
+    letter-spacing: 0.02em;
+  }
+
+  .fine-print .sep { color: var(--hairline); margin: 0 8px; }
+
+  /* ---------- States ---------- */
+  #status {
+    margin-top: 22px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    padding: 14px 16px;
+    border-radius: 3px;
+    display: none;
+  }
+
+  #status.ok {
+    display: block;
+    background: rgba(62, 180, 137, 0.12);
+    border: 1px solid var(--signal-dim);
+    color: var(--signal);
+  }
+
+  #status.err {
+    display: block;
+    background: rgba(232, 163, 61, 0.1);
+    border: 1px solid var(--amber);
+    color: var(--amber);
+  }
+
+  /* ---------- Features ---------- */
+  .features {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--hairline);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 560px) {
+    .features { grid-template-columns: 1fr; }
+  }
+
+  .feature h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--signal);
+    margin: 0 0 8px;
+    font-weight: 500;
+  }
+
+  .feature p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--paper-dim);
+    margin: 0;
+  }
+
+  footer {
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--steel);
+    letter-spacing: 0.04em;
+    padding: 24px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  footer a { color: var(--steel); text-decoration: underline; text-underline-offset: 3px; }
+  footer a:hover { color: var(--signal); }
+</style>
+</head>
+<body>
+
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker">
+      <span><span class="dot">●</span>CIVIC</span>
+      <span><span class="dot">●</span>ED-TECH</span>
+      <span><span class="dot">●</span>ECONOMICS &amp; STATISTICS</span>
+      <span><span class="dot">●</span>FINANCIAL EXCHANGE</span>
+      <span><span class="dot">●</span>INFRASTRUCTURE</span>
+      <span><span class="dot">●</span>SPORTS</span>
+      <span><span class="dot">●</span>CIVIC</span>
+      <span><span class="dot">●</span>ED-TECH</span>
+      <span><span class="dot">●</span>ECONOMICS &amp; STATISTICS</span>
+      <span><span class="dot">●</span>FINANCIAL EXCHANGE</span>
+      <span><span class="dot">●</span>INFRASTRUCTURE</span>
+      <span><span class="dot">●</span>SPORTS</span>
+    </div>
+  </div>
+
+  <main>
+    <div class="card">
+      <div class="eyebrow">Free biweekly digest</div>
+      <h1>Six sectors.<br>One feed, <em>reviewed</em> before it reaches you.</h1>
+      <p class="lede">
+        SovereignLab tracks Civic policy, Ed-Tech, Economics &amp; Statistics, Financial
+        Exchange, Infrastructure, and Sports from public sources — scored transparently,
+        checked by a person, never padded with filler. Get one full report every two weeks,
+        free, to see the format before you decide if you want more.
+      </p>
+
+      <form id="signup-form" action="https://formspree.io/f/xaewqgky" method="POST">
+        <!-- Honeypot field — real users never fill this in; bots often do.
+             Formspree ignores submissions where this is non-empty if you
+             enable spam filtering in your form's dashboard settings. -->
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+        <input
+          type="email"
+          name="email"
+          placeholder="you@organization.edu"
+          required
+          aria-label="Email address"
+        >
+        <button type="submit">Get the free digest</button>
+      </form>
+
+      <div class="fine-print">
+        No cost<span class="sep">/</span>No card required<span class="sep">/</span>Cancel anytime by not replying
+      </div>
+
+      <div id="status" role="status"></div>
+
+      <div class="features">
+        <div class="feature">
+          <h3>Transparent scoring</h3>
+          <p>Every finding carries a visible relevance score and its original public source.</p>
+        </div>
+        <div class="feature">
+          <h3>Reviewed, not raw</h3>
+          <p>Nothing ships without a review pass first — no unvetted AI output.</p>
+        </div>
+        <div class="feature">
+          <h3>No filler</h3>
+          <p>If a sector has nothing new, the report says so instead of padding space.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    SovereignLab · 7308 Legacy Lane, Oklahoma City, OK 73132, USA ·
+    <a href="mailto:paul.pdelancy@gmail.com">paul.pdelancy@gmail.com</a>
+  </footer>
+
+  <script>
+    const form = document.getElementById('signup-form');
+    const status = document.getElementById('status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button');
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      status.className = '';
+      status.textContent = '';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          status.className = 'ok';
+          status.textContent = "You're on the list — first report goes out within the next two weeks. Thanks for signing up.";
+          form.reset();
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (err) {
+        status.className = 'err';
+        status.textContent = "Something didn't go through. Please email paul.pdelancy@gmail.com directly and we'll add you manually.";
+      } finally {
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
