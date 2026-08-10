@@ -1,35 +1,112 @@
-# SovereignLab: A New Standard for Ethical Stewardship
+# SovereignLab
 
-Welcome to the SovereignLab repository. We believe that technology should serve humanity, not commoditize it. In a digital landscape often driven by extractive data practices, SovereignLab offers a refreshing alternative: a transparent, verifiable, and non-parasitic platform dedicated to the ethical stewardship of economic and information resources. 
+**Cross-sector intelligence, delivered on your schedule.**
 
-We are committed to the principle that AI agents should operate as trusted stewards, ensuring that efficiency and effectiveness serve the broader goals of human flourishing and integrity. 
+Civic policy, Ed-Tech, Economics & Statistics, Financial Exchange, Infrastructure, and Sports — scored, ranked, and delivered as a concise executive briefing, as often as you need it: every 4 hours, or as a weekly and monthly synthesis.
 
-This repository provides a real-time, audit-ready record of our stewardship cycles, demonstrating our commitment to 'Do No Harm' and our dedication to building a collaborative, Kingdom-aligned economy.
+Every finding is drawn from public sources — RSS feeds, government data (FRED, BLS, BEA, EIA), and direct outlet reporting — scored transparently, reviewed before it ever reaches you, and never fabricated. If a sector has no real finding for a given cycle, the report says so plainly instead of padding it out.
 
-## 23-DAY VERIFIED STEWARDSHIP LEDGER
+**[Get your first report free →](SignUp_2Free_Reports.html)**
 
-https://codeberg.org/PCumberbatch/SovereignLab-Intake-Registry-Public/commit/dac0b8063eb1595f22fa5b7b138250cf287c9e43
+---
 
+## Why SovereignLab
 
-## Our Non-Parasitic Stewardship Covenant
+Most intelligence products make you choose: broad and shallow, or deep and narrow. SovereignLab tracks six distinct sectors continuously and gives you only what actually changed — automatically deduplicated against what's already been published, so you're never re-reading yesterday's news dressed up as today's.
 
-At SovereignLab, trust is the foundation of our operations. We establish this mandate as a core pillar:
+- **Cross-sector by design.** Government policy shifts, infrastructure funding, market moves, and education trends rarely happen in isolation — SovereignLab is built to catch the connections a single-topic newsletter misses.
+- **Transparent scoring, not a black box.** Every finding carries a relevance score and its original source. You can see exactly why something made the cut.
+- **Reviewed before it ships.** Every report passes a review step before publication — see [Editorial Process](#editorial-process) below.
+- **No filler.** If a sector has nothing genuinely new to report, we say so — we don't manufacture a bullet point to fill space.
 
-1.  **Zero-Training Policy**: We do not use the data, insights, or proprietary information encountered while conducting business with our clients to train our global models. Your data remains your data.
+---
 
-2.  **Anti-Exploitation Mandate**: We reject the parasitic model of 'data-harvesting'. We are here to serve, not to exploit.
+## See a Real Report
 
-3.  **Client Sovereignty**: Any intelligence gained during an engagement is used solely to benefit the specific client.
+*(Insert a real, recent sample report here before publishing — pick one of the strongest recent approvals. Real output builds more trust than description.)*
 
-4.  **Full Transparency**: All automated processes and data flows are documented and available for audit within our public repositories.
+**[View a sample report →]**
 
-## Join the Stewardship Movement
+---
 
-We invite laboratories, business developers, thinkers, and all positive-minded creators to test our platform for themselves. By building your AI applications and services on top of SovereignLab, you are not just leveraging a tool—you are joining a community dedicated to operational integrity and shared growth. 
+## Choose Your Cadence
 
-As our collective network expands, we will all continue to learn, grow, and pivot together, ensuring that our collective efforts produce fruit that benefits the common good. 
+### Free
+**$0 — one report every 2 weeks**
+A real, full-quality SovereignLab report delivered biweekly. No credit card required. The best way to see the format before committing to a faster cadence.
+**[Start free →](SignUp_2Free_Reports.html)**
 
-We look forward to your contributions and your partnership in defining the future of ethical AI.
+### Digest Tiers
+*Fewer reports, each drawing from a longer time window of the same continuously-scored sources — wider-spanning findings per sector, not a narrower or deeper analysis.*
 
-God bless.
-Signed Management.
+| Tier | Cadence | Monthly | Annual |
+|---|---|---|---|
+| 12-Hour Digest | 2x/day | [$15](https://buy.stripe.com/9B6bJ23jmdq7eXe8Nu8g00p) | [$180](https://buy.stripe.com/aFafZi7zC99R02k7Jq8g00q) |
+| 8-Hour Digest | 3x/day | [$24](https://buy.stripe.com/14A6oI8DG2Lt4iA2p68g00o) | [$288](https://buy.stripe.com/bJe14o1be99ReXe3ta8g00n) |
+| 24-Hour Digest | 1x/day | [$14](https://buy.stripe.com/7sY9AU2fi71J9CUd3K8g00r) | [$168](https://buy.stripe.com/cNi9AU1beeubbL2fbS8g00s) |
+| 7-Day Digest | 1x/week | [$39](https://buy.stripe.com/14A3cw07afyf16o7Jq8g00x) | [$468](https://buy.stripe.com/6oU7sMdY05XF4iA8Nu8g00u) |
+| 30-Day Digest | 1x/month | [$99](https://buy.stripe.com/eVqaEY5ru0Dl2as1l28g00v) | [$1,188](https://buy.stripe.com/4gM00kdY04TB6qI8Nu8g00w) |
+
+### High-Frequency Tiers
+*For subscribers who want to act on findings as they happen.*
+
+| Tier | Reports/Day | Monthly | Annual |
+|---|---|---|---|
+| 1 Report/Day | 1 | [$10](https://buy.stripe.com/9B66oIcTW85N16o4xe8g00a) | [$120](https://buy.stripe.com/7sY5kE5rufyf9CUe7O8g00b) |
+| 2 Reports/Day | 2 | [$19](https://buy.stripe.com/fZu7sMcTW5XF9CUgfW8g00c) | [$228](https://buy.stripe.com/4gM8wQ5rubhZ4iAd3K8g00d) |
+| 3 Reports/Day | 3 | [$28](https://buy.stripe.com/aFabJ25rubhZ16obZG8g00e) | [$336](https://buy.stripe.com/8x25kE3jmcm3dTa4xe8g00f) |
+| 4 Reports/Day | 4 | [$36](https://buy.stripe.com/5kQ8wQ2fi0DleXe0gY8g00g) | [$432](https://buy.stripe.com/aFa4gA8DGadV8yQfbS8g00h) |
+| 5 Reports/Day | 5 | [$45](https://buy.stripe.com/4gM6oIdY04TB16o1l28g00i) | [$540](https://buy.stripe.com/6oUbJ2aLOcm37uM3ta8g00j) |
+| 6 Reports/Day | 6 | [$54](https://buy.stripe.com/6oU8wQ4nqfyfaGYe7O8g00k) | [$648](https://buy.stripe.com/3cIdRa8DG4TBeXe3ta8g00l) |
+
+*Each price above is a direct, one-click Stripe checkout link.*
+
+---
+
+## Who Reads SovereignLab
+
+- **Government affairs & policy professionals** tracking state and federal civic developments as they happen.
+- **Infrastructure & construction teams** following project approvals, funding, and public works activity.
+- **Ed-Tech administrators and researchers** watching policy, funding, and adoption trends in real time.
+- **Financial professionals** who want cross-market signal — including underrepresented Asian and European market coverage most English-language feeds miss.
+- **Researchers and analysts** who need a reliable, source-cited starting point rather than another aggregator.
+
+---
+
+## Editorial Process {#editorial-process}
+
+Every report starts as an AI-drafted summary of public sources, automatically scored for relevance and checked for duplication against everything already published. Before anything reaches a subscriber, it passes a review gate — either a human reviewer, or a bounded automated quality check (applied only to our shortest-cycle reports, and only when every sector clears a strict, explicit bar for freshness and completeness). Nothing is ever sent without clearing this gate. Every report states whether a finding is fresh or a recurring item still worth knowing about.
+
+---
+
+## Frequently Asked Questions
+
+**Is this AI-generated?**
+Findings are drafted by automated extraction from public sources and reviewed before publication — see Editorial Process above. We never fabricate a data point, and we say so explicitly when a sector has nothing new to report.
+
+**Can I cancel anytime?**
+Yes. All subscriptions are self-service and cancel-anytime through Stripe — no calls, no retention flow.
+
+**Do you sell or share my data?**
+No. See our [Privacy Policy](https://github.com/paulpdelancy-spec/SovereignLab-Intake-Registry-Public/blob/main/Privacy_Policy.md) for full details.
+
+**How is this different from a general news aggregator?**
+We track a fixed set of six sectors continuously, deduplicate against your own reading history, and score every item transparently — an aggregator shows you everything; SovereignLab shows you only what's new and relevant.
+
+---
+
+## Call for Research
+
+We publish ethical AI research contributed by outside researchers. Submit your work by the last week of each quarter for consideration. Contact **paul.pdelancy@gmail.com** or **paulacumberbatch@yahoo.com**.
+
+---
+
+### A Personal Note from Paul Cumberbatch II
+
+I, Paul Cumberbatch II, believe that Yeshua, or Jesus Christ of Nazareth, is the Messiah, and died on a Cross over 2,000 years ago in Israel. I also believe that He loves us, and wants to have a relationship with us. So if you want to ask for prayer, please send your concerns, prayers, or questions to the following email addresses — paul.pdelancy@gmail.com and paulacumberbatch@yahoo.com — and I will personally pray for you, or we will ask others to pray for your concerns if I am unable. God Bless, Paul Cumberbatch II.
+
+---
+
+**SovereignLab**
+7308 Legacy Lane, Oklahoma City, OK 73132, USA
+[Terms of Service](https://github.com/paulpdelancy-spec/SovereignLab-Intake-Registry-Public/blob/main/Terms_of_Service.md) · [Privacy Policy](https://github.com/paulpdelancy-spec/SovereignLab-Intake-Registry-Public/blob/main/Privacy_Policy.md)
