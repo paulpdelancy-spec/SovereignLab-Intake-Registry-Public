@@ -322,10 +322,51 @@
     const form = document.getElementById('signup-form');
     const status = document.getElementById('status');
 
+    // ---- Google Form intake (parallel, best-effort) ----------------
+    // This does NOT affect what the visitor sees — Formspree below is
+    // still the sole source of the on-page success/error message.
+    // This fires alongside it purely so free_tier_intake.py has real
+    // signup data to poll (Formspree's free tier has no API access).
+    //
+    // To activate: replace GOOGLE_FORM_URL and GOOGLE_FORM_EMAIL_ENTRY
+    // below with your real Google Form's values.
+    //   1. Open your Form, click the three-dot menu -> "Get pre-filled
+    //      link", fill in a dummy email, click "Get link", copy it.
+    //   2. That link looks like:
+    //      https://docs.google.com/forms/d/e/FORM_ID/viewform?usp=pp_url&entry.123456789=test%40example.com
+    //   3. GOOGLE_FORM_URL = everything up to "/viewform", with
+    //      "/viewform" replaced by "/formResponse".
+    //   4. GOOGLE_FORM_EMAIL_ENTRY = the "entry.123456789" part.
+    // Left as placeholders, this block silently does nothing (the
+    // fetch is skipped) — it will never break the visitor-facing form.
+    const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdxsH0CERQLpYbgy9At77jv5RZ3r04LSFylJcdsXp7YzMs9lQ/formResponse';
+    const GOOGLE_FORM_EMAIL_ENTRY = 'entry.1981229820';
+
+    function submitToGoogleForm(email) {
+      if (GOOGLE_FORM_URL.includes('YOUR_GOOGLE_FORM_ID') || GOOGLE_FORM_EMAIL_ENTRY.includes('YOUR_ENTRY_ID')) {
+        return; // not configured yet — no-op, never throws
+      }
+      const params = new URLSearchParams();
+      params.append(GOOGLE_FORM_EMAIL_ENTRY, email);
+      // mode: 'no-cors' is required for a cross-origin POST to Google
+      // Forms from the browser — Google does not send back CORS
+      // headers, so the response is opaque and we can't read success/
+      // failure from it. That's fine here: Formspree above already
+      // handles the visitor's actual confirmation. This call is
+      // fire-and-forget by design.
+      fetch(GOOGLE_FORM_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: params
+      }).catch(() => { /* intentionally ignored — see comment above */ });
+    }
+    // ------------------------------------------------------------------
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button');
       const originalText = btn.textContent;
+      const emailValue = form.querySelector('input[name="email"]').value;
       btn.textContent = 'Sending…';
       btn.disabled = true;
       status.className = '';
@@ -341,6 +382,7 @@
         if (response.ok) {
           status.className = 'ok';
           status.textContent = "You're on the list — first report goes out within the next two weeks. Thanks for signing up.";
+          submitToGoogleForm(emailValue);
           form.reset();
         } else {
           throw new Error('Form submission failed');
