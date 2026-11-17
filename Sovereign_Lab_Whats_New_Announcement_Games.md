@@ -1,0 +1,48 @@
+# What's new at SovereignLab: a weekly game, wider sources, and what's next
+
+SovereignLab turns public sources into reviewed cross-sector intelligence reports covering Civic, Ed-Tech, Economics and Statistics, Financial Exchange, Infrastructure and Sports. An AI drafts them, and a person reviews them before every send. Here is what has changed recently and where we're headed.
+
+## New: the SovereignLab Weekly Game (free to play)
+
+**Play it:** https://paulpdelancy-spec.github.io/SovereignLab-Intake-Registry-Public/games/
+
+A new game is built each week from the stories our sources collected and our reviewers approved. The puzzles and events change as the news does.
+
+- **Case Files:** solo puzzles. Sort stories under the right problem, spot the one that doesn't belong, choose the right low-cost response, and make predictions about next week's news that get graded against real story counts.
+- **Town Hall:** run your own organization (a cafe, a town, a school or a household) week after week. Each week eight real problems hit it, and you protect it with low-cost playbook steps.
+- **Make it your own.** Name your organization, choose a role, and pick up to three problems to watch. Use a playbook step in three different weeks and it becomes a free, automatic standing habit. Five levels (Standard, Challenge, Crisis, Emergency, Legend) unlock as you improve, and weekly missions, badges and a real-world checklist keep it going indefinitely.
+- **Fair grading.** Runs are graded against simulated casual play on the same week, role, level and habits, so a better grade always means better decisions.
+- **Archive.** Every past week stays playable.
+- **Privacy.** No account and no tracking. Progress lives in your own browser, and a progress code moves it between devices.
+
+It's a learning aid built on simplified models. It is not financial, legal or professional advice.
+
+## New: a wider and more reliable source base
+
+- 22 newly verified live feeds were added for the sectors that were thinnest: Civic, Ed-Tech, and Economics and Statistics. Each was live-checked before it was added.
+- International news sources were added across Europe, Asia and Africa.
+- Official feeds from central banks and statistical agencies were added to Economics and Statistics and Financial Exchange.
+- Reports now track the publisher behind aggregated links, so source diversity is measured honestly.
+
+## Reports: quality changes you'll notice
+
+- At most three top findings per sector.
+- A "why this score" line on each finding.
+- Sectors with nothing new say so, and show a clearly labeled carry-over from the last seven days instead of padding.
+- Per-sector publish floors, so quiet sectors ship fewer, stronger findings.
+- Economic series update only when a value actually changes.
+- Every report is still reviewed by a person before it goes out.
+
+## Coming next
+
+These are our current plans. Dates may move.
+
+- **Weekly Business Problem Brief:** a Sunday report on the top ten problems businesses and individuals face, each with three or four low-cost solutions. The game's playbook steps come from it.
+- **Automatic weekly game builds,** with the link emailed to subscribers after a person approves the week.
+- **Audio editions** of reports for subscribers, and short public teaser audio.
+- **Continued source growth** where sectors run thin, and continued tuning of the game's difficulty as real players show us how it plays.
+
+## Feedback
+
+Tell us if a question was wrong, a story was a poor fit, or you want a new kind of challenge. Open an issue or a discussion here. A free tier of the reports is available:
+https://paulpdelancy-spec.github.io/SovereignLab-Intake-Registry-Public/SignUp_2Free_Reports.html
