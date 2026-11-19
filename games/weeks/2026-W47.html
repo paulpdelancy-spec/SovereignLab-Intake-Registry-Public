@@ -4,34 +4,43 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
+<meta name="copyright" content="(c) 2026 SovereignLab. All rights reserved.">
+<meta name="robots" content="noai,noimageai">
 <title>SovereignLab Weekly Game - Nov 16 - Nov 22, 2026</title>
 <style>
 :root{
-  --bg:#f5f2ea; --card:#fffdf8; --ink:#1c2230; --muted:#586174; --line:#ddd6c5;
-  --accent:#0f6b63; --accent-ink:#ffffff; --accent-soft:#dcefeb;
-  --warn:#9a5208; --warn-soft:#f8e8d2; --bad:#b3261e; --bad-soft:#f9dedb;
-  --good:#17703a; --good-soft:#dbf0e2; --chip:#ece6d6;
-  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
-  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+--bg:#f5f2ea; --card:#fffdf8; --ink:#1c2230; --muted:#586174; --line:#ddd6c5;
+--accent:#0f6b63; --accent-ink:#ffffff; --accent-soft:#dcefeb;
+--warn:#9a5208; --warn-soft:#f8e8d2; --bad:#b3261e; --bad-soft:#f9dedb;
+--good:#17703a; --good-soft:#dbf0e2; --chip:#ece6d6;
+--serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 @media (prefers-color-scheme: dark){
-  :root{
-    --bg:#10141c; --card:#1a2030; --ink:#eceff5; --muted:#a6b0c2; --line:#2c3549;
-    --accent:#4cc0b3; --accent-ink:#06201d; --accent-soft:#173a38;
-    --warn:#f0aa5c; --warn-soft:#3a2b17; --bad:#ff8c82; --bad-soft:#3d1f1d;
-    --good:#74d68f; --good-soft:#18352a; --chip:#242c40;
-  }
+:root{
+--bg:#10141c; --card:#1a2030; --ink:#eceff5; --muted:#a6b0c2; --line:#2c3549;
+--accent:#4cc0b3; --accent-ink:#06201d; --accent-soft:#173a38;
+--warn:#f0aa5c; --warn-soft:#3a2b17; --bad:#ff8c82; --bad-soft:#3d1f1d;
+--good:#74d68f; --good-soft:#18352a; --chip:#242c40;
+}
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 var(--sans)}
 main{max-width:760px;margin:0 auto;padding:16px 16px 56px}
+.legal{max-width:760px;margin:0 auto;padding:0 16px 32px;font-size:.8rem;color:var(--muted)}
 h1,h2,h3{line-height:1.25;margin:0 0 .4em}
 h1{font:700 1.6rem/1.2 var(--serif)}
 h2{font:700 1.25rem/1.25 var(--serif)}
 h3{font-size:1rem}
 p{margin:0 0 .8em}
 a{color:var(--accent)}
+html.s1{font-size:112.5%}
+html.s2{font-size:125%}
+html.rf body{font-family:Verdana,Tahoma,"Trebuchet MS",sans-serif;letter-spacing:.02em;line-height:1.7}
+select{width:100%;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:10px;font:inherit}
+.langs{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin:8px 0}
+.langs .act{margin:0;text-align:center;font-weight:700}
 .muted{color:var(--muted)}
 .small{font-size:.875rem}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:0 0 14px}
@@ -53,13 +62,13 @@ button:focus-visible,a:focus-visible,summary:focus-visible,textarea:focus-visibl
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .opts{display:grid;gap:10px;margin:12px 0}
-.opt{text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;min-height:48px;width:100%}
+.opt{text-align:start;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;min-height:48px;width:100%}
 .opt:hover:not(:disabled){border-color:var(--accent)}
 .opt.sel{border-color:var(--accent);background:var(--accent-soft)}
 .opt.correct{border-color:var(--good);background:var(--good-soft)}
 .opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
 .opt:disabled{cursor:default}
-.story{font:1.05rem/1.45 var(--serif);border-left:4px solid var(--accent);padding:2px 0 2px 12px;margin:10px 0}
+.story{font:1.05rem/1.45 var(--serif);border-inline-start:4px solid var(--accent);padding:2px 0;padding-inline-start:12px;margin:10px 0}
 .story .src{font:.8rem var(--sans);color:var(--muted);margin-top:4px}
 .chip{display:inline-block;background:var(--chip);border-radius:99px;padding:2px 10px;font-size:.8rem;font-weight:600;margin:0 4px 4px 0}
 .chip.up{background:var(--bad-soft);color:var(--bad)}
@@ -80,7 +89,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible,textarea:focus-visibl
 @media (max-width:480px){.meter{grid-template-columns:96px 1fr 28px}}
 .meter .bar{height:12px}
 .meter .bar>i.low{background:var(--bad)}
-.act{display:block;text-align:left;width:100%;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px}
+.act{display:block;text-align:start;width:100%;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px}
 .act:hover:not(:disabled){border-color:var(--accent)}
 .act:disabled{opacity:.5;cursor:not-allowed}
 .act.done{border-color:var(--good);background:var(--good-soft);opacity:1}
@@ -91,7 +100,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible,textarea:focus-visibl
 details{margin:0 0 14px}
 summary{cursor:pointer;font-weight:700;padding:6px 0}
 table{border-collapse:collapse;width:100%;font-size:.9rem}
-td,th{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td,th{text-align:start;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
 textarea{width:100%;min-height:70px;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:8px;font:.8rem monospace}
 input[type=text]{width:100%;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:10px;font:inherit}
 .chk label{display:block;padding:6px 0}
@@ -100,732 +109,933 @@ input[type=text]{width:100%;background:var(--card);color:var(--ink);border:1.5px
 @media (max-width:480px){.badges{grid-template-columns:1fr}}
 .badge{border:1.5px dashed var(--line);border-radius:10px;padding:8px 10px;opacity:.65}
 .badge.on{border:1.5px solid var(--good);background:var(--good-soft);opacity:1}
-.sr{position:absolute;left:-9999px}
+.sr{position:absolute;inset-inline-start:-9999px}
+html.hc{--bg:#ffffff;--card:#ffffff;--ink:#000000;--muted:#1a1a1a;--line:#000000;--accent:#00366b;--accent-ink:#ffffff;--accent-soft:#e3eefc;--warn:#5a2e00;--warn-soft:#fff1de;--bad:#8a0000;--bad-soft:#ffe3e3;--good:#0b4d1f;--good-soft:#dcf5e3;--chip:#e6e6e6}
+html.hc .card,html.hc .opt,html.hc .act{border-width:2px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 <main id="app" aria-live="polite"></main>
+<footer class="legal">&copy; 2026 SovereignLab. All rights reserved. <a href="../TERMS.txt">Terms of use</a></footer>
 <noscript><main><p>This game needs JavaScript. It runs entirely in your browser and sends nothing anywhere.</p></main></noscript>
-<script id="game-data" type="application/json">{"version":1,"sample":false,"week":{"id":"2026-W47","label":"Nov 16 - Nov 22, 2026","index":150,"start":"2026-11-16","end":"2026-11-22"},"archive_url":"../index.html","generated":"2026-11-17T06:09:37","stories_this_week":434,"matched":217,"case":{"questions":[{"type":"sort","skill":"Economics and Statistics","prompt":"Which of the ten problems does this story belong under?","story":{"text":"Budget 2027-28: PHDCCI urges govt to scrap LTCG tax on equities, cut STCG tax to 10%: PHD Chamber of Commerce and Industry has made recommendations for the Union Budget 2027-28. They have...","outlet":"economictimes.indiatimes.com","url":"https://economictimes.indiatimes.com/news/economy/policy/budget-2027-28-phdcci-urges-govt-to-scrap-ltcg-tax-on-equities-cut-stcg-tax-to-10/articleshow/135709965.cms","sector":"Economics and Statistics"},"options":[{"id":"productivity","label":"Time, productivity and burnout"},{"id":"regulatory","label":"Regulatory and compliance burden"},{"id":"cash_flow","label":"Cash flow and access to capital"},{"id":"supply_chain","label":"Supply chain and infrastructure reliability"}],"options_hard":[{"id":"uncertainty","label":"Uncertainty and information overload"},{"id":"inflation","label":"Inflation and rising costs"},{"id":"cash_flow","label":"Cash flow and access to capital"},{"id":"growth","label":"Customer acquisition and revenue growth"}],"answer":"cash_flow","hint":"It was reported in the Economics and Statistics sector.","explain":"Filed under Cash flow and access to capital because it mentions \"capital\", \"credit\", \"loan\".","pid":"cash_flow","confidence_low":false,"id":"2026-W47:q1"},{"type":"sort","skill":"Financial Exchange","prompt":"Which of the ten problems does this story belong under?","story":{"text":"Traders raise odds of 50 bps Fed rate hike as CPI rise exceeds expectations: New data has revealed that US consumer prices rose faster than anticipated, prompting speculation about interest...","outlet":"economictimes.indiatimes.com","url":"https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/traders-raise-odds-of-50-bps-fed-rate-hike-as-cpi-rise-exceeds-expectations/articleshow/135714586.cms","sector":"Financial Exchange"},"options":[{"id":"cash_flow","label":"Cash flow and access to capital"},{"id":"supply_chain","label":"Supply chain and infrastructure reliability"},{"id":"talent","label":"Talent shortages and skills gaps"},{"id":"inflation","label":"Inflation and rising costs"}],"options_hard":[{"id":"cash_flow","label":"Cash flow and access to capital"},{"id":"growth","label":"Customer acquisition and revenue growth"},{"id":"uncertainty","label":"Uncertainty and information overload"},{"id":"inflation","label":"Inflation and rising costs"}],"answer":"inflation","hint":"It was reported in the Financial Exchange sector.","explain":"Filed under Inflation and rising costs because it mentions \"consumer price\", \"consumer prices\", \"cpi\".","pid":"inflation","confidence_low":false,"id":"2026-W47:q2"},{"type":"sort","skill":"Financial Exchange","prompt":"Which of the ten problems does this story belong under?","story":{"text":"Stock market outlook, November 16-20: Nifty logs 3-week winning streak, first since June - Rally ahead or a pause?: Indian equities may extend their rally during November 16\u201320, though...","outlet":"livemint.com","url":"https://www.livemint.com/market/stock-market-news/stock-market-outlook-november-16-20-nifty-logs-3-week-winning-streak-first-since-june-rally-ahead-or-a-pause-11794738601982.html","sector":"Financial Exchange"},"options":[{"id":"supply_chain","label":"Supply chain and infrastructure reliability"},{"id":"talent","label":"Talent shortages and skills gaps"},{"id":"uncertainty","label":"Uncertainty and information overload"},{"id":"inflation","label":"Inflation and rising costs"}],"options_hard":[{"id":"inflation","label":"Inflation and rising costs"},{"id":"uncertainty","label":"Uncertainty and information overload"},{"id":"growth","label":"Customer acquisition and revenue growth"},{"id":"cash_flow","label":"Cash flow and access to capital"}],"answer":"uncertainty","hint":"It was reported in the Financial Exchange sector.","explain":"Filed under Uncertainty and information overload because it mentions \"geopolitical\", \"outlook\", \"volatility\".","pid":"uncertainty","confidence_low":false,"id":"2026-W47:q3"},{"type":"most","skill":"Cross-sector","prompt":"Which of these problems drew the MOST stories in the public sources we track this week?","options":[{"id":"technology","label":"Technology adoption and AI"},{"id":"cash_flow","label":"Cash flow and access to capital"},{"id":"uncertainty","label":"Uncertainty and information overload"},{"id":"cyber","label":"Cybersecurity and fraud"}],"answer":"cash_flow","hint":"Think about what has dominated the news this week.","explain":"Cash flow and access to capital led with 57 stories. This week's counts for these four: Technology adoption and AI: 32, Cash flow and access to capital: 57, Uncertainty and information overload: 14, Cybersecurity and fraud: 4.","pid":"cash_flow","id":"2026-W47:q4"},{"type":"odd","skill":"Cross-sector","prompt":"Three of these stories share a theme. Which one doesn't belong?","stories":[{"text":"Miami-Dade District Seeks Microschools to Lease Empty Classroom Space: The Miami-Dade school district, one of the nation\u2019s largest, is inviting independent microschools to lease empty...","outlet":"the74million.org","url":"https://www.the74million.org/article/miami-dade-district-seeks-microschools-to-lease-empty-classroom-space/","sector":"Ed-Tech"},{"text":"Initial Jobless Claims (weekly new unemployment insurance claims) (ICSA): 200000 as of 2026-11-07 (+9000.00 (4.71% move) since 2026-10-31).","outlet":"fred.stlouisfed.org","url":"https://fred.stlouisfed.org/series/ICSA","sector":"Economics and Statistics"},{"text":"Amid Accreditor Scrutiny, Maine Officials Defend \u2018YourPace\u2019 Program: Amid Accreditor Scrutiny, Maine Officials Defend \u2018YourPace\u2019 Program Josh Moody Tue, 11/10/2026 - 03:00 AM Enrollment in...","outlet":"insidehighered.com","url":"https://www.insidehighered.com/news/tech-innovation/teaching-learning/2026/11/10/why-maine-online-program-drawing-accreditor","sector":"Ed-Tech"},{"text":"Traders raise odds of 50 bps Fed rate hike as CPI rise exceeds expectations: New data has revealed that US consumer prices rose faster than anticipated, prompting speculation about interest...","outlet":"economictimes.indiatimes.com","url":"https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/traders-raise-odds-of-50-bps-fed-rate-hike-as-cpi-rise-exceeds-expectations/articleshow/135714586.cms","sector":"Financial Exchange"}],"answer":3,"hint":"Look for the shared cost, risk or pressure in three of them.","explain":"The other three are about Talent shortages and skills gaps. This one is about Inflation and rising costs.","pid":"talent","id":"2026-W47:q5"},{"type":"sector","skill":"Financial Exchange","prompt":"Stories about \"Technology adoption and AI\" came from many places. Which sector produced the most of them this week?","options":[{"id":"Sports","label":"Sports"},{"id":"Civic","label":"Civic"},{"id":"Ed-Tech","label":"Ed-Tech"},{"id":"Financial Exchange","label":"Financial Exchange"}],"answer":"Financial Exchange","hint":"Think about which sector's news is most tied to this problem.","explain":"Financial Exchange produced the most. Stories by sector: Financial Exchange: 13, Ed-Tech: 12, Civic: 3, Economics and Statistics: 3, Infrastructure: 1.","pid":"technology","id":"2026-W47:q6"},{"type":"step","skill":"Cross-sector","prompt":"\"Technology adoption and AI\" is one of this week's most-covered problems. Which of these is a recommended low-cost response to it?","options":[{"id":"productivity|Automate recurring reports and monitoring","label":"Automate recurring reports and monitoring"},{"id":"growth|Sell to government buyers","label":"Sell to government buyers"},{"id":"inflation|Individuals: re-weight the budget by category inflation","label":"Individuals: re-weight the budget by category inflation"},{"id":"technology|Pilot one measurable use case for 30 days","label":"Pilot one measurable use case for 30 days"}],"answer":"technology|Pilot one measurable use case for 30 days","hint":"Think about what protects you from this specific pressure: new tools promise big gains, but unfocused adoption wastes money and creates privacy and quality risks.","explain":"Pick one repetitive task, record time or errors before and after, and expand only if the numbers improve.","resources":[],"pid":"technology","id":"2026-W47:q7"},{"type":"predict","skill":"Cross-sector","id":"2026-W47:regulatory","prompt":"Make the call: next week, will stories filed under \"Regulatory and compliance burden\" be MORE, FEWER or about the SAME as this week's 14?","options":[{"id":"more","label":"More"},{"id":"same","label":"About the same"},{"id":"fewer","label":"Fewer"}],"hint":"Is this a one-off spike or a building trend? Check the Radar on the Town Hall page.","explain":"Graded next week. The more sure you are, the more you can win - and lose in calibration.","pid":"regulatory","then_n":14},{"type":"predict","skill":"Cross-sector","id":"2026-W47:cash_flow","prompt":"Make the call: next week, will stories filed under \"Cash flow and access to capital\" be MORE, FEWER or about the SAME as this week's 57?","options":[{"id":"more","label":"More"},{"id":"same","label":"About the same"},{"id":"fewer","label":"Fewer"}],"hint":"Is this a one-off spike or a building trend? Check the Radar on the Town Hall page.","explain":"Graded next week. The more sure you are, the more you can win - and lose in calibration.","pid":"cash_flow","then_n":57}],"resolutions":[]},"town":{"problems":{"cash_flow":{"id":"cash_flow","name":"Cash flow and access to capital","why":"Late payments, rate swings and tight credit squeeze any business or household that runs on thin margins.","stat":0,"signal":"\u25cf Steady","count":57,"prev":52,"sev":3,"story":{"text":"Budget 2027-28: PHDCCI urges govt to scrap LTCG tax on equities, cut STCG tax to 10%: PHD Chamber of Commerce and Industry has made recommendations for the Union Budget 2027-28. They have...","outlet":"economictimes.indiatimes.com","url":"https://economictimes.indiatimes.com/news/economy/policy/budget-2027-28-phdcci-urges-govt-to-scrap-ltcg-tax-on-equities-cut-stcg-tax-to-10/articleshow/135709965.cms","sector":"Economics and Statistics"},"solutions":[{"title":"Run a rolling 13-week cash forecast","detail":"Update one simple spreadsheet every week: expected cash in, committed cash out, ending balance. Chase receivables earlier and pause discretionary spending when a shortfall shows up more than four weeks out.","cost":1,"eff":[1,0,0],"resources":[{"label":"SCORE free mentoring and templates","url":"https://www.score.org/"}]},{"title":"Time borrowing around central-bank news","detail":"Check Fed, ECB and Bank of England decisions and Treasury yields before refinancing or locking a rate, and ask lenders what rate-lock options they offer.","cost":1,"eff":[1,0,0],"resources":[{"label":"FRED economic data","url":"https://fred.stlouisfed.org/"},{"label":"Federal Reserve","url":"https://www.federalreserve.gov/"}]},{"title":"Look at public funding before expensive credit","detail":"Federal grants, state and local programs and SBA-backed loans often cost far less than private credit. Set a monthly reminder to check them.","cost":2,"eff":[2,0,-1],"resources":[{"label":"Grants.gov","url":"https://www.grants.gov/"},{"label":"U.S. Small Business Administration","url":"https://www.sba.gov/"}]},{"title":"Individuals: hold a one-month buffer and pay down the highest rate first","detail":"Build one month of expenses in cash before extra investing, then send spare dollars to the highest-interest balance.","cost":2,"eff":[-1,0,2],"resources":[{"label":"Consumer Financial Protection Bureau","url":"https://www.consumerfinance.gov/"}]}]},"inflation":{"id":"inflation","name":"Inflation and rising costs","why":"Input costs, wages and energy can move faster than prices or paychecks, shrinking margins and budgets.","stat":0,"signal":"\u25bc Easing","count":51,"prev":79,"sev":2,"story":{"text":"Traders raise odds of 50 bps Fed rate hike as CPI rise exceeds expectations: New data has revealed that US consumer prices rose faster than anticipated, prompting speculation about interest...","outlet":"economictimes.indiatimes.com","url":"https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/traders-raise-odds-of-50-bps-fed-rate-hike-as-cpi-rise-exceeds-expectations/articleshow/135714586.cms","sector":"Financial Exchange"},"solutions":[{"title":"Tie contracts and price lists to published indices","detail":"Link renewals to CPI or PPI and review price lists quarterly, so cost increases are passed on predictably instead of absorbed.","cost":1,"eff":[1,0,0],"resources":[{"label":"BLS Consumer Price Index","url":"https://www.bls.gov/cpi/"},{"label":"BLS Producer Price Index","url":"https://www.bls.gov/ppi/"}]},{"title":"Buy ahead on volatile inputs","detail":"Watch metals, energy and materials trackers, and set a maximum price below which you will stock up on the inputs you use most.","cost":2,"eff":[-1,0,2],"resources":[{"label":"LBMA precious metals","url":"https://www.lbma.org.uk/"},{"label":"U.S. Energy Information Administration","url":"https://www.eia.gov/"}]},{"title":"Audit your top five spending lines every quarter","detail":"Get at least three quotes on each, renegotiate or switch, and record the savings so the habit sticks.","cost":1,"eff":[1,0,0],"resources":[]},{"title":"Individuals: re-weight the budget by category inflation","detail":"Check which spending categories are rising fastest in the CPI detail tables and substitute or cut there first.","cost":1,"eff":[0,0,1],"resources":[{"label":"BLS Consumer Price Index","url":"https://www.bls.gov/cpi/"}]}]},"growth":{"id":"growth","name":"Customer acquisition and revenue growth","why":"Demand shifts quickly, and most small organizations find out after the sales have already moved.","stat":0,"signal":"\u25cf Steady","count":3,"prev":2,"sev":3,"story":{"text":"GDP (Advance Estimate), 3rd Quarter 2026: Real gross domestic product (GDP) increased at an annual rate of 3.4 percent in the third quarter of 2026 (July, August, and September), according...","outlet":"bea.gov","url":"https://www.bea.gov/news/2026/gdp-advance-estimate-3rd-quarter-2026","sector":"Economics and Statistics"},"solutions":[{"title":"Watch demand signals before adjusting offers","detail":"Consumer-spending and confidence releases show demand turning weeks before your own sales do. Review them weekly and adjust inventory and promotions.","cost":1,"eff":[0,0,1],"resources":[{"label":"Census retail sales","url":"https://www.census.gov/retail/"},{"label":"FRED economic data","url":"https://fred.stlouisfed.org/"}]},{"title":"Sell to government buyers","detail":"Procurement news and public bid portals show who is buying. Register once, then set alerts for your category.","cost":2,"eff":[2,0,-1],"resources":[{"label":"SAM.gov federal opportunities","url":"https://sam.gov/"}]},{"title":"Use free search-demand tools to find what customers ask for","detail":"Check trending searches and your own site's search queries monthly, and write offers in the customers' own words.","cost":1,"eff":[1,0,0],"resources":[{"label":"Google Trends","url":"https://trends.google.com/"},{"label":"Google Search Console","url":"https://search.google.com/search-console"}]},{"title":"Time local promotions to events and sports calendars","detail":"Game days, school calendars and civic events concentrate foot traffic. Plan offers and sponsorships around them instead of guessing.","cost":1,"eff":[0,1,0],"resources":[]}]},"talent":{"id":"talent","name":"Talent shortages and skills gaps","why":"Hiring is slow and expensive, and skills go out of date faster than job descriptions do.","stat":2,"signal":"\u25bc Easing","count":5,"prev":11,"sev":2,"story":{"text":"Initial Jobless Claims (weekly new unemployment insurance claims) (ICSA): 200000 as of 2026-11-07 (+9000.00 (4.71% move) since 2026-10-31).","outlet":"fred.stlouisfed.org","url":"https://fred.stlouisfed.org/series/ICSA","sector":"Economics and Statistics"},"solutions":[{"title":"Benchmark pay and tightness with public labor data","detail":"Check wage levels and demand for each role before posting it, so offers are competitive without overpaying.","cost":1,"eff":[1,0,0],"resources":[{"label":"BLS Occupational Outlook Handbook","url":"https://www.bls.gov/ooh/"}]},{"title":"Upskill current staff through low-cost programs","detail":"Community colleges, state workforce boards and free training directories cover most common skills gaps at a fraction of the cost of a new hire.","cost":2,"eff":[-1,2,0],"resources":[{"label":"CareerOneStop training finder","url":"https://www.careeronestop.org/"}]},{"title":"Build an apprenticeship or intern pipeline","detail":"Partner with a local school or program to train toward your needs. Some programs offset part of the cost.","cost":2,"eff":[-1,0,2],"resources":[{"label":"Apprenticeship.gov","url":"https://www.apprenticeship.gov/"}]},{"title":"Individuals: pick certifications by market demand","detail":"Compare projected growth and median pay by occupation before paying for a credential.","cost":1,"eff":[0,0,1],"resources":[{"label":"BLS Occupational Outlook Handbook","url":"https://www.bls.gov/ooh/"},{"label":"CareerOneStop","url":"https://www.careeronestop.org/"}]}]},"cyber":{"id":"cyber","name":"Cybersecurity and fraud","why":"Attacks and scams target everyone, and most successful ones exploit basic gaps rather than sophisticated flaws.","stat":1,"signal":"\u25cf Steady","count":4,"prev":4,"sev":3,"story":{"text":"FedRAMP pushes new cyber vulnerability rules to keep pace with AI: Companies that provide cloud services to federal agencies are scrambling to adopt new cyber vulnerability management...","outlet":"federalnewsnetwork.com","url":"https://federalnewsnetwork.com/cybersecurity/2026/11/fedramp-pushes-new-cyber-vulnerability-rules-to-keep-pace-with-ai/","sector":"Civic"},"solutions":[{"title":"Turn on multi-factor authentication and a password manager everywhere","detail":"Start with email, banking and admin accounts. This one step blocks most account-takeover attempts and is free or nearly so.","cost":1,"eff":[0,1,0],"resources":[{"label":"CISA Secure Our World","url":"https://www.cisa.gov/secure-our-world"}]},{"title":"Patch and back up on a schedule","detail":"Apply updates monthly, keep one offline backup, and test a restore every quarter so a ransomware incident is an inconvenience, not a closure.","cost":1,"eff":[0,0,1],"resources":[{"label":"CISA Known Exploited Vulnerabilities","url":"https://www.cisa.gov/known-exploited-vulnerabilities-catalog"}]},{"title":"Run a monthly phishing refresher using real incidents","detail":"Ten minutes with a recent scam example keeps staff and family alert. Agree on a rule: money or credential requests are always verified by a second channel.","cost":1,"eff":[0,1,0],"resources":[{"label":"FTC ReportFraud","url":"https://reportfraud.ftc.gov/"}]},{"title":"Adopt the NIST small-business basics","detail":"Use the Cybersecurity Framework's identify, protect, detect, respond and recover list as a checklist, and note which items are already covered.","cost":2,"eff":[-1,2,0],"resources":[{"label":"NIST Cybersecurity Framework","url":"https://www.nist.gov/cyberframework"}]}]},"regulatory":{"id":"regulatory","name":"Regulatory and compliance burden","why":"Rules change at the federal, state and local level, and missing a deadline is far more expensive than tracking it.","stat":1,"signal":"\u25cf Steady","count":14,"prev":17,"sev":3,"story":{"text":"GAO\u2019s Latest Report Card Highlights Billions in Cost Savings and Hundreds of Improvements Across the Federal Government: The U.S. Government Accountability Office audits federal programs...","outlet":"gao.gov","url":"https://www.gao.gov/blog/gaos-latest-report-card-highlights-billions-cost-savings-and-hundreds-improvements-across-federal-government","sector":"Civic"},"solutions":[{"title":"Keep a one-page compliance calendar","detail":"List every license, filing and renewal with a due date and a named owner. Review it at the start of each month.","cost":1,"eff":[0,0,1],"resources":[{"label":"IRS business resources","url":"https://www.irs.gov/businesses"}]},{"title":"Assign one owner for regulatory watch","detail":"Give one person a weekly 15-minute review of federal and state rule changes and oversight reports, so nothing falls between roles.","cost":1,"eff":[0,1,0],"resources":[{"label":"Federal Register","url":"https://www.federalregister.gov/"},{"label":"U.S. GAO","url":"https://www.gao.gov/"}]},{"title":"Use free agency guidance before paying for counsel","detail":"Most agencies publish plain-language guides and small-business help desks. Read those first and bring specific questions to a lawyer.","cost":1,"eff":[1,0,0],"resources":[{"label":"U.S. Small Business Administration","url":"https://www.sba.gov/"}]},{"title":"Check state and local rules before you expand","detail":"Requirements differ by state. Before entering a new state or launching a data- or AI-related feature, review that state's business and consumer-protection pages.","cost":1,"eff":[0,1,0],"resources":[{"label":"USA.gov state governments","url":"https://www.usa.gov/state-governments"}]}]},"supply_chain":{"id":"supply_chain","name":"Supply chain and infrastructure reliability","why":"One late shipment, closed road or grid outage can stall an operation that has no second option.","stat":2,"signal":"\u25cf Steady","count":31,"prev":31,"sev":3,"story":{"text":"Are data centers really paying their share? AES Indiana\u2019s Google deal highlights a thorny question: While local grid infrastructure projects are fairly easy to trace back to a specific data...","outlet":"utilitydive.com","url":"https://www.utilitydive.com/news/are-data-centers-really-paying-aes-indianas-google-deal-highlights-a-thor/873040/","sector":"Infrastructure"},"solutions":[{"title":"Qualify a backup supplier for every critical input","detail":"Place a small test order with a second vendor so switching is a phone call, not a project.","cost":2,"eff":[-1,0,2],"resources":[]},{"title":"Track materials costs and project delays","detail":"Construction and engineering trade news and price indices show shortages and delays early. Review them weekly if you buy or build.","cost":1,"eff":[1,0,0],"resources":[{"label":"Engineering News-Record","url":"https://www.enr.com/"},{"label":"Construction Dive","url":"https://www.constructiondive.com/"},{"label":"BLS Producer Price Index","url":"https://www.bls.gov/ppi/"}]},{"title":"Hold safety stock only where lead times are longest","detail":"Rank inputs by lead time and by how badly a stock-out hurts. Stock the few at the top of both lists, not everything.","cost":1,"eff":[0,0,1],"resources":[]},{"title":"Follow public infrastructure funding for both work and disruption","detail":"Road, port, utility and broadband spending creates contracts and closures. Check federal and state transportation announcements monthly.","cost":2,"eff":[2,0,-1],"resources":[{"label":"U.S. Department of Transportation","url":"https://www.transportation.gov/"}]}]},"technology":{"id":"technology","name":"Technology adoption and AI","why":"New tools promise big gains, but unfocused adoption wastes money and creates privacy and quality risks.","stat":2,"signal":"\u25cf Steady","count":32,"prev":26,"sev":3,"story":{"text":"Market angst is driving investors into low-volatility stocks as AI trade stumbles: Anxiety in the U.S. stock market has surged amid a sharp selloff in artificial intelligence names and...","outlet":"marketwatch.com","url":"https://www.marketwatch.com/story/market-angst-is-driving-investors-into-low-volatility-stocks-as-ai-trade-stumbles-23d905e9?mod=mw_rss_topstories","sector":"Financial Exchange"},"solutions":[{"title":"Pilot one measurable use case for 30 days","detail":"Pick one repetitive task, record time or errors before and after, and expand only if the numbers improve.","cost":1,"eff":[0,0,1],"resources":[]},{"title":"Prefer existing tools over custom builds","detail":"Check whether software you already pay for has the feature before buying or building something new.","cost":1,"eff":[1,0,0],"resources":[]},{"title":"Learn from public-sector and education case studies","detail":"Government and school technology outlets publish detailed, free write-ups of what worked and what failed.","cost":1,"eff":[0,0,1],"resources":[{"label":"StateScoop","url":"https://statescoop.com/"},{"label":"EdSurge","url":"https://www.edsurge.com/"},{"label":"Campus Technology","url":"https://campustechnology.com/"}]},{"title":"Write a one-page AI-use policy","detail":"Say what data may never be entered into outside tools and who reviews AI output before it reaches a customer.","cost":1,"eff":[0,1,0],"resources":[{"label":"NIST AI Risk Management Framework","url":"https://www.nist.gov/itl/ai-risk-management-framework"}]}]},"productivity":{"id":"productivity","name":"Time, productivity and burnout","why":"People are the constraint in most organizations, and constant reaction mode wears them down.","stat":1,"signal":"\u25b2 Rising","count":6,"prev":2,"sev":4,"story":{"text":"Official Site of the National Hockey League | NHL.com: WSH@OTT: Hutson nets his fifth goal of season to win in overtime","outlet":"nhl.com","url":"https://www.nhl.com","sector":"Sports"},"solutions":[{"title":"Automate recurring reports and monitoring","detail":"Anything you compile by hand every week is a candidate for a script, a template or a scheduled export.","cost":2,"eff":[2,0,-1],"resources":[]},{"title":"Batch decisions into one weekly review","detail":"Collect non-urgent decisions and make them in a single set time, so people stop reacting all week.","cost":1,"eff":[0,0,1],"resources":[]},{"title":"Track five metrics, not fifty","detail":"Sports analytics works because teams watch a few numbers that predict winning. Pick the five that predict your results and drop the rest from your dashboard.","cost":1,"eff":[1,0,0],"resources":[]},{"title":"Protect recovery time","detail":"Set response-time norms, keep one meeting-free block a day, and watch overtime and turnover as early burnout signs.","cost":1,"eff":[0,0,1],"resources":[{"label":"CDC NIOSH work stress resources","url":"https://www.cdc.gov/niosh/"}]}]},"uncertainty":{"id":"uncertainty","name":"Uncertainty and information overload","why":"There is more data than anyone can read, and the signal that matters is usually buried in the noise.","stat":2,"signal":"\u25cf Steady","count":14,"prev":16,"sev":3,"story":{"text":"Stock market outlook, November 16-20: Nifty logs 3-week winning streak, first since June - Rally ahead or a pause?: Indian equities may extend their rally during November 16\u201320, though...","outlet":"livemint.com","url":"https://www.livemint.com/market/stock-market-news/stock-market-outlook-november-16-20-nifty-logs-3-week-winning-streak-first-since-june-rally-ahead-or-a-pause-11794738601982.html","sector":"Financial Exchange"},"solutions":[{"title":"Replace dozens of feeds with one weekly briefing","detail":"Pick a fixed time each week to review a short, curated summary, and unsubscribe from the rest.","cost":1,"eff":[0,0,1],"resources":[]},{"title":"Keep a small leading-indicator scorecard","detail":"Track four or five series that move before your results do, such as rates, jobs, procurement and construction activity, and note direction only.","cost":1,"eff":[0,0,1],"resources":[{"label":"FRED economic data","url":"https://fred.stlouisfed.org/"}]},{"title":"Plan three scenarios with trigger points","detail":"Write a base, downside and upside case, plus the indicator level that would make you switch. Deciding in advance beats deciding in a panic.","cost":2,"eff":[-1,0,2],"resources":[]},{"title":"Review last week's call against what happened","detail":"Write down one expectation each week and check it the next. Over a quarter this shows which sources to trust.","cost":1,"eff":[0,1,0],"resources":[]}]}},"order":["cash_flow","inflation","growth","talent","cyber","regulatory","supply_chain","technology","productivity","uncertainty"],"schedule":["supply_chain","talent","cash_flow","inflation","technology","uncertainty","productivity","regulatory"],"roles":[{"id":"cafe","name":"Cafe owner","blurb":"A neighborhood cafe with loyal regulars and thin margins.","labels":["Cash in the till","Regular customers","Backup plans"],"start":[5,7,5]},{"id":"town","name":"Town manager","blurb":"A small town with a tight budget and a lot of residents watching.","labels":["Town budget","Residents' trust","Readiness"],"start":[6,5,6]},{"id":"school","name":"School head","blurb":"A school balancing budgets, families and a stretched staff.","labels":["School budget","Family trust","Staff capacity"],"start":[5,7,6]},{"id":"home","name":"Household","blurb":"Your own household: bills, plans and peace of mind.","labels":["Savings","Peace of mind","Safety net"],"start":[5,6,6]}],"turns":8,"points":2,"ladder":[{"id":"standard","name":"Standard","bonus":0,"xp_mult":1.0},{"id":"challenge","name":"Challenge","bonus":1,"xp_mult":1.5},{"id":"crisis","name":"Crisis","bonus":2,"xp_mult":2.0},{"id":"emergency","name":"Emergency","bonus":3,"xp_mult":2.5},{"id":"legend","name":"Legend","bonus":4,"xp_mult":3.0}],"grading":{"A":0.98,"B":0.88,"C":0.55,"D":0.25,"runs":400},"habit_weeks":3,"habit_cap":3}}</script>
+<script id="game-data" type="application/json">{"version":1,"sample":false,"week":{"id":"2026-W47","label":"Nov 16 - Nov 22, 2026","index":150,"start":"2026-11-16","end":"2026-11-22"},"archive_url":"../index.html","generated":"2026-11-18T23:52:10","stories_this_week":445,"matched":214,"case":{"questions":[{"type":"sort","skill":"Financial Exchange","prompt":"Which of the ten problems does this story belong under?","story":{"text":"Gold recovers from one-year low as markets assess Fed rate outlook: Gold prices climbed 0.6%, rebounding from a recent slide to a 14-month low, amidst persistent investor anxiety. With the...","outlet":"economictimes.indiatimes.com","url":"https://economictimes.indiatimes.com/markets/commodities/news/gold-recovers-from-one-year-low-as-markets-assess-fed-rate-outlook/articleshow/135975129.cms","sector":"Financial Exchange","region":"","kid_ok":true},"options":[{"id":"productivity","label":"Time, productivity and burnout"},{"id":"regulatory","label":"Regulatory and compliance burden"},{"id":"cash_flow","label":"Cash flow and access to capital"},{"id":"supply_chain","label":"Supply chain and infrastructure reliability"}],"options_hard":[{"id":"uncertainty","label":"Uncertainty and information overload"},{"id":"inflation","label":"Inflation and rising costs"},{"id":"cash_flow","label":"Cash flow and access to capital"},{"id":"growth","label":"Customer acquisition and revenue growth"}],"answer":"cash_flow","hint":"It was reported in the Financial Exchange sector.","explain":"Filed under Cash flow and access to capital because it mentions \"federal reserve\", \"interest rates\", \"rate hike\".","pid":"cash_flow","confidence_low":false,"i18n":{"prompt":["Which of the ten problems does this story belong under?",{}],"hint":["It was reported in the {sector} sector.",{"sector":"Financial Exchange"}],"explain":["Filed under {name} because it mentions {matched}.",{"name":"Cash flow and access to capital","matched":"\"federal reserve\", \"interest rates\", \"rate hike\""}]},"id":"2026-W47:q1"},{"type":"sort","skill":"Economics and Statistics","prompt":"Which of the ten problems does this story belong under?","story":{"text":"Retail inflation may remain above 6 pc for next few months; economists see possibility of rate hikes: Mumbai's consumer price index-based retail inflation is projected to remain above 6...","outlet":"economictimes.indiatimes.com","url":"https://economictimes.indiatimes.com/news/economy/indicators/retail-inflation-may-remain-above-6-pc-for-next-few-months-economists-see-possibility-of-rate-hikes/articleshow/135775858.cms","sector":"Economics and Statistics","region":"","kid_ok":true},"options":[{"id":"cash_flow","label":"Cash flow and access to capital"},{"id":"supply_chain","label":"Supply chain and infrastructure reliability"},{"id":"talent","label":"Talent shortages and skills gaps"},{"id":"inflation","label":"Inflation and rising costs"}],"options_hard":[{"id":"cash_flow","label":"Cash flow and access to capital"},{"id":"growth","label":"Customer acquisition and revenue growth"},{"id":"uncertainty","label":"Uncertainty and information overload"},{"id":"inflation","label":"Inflation and rising costs"}],"answer":"inflation","hint":"It was reported in the Economics and Statistics sector.","explain":"Filed under Inflation and rising costs because it mentions \"commodity\", \"consumer price\", \"food prices\".","pid":"inflation","confidence_low":false,"i18n":{"prompt":["Which of the ten problems does this story belong under?",{}],"hint":["It was reported in the {sector} sector.",{"sector":"Economics and Statistics"}],"explain":["Filed under {name} because it mentions {matched}.",{"name":"Inflation and rising costs","matched":"\"commodity\", \"consumer price\", \"food prices\""}]},"id":"2026-W47:q2"},{"type":"sort","skill":"Financial Exchange","prompt":"Which of the ten problems does this story belong under?","story":{"text":"Stock market outlook, November 16-20: Nifty logs 3-week winning streak, first since June - Rally ahead or a pause?: Indian equities may extend their rally during November 16\u201320, though...","outlet":"livemint.com","url":"https://www.livemint.com/market/stock-market-news/stock-market-outlook-november-16-20-nifty-logs-3-week-winning-streak-first-since-june-rally-ahead-or-a-pause-11794738601982.html","sector":"Financial Exchange","region":"","kid_ok":true},"options":[{"id":"supply_chain","label":"Supply chain and infrastructure reliability"},{"id":"talent","label":"Talent shortages and skills gaps"},{"id":"uncertainty","label":"Uncertainty and information overload"},{"id":"inflation","label":"Inflation and rising costs"}],"options_hard":[{"id":"inflation","label":"Inflation and rising costs"},{"id":"uncertainty","label":"Uncertainty and information overload"},{"id":"growth","label":"Customer acquisition and revenue growth"},{"id":"cash_flow","label":"Cash flow and access to capital"}],"answer":"uncertainty","hint":"It was reported in the Financial Exchange sector.","explain":"Filed under Uncertainty and information overload because it mentions \"geopolitical\", \"outlook\", \"volatility\".","pid":"uncertainty","confidence_low":false,"i18n":{"prompt":["Which of the ten problems does this story belong under?",{}],"hint":["It was reported in the {sector} sector.",{"sector":"Financial Exchange"}],"explain":["Filed under {name} because it mentions {matched}.",{"name":"Uncertainty and information overload","matched":"\"geopolitical\", \"outlook\", \"volatility\""}]},"id":"2026-W47:q3"},{"type":"most","skill":"Cross-sector","prompt":"Which of these problems drew the MOST stories in the public sources we track this week?","options":[{"id":"inflation","label":"Inflation and rising costs"},{"id":"cash_flow","label":"Cash flow and access to capital"},{"id":"regulatory","label":"Regulatory and compliance burden"},{"id":"cyber","label":"Cybersecurity and fraud"}],"answer":"cash_flow","hint":"Think about what has dominated the news this week.","explain":"Cash flow and access to capital led with 53 stories. This week's counts for these four: Inflation and rising costs: 38, Cash flow and access to capital: 53, Regulatory and compliance burden: 11, Cybersecurity and fraud: 5.","pid":"cash_flow","i18n":{"prompt":["Which of these problems drew the MOST stories in the public sources we track this week?",{}],"hint":["Think about what has dominated the news this week.",{}],"explain":["{name} led with {n} stories. This week's counts for these four: {lines}.",{"name":"Cash flow and access to capital","n":53,"lines":[["Inflation and rising costs",38],["Cash flow and access to capital",53],["Regulatory and compliance burden",11],["Cybersecurity and fraud",5]]}]},"id":"2026-W47:q4"},{"type":"odd","skill":"Cross-sector","prompt":"Three of these stories share a theme. Which one doesn't belong?","stories":[{"text":"Lightspeed Insight Adds EdTech Index Badges, Giving Schools Visibility, Control, and Proof to Govern Ed-Tech: Lightspeed Insight Adds EdTech Index Badges, Giving Schools Visibility...","outlet":"freep.com","url":"https://news.google.com/rss/articles/CBMi6wFBVV95cUxNamtqV3M1MmZIcVZPNlhCRHVacmJGWEVpbVh1aV9VN25wR21rMDExU3EwNzQ4ZjRkbDdlVFBDTlE3ZmxPQndhTjlSOU8xY0JEa20xWGdtT2pmb2ZTa243NEpqZ2VNbDFMWmhJWi02SmNsN0tUcmpLc0RDZ0hLcm1VbHFXMjdMNHdOTUJkV3RvSnlLcklvOFUwV2xtVE1kdDVzcmtLMWxQRmlMZ0lhVVZsNjZXUVgzSC1RSDdydVBrWXpsWk41WVE5Nkd3QU9FOGhPd1Y1ZEVCdFdzTW5qS3RTMWtTQ3pnaFRVWTBZ?oc=5","sector":"Ed-Tech","region":"","kid_ok":true},{"text":"Market angst is driving investors into low-volatility stocks as AI trade stumbles: Anxiety in the U.S. stock market has surged amid a sharp selloff in artificial intelligence names and...","outlet":"marketwatch.com","url":"https://www.marketwatch.com/story/market-angst-is-driving-investors-into-low-volatility-stocks-as-ai-trade-stumbles-23d905e9?mod=mw_rss_topstories","sector":"Financial Exchange","region":"","kid_ok":true},{"text":"Questions swirl around FAA\u2019s new SMART AI system, though officials say no link to ground stop: The airline ground stop that has wreaked havoc on travel since Friday was not related to the...","outlet":"federalnewsnetwork.com","url":"https://federalnewsnetwork.com/technology-main/2026/11/questions-swirl-around-faas-new-smart-ai-system-though-officials-say-no-link-to-ground-stop/","sector":"Civic","region":"","kid_ok":true},{"text":"Retail inflation may remain above 6 pc for next few months; economists see possibility of rate hikes: Mumbai's consumer price index-based retail inflation is projected to remain above 6...","outlet":"economictimes.indiatimes.com","url":"https://economictimes.indiatimes.com/news/economy/indicators/retail-inflation-may-remain-above-6-pc-for-next-few-months-economists-see-possibility-of-rate-hikes/articleshow/135775858.cms","sector":"Economics and Statistics","region":"","kid_ok":true}],"answer":3,"hint":"Look for the shared cost, risk or pressure in three of them.","explain":"The other three are about Technology adoption and AI. This one is about Inflation and rising costs.","pid":"technology","i18n":{"prompt":["Three of these stories share a theme. Which one doesn't belong?",{}],"hint":["Look for the shared cost, risk or pressure in three of them.",{}],"explain":["The other three are about {a}. This one is about {b}.",{"a":"Technology adoption and AI","b":"Inflation and rising costs"}]},"id":"2026-W47:q5"},{"type":"sector","skill":"Sports","prompt":"Stories about \"Time, productivity and burnout\" came from many places. Which sector produced the most of them this week?","options":[{"id":"Infrastructure","label":"Infrastructure"},{"id":"Economics and Statistics","label":"Economics and Statistics"},{"id":"Sports","label":"Sports"},{"id":"Civic","label":"Civic"}],"answer":"Sports","hint":"Think about which sector's news is most tied to this problem.","explain":"Sports produced the most. Stories by sector: Sports: 4, Ed-Tech: 3.","pid":"productivity","i18n":{"prompt":["Stories about \"{name}\" came from many places. Which sector produced the most of them this week?",{"name":"Time, productivity and burnout"}],"hint":["Think about which sector's news is most tied to this problem.",{}],"explain":["{sector} produced the most. Stories by sector: {lines}.",{"sector":"Sports","lines":[["Sports",4],["Ed-Tech",3]]}]},"id":"2026-W47:q6"},{"type":"step","skill":"Cross-sector","prompt":"\"Inflation and rising costs\" is one of this week's most-covered problems. Which of these is a recommended low-cost response to it?","options":[{"id":"productivity|Automate recurring reports and monitoring","label":"Automate recurring reports and monitoring","ref":["productivity",0]},{"id":"talent|Upskill current staff through low-cost programs","label":"Upskill current staff through low-cost programs","ref":["talent",1]},{"id":"growth|Time local promotions to events and sports calendars","label":"Time local promotions to events and sports calendars","ref":["growth",3]},{"id":"inflation|Tie contracts and price lists to published indices","label":"Tie contracts and price lists to published indices","ref":["inflation",0]}],"answer":"inflation|Tie contracts and price lists to published indices","hint":"Think about what protects you from this specific pressure: input costs, wages and energy can move faster than prices or paychecks, shrinking margins and budgets.","explain":"Link renewals to CPI or PPI and review price lists quarterly, so cost increases are passed on predictably instead of absorbed.","resources":[{"label":"BLS Consumer Price Index","url":"https://www.bls.gov/cpi/"},{"label":"BLS Producer Price Index","url":"https://www.bls.gov/ppi/"}],"pid":"inflation","i18n":{"prompt":["\"{name}\" is one of this week's most-covered problems. Which of these is a recommended low-cost response to it?",{"name":"Inflation and rising costs"}],"hint":["Think about what protects you from this specific pressure: {why}.",{"why":{"why_of":"inflation"}}],"explain":["@detail",{"pid":"inflation","i":0}]},"id":"2026-W47:q7"},{"type":"predict","skill":"Cross-sector","id":"2026-W47:uncertainty","prompt":"Make the call: next week, will stories filed under \"Uncertainty and information overload\" be MORE, FEWER or about the SAME as this week's 14?","options":[{"id":"more","label":"More"},{"id":"same","label":"About the same"},{"id":"fewer","label":"Fewer"}],"hint":"Is this a one-off spike or a building trend? Check the Radar on the Town Hall page.","explain":"Graded next week. The more sure you are, the more you can win - and lose in calibration.","pid":"uncertainty","then_n":14,"i18n":{"prompt":["Make the call: next week, will stories filed under \"{name}\" be MORE, FEWER or about the SAME as this week's {n}?",{"name":"Uncertainty and information overload","n":14}],"hint":["Is this a one-off spike or a building trend? Check the Radar on the Town Hall page.",{}],"explain":["Graded next week. The more sure you are, the more you can win - and lose in calibration.",{}]}},{"type":"predict","skill":"Cross-sector","id":"2026-W47:cash_flow","prompt":"Make the call: next week, will stories filed under \"Cash flow and access to capital\" be MORE, FEWER or about the SAME as this week's 53?","options":[{"id":"more","label":"More"},{"id":"same","label":"About the same"},{"id":"fewer","label":"Fewer"}],"hint":"Is this a one-off spike or a building trend? Check the Radar on the Town Hall page.","explain":"Graded next week. The more sure you are, the more you can win - and lose in calibration.","pid":"cash_flow","then_n":53,"i18n":{"prompt":["Make the call: next week, will stories filed under \"{name}\" be MORE, FEWER or about the SAME as this week's {n}?",{"name":"Cash flow and access to capital","n":53}],"hint":["Is this a one-off spike or a building trend? Check the Radar on the Town Hall page.",{}],"explain":["Graded next week. The more sure you are, the more you can win - and lose in calibration.",{}]}}],"resolutions":[]},"town":{"problems":{"cash_flow":{"id":"cash_flow","name":"Cash flow and access to capital","why":"Late payments, rate swings and tight credit squeeze any business or household that runs on thin margins.","stat":0,"signal":"\u25cf Steady","count":53,"prev":48,"sev":3,"story":{"text":"Gold recovers from one-year low as markets assess Fed rate outlook: Gold prices climbed 0.6%, rebounding from a recent slide to a 14-month low, amidst persistent investor anxiety. With the...","outlet":"economictimes.indiatimes.com","url":"https://economictimes.indiatimes.com/markets/commodities/news/gold-recovers-from-one-year-low-as-markets-assess-fed-rate-outlook/articleshow/135975129.cms","sector":"Financial Exchange","region":"","kid_ok":true},"solutions":[{"title":"Run a rolling 13-week cash forecast","detail":"Update one simple spreadsheet every week: expected cash in, committed cash out, ending balance. Chase receivables earlier and pause discretionary spending when a shortfall shows up more than four weeks out.","cost":1,"eff":[1,0,0],"resources":[{"label":"SCORE free mentoring and templates","url":"https://www.score.org/"}]},{"title":"Time borrowing around central-bank news","detail":"Check Fed, ECB and Bank of England decisions and Treasury yields before refinancing or locking a rate, and ask lenders what rate-lock options they offer.","cost":1,"eff":[1,0,0],"resources":[{"label":"FRED economic data","url":"https://fred.stlouisfed.org/"},{"label":"Federal Reserve","url":"https://www.federalreserve.gov/"}]},{"title":"Look at public funding before expensive credit","detail":"Federal grants, state and local programs and SBA-backed loans often cost far less than private credit. Set a monthly reminder to check them.","cost":2,"eff":[2,0,-1],"resources":[{"label":"Grants.gov","url":"https://www.grants.gov/"},{"label":"U.S. Small Business Administration","url":"https://www.sba.gov/"}]},{"title":"Individuals: hold a one-month buffer and pay down the highest rate first","detail":"Build one month of expenses in cash before extra investing, then send spare dollars to the highest-interest balance.","cost":2,"eff":[-1,0,2],"resources":[{"label":"Consumer Financial Protection Bureau","url":"https://www.consumerfinance.gov/"}]}]},"inflation":{"id":"inflation","name":"Inflation and rising costs","why":"Input costs, wages and energy can move faster than prices or paychecks, shrinking margins and budgets.","stat":0,"signal":"\u25bc Easing","count":38,"prev":74,"sev":2,"story":{"text":"Retail inflation may remain above 6 pc for next few months; economists see possibility of rate hikes: Mumbai's consumer price index-based retail inflation is projected to remain above 6...","outlet":"economictimes.indiatimes.com","url":"https://economictimes.indiatimes.com/news/economy/indicators/retail-inflation-may-remain-above-6-pc-for-next-few-months-economists-see-possibility-of-rate-hikes/articleshow/135775858.cms","sector":"Economics and Statistics","region":"","kid_ok":true},"solutions":[{"title":"Tie contracts and price lists to published indices","detail":"Link renewals to CPI or PPI and review price lists quarterly, so cost increases are passed on predictably instead of absorbed.","cost":1,"eff":[1,0,0],"resources":[{"label":"BLS Consumer Price Index","url":"https://www.bls.gov/cpi/"},{"label":"BLS Producer Price Index","url":"https://www.bls.gov/ppi/"}]},{"title":"Buy ahead on volatile inputs","detail":"Watch metals, energy and materials trackers, and set a maximum price below which you will stock up on the inputs you use most.","cost":2,"eff":[-1,0,2],"resources":[{"label":"LBMA precious metals","url":"https://www.lbma.org.uk/"},{"label":"U.S. Energy Information Administration","url":"https://www.eia.gov/"}]},{"title":"Audit your top five spending lines every quarter","detail":"Get at least three quotes on each, renegotiate or switch, and record the savings so the habit sticks.","cost":1,"eff":[1,0,0],"resources":[]},{"title":"Individuals: re-weight the budget by category inflation","detail":"Check which spending categories are rising fastest in the CPI detail tables and substitute or cut there first.","cost":1,"eff":[0,0,1],"resources":[{"label":"BLS Consumer Price Index","url":"https://www.bls.gov/cpi/"}]}]},"growth":{"id":"growth","name":"Customer acquisition and revenue growth","why":"Demand shifts quickly, and most small organizations find out after the sales have already moved.","stat":0,"signal":"\u25cf Steady","count":2,"prev":3,"sev":3,"story":{"text":"DVAC registers criminal case over alleged irregularities in the purchase of books: The criminal case has been registered against a Chennai-based publisher and \u201cunidentified officials\u201d of...","outlet":"thehindu.com","url":"https://www.thehindu.com/news/national/tamil-nadu/dvac-registers-criminal-case-over-alleged-irregularities-in-the-purchase-of-books/article71708504.ece","sector":"Civic","region":"","kid_ok":false},"solutions":[{"title":"Watch demand signals before adjusting offers","detail":"Consumer-spending and confidence releases show demand turning weeks before your own sales do. Review them weekly and adjust inventory and promotions.","cost":1,"eff":[0,0,1],"resources":[{"label":"Census retail sales","url":"https://www.census.gov/retail/"},{"label":"FRED economic data","url":"https://fred.stlouisfed.org/"}]},{"title":"Sell to government buyers","detail":"Procurement news and public bid portals show who is buying. Register once, then set alerts for your category.","cost":2,"eff":[2,0,-1],"resources":[{"label":"SAM.gov federal opportunities","url":"https://sam.gov/"}]},{"title":"Use free search-demand tools to find what customers ask for","detail":"Check trending searches and your own site's search queries monthly, and write offers in the customers' own words.","cost":1,"eff":[1,0,0],"resources":[{"label":"Google Trends","url":"https://trends.google.com/"},{"label":"Google Search Console","url":"https://search.google.com/search-console"}]},{"title":"Time local promotions to events and sports calendars","detail":"Game days, school calendars and civic events concentrate foot traffic. Plan offers and sponsorships around them instead of guessing.","cost":1,"eff":[0,1,0],"resources":[]}]},"talent":{"id":"talent","name":"Talent shortages and skills gaps","why":"Hiring is slow and expensive, and skills go out of date faster than job descriptions do.","stat":2,"signal":"\u25cf Steady","count":9,"prev":11,"sev":3,"story":{"text":"Fewer students, more teachers: Districts balk at cutting staff even as enrollment falls: SEATTLE \u2014 Nearly four decades ago, state auditors delivered a stark warning to Seattle Public...","outlet":"hechingerreport.org","url":"https://hechingerreport.org/fewer-students-more-teachers-districts-balk-at-cutting-staff-even-as-enrollment-falls/","sector":"Ed-Tech","region":"","kid_ok":true},"solutions":[{"title":"Benchmark pay and tightness with public labor data","detail":"Check wage levels and demand for each role before posting it, so offers are competitive without overpaying.","cost":1,"eff":[1,0,0],"resources":[{"label":"BLS Occupational Outlook Handbook","url":"https://www.bls.gov/ooh/"}]},{"title":"Upskill current staff through low-cost programs","detail":"Community colleges, state workforce boards and free training directories cover most common skills gaps at a fraction of the cost of a new hire.","cost":2,"eff":[-1,2,0],"resources":[{"label":"CareerOneStop training finder","url":"https://www.careeronestop.org/"}]},{"title":"Build an apprenticeship or intern pipeline","detail":"Partner with a local school or program to train toward your needs. Some programs offset part of the cost.","cost":2,"eff":[-1,0,2],"resources":[{"label":"Apprenticeship.gov","url":"https://www.apprenticeship.gov/"}]},{"title":"Individuals: pick certifications by market demand","detail":"Compare projected growth and median pay by occupation before paying for a credential.","cost":1,"eff":[0,0,1],"resources":[{"label":"BLS Occupational Outlook Handbook","url":"https://www.bls.gov/ooh/"},{"label":"CareerOneStop","url":"https://www.careeronestop.org/"}]}]},"cyber":{"id":"cyber","name":"Cybersecurity and fraud","why":"Attacks and scams target everyone, and most successful ones exploit basic gaps rather than sophisticated flaws.","stat":1,"signal":"\u25b2 Rising","count":5,"prev":2,"sev":4,"story":{"text":"FedRAMP pushes new cyber vulnerability rules to keep pace with AI: Companies that provide cloud services to federal agencies are scrambling to adopt new cyber vulnerability management...","outlet":"federalnewsnetwork.com","url":"https://federalnewsnetwork.com/cybersecurity/2026/11/fedramp-pushes-new-cyber-vulnerability-rules-to-keep-pace-with-ai/","sector":"Civic","region":"","kid_ok":true},"solutions":[{"title":"Turn on multi-factor authentication and a password manager everywhere","detail":"Start with email, banking and admin accounts. This one step blocks most account-takeover attempts and is free or nearly so.","cost":1,"eff":[0,1,0],"resources":[{"label":"CISA Secure Our World","url":"https://www.cisa.gov/secure-our-world"}]},{"title":"Patch and back up on a schedule","detail":"Apply updates monthly, keep one offline backup, and test a restore every quarter so a ransomware incident is an inconvenience, not a closure.","cost":1,"eff":[0,0,1],"resources":[{"label":"CISA Known Exploited Vulnerabilities","url":"https://www.cisa.gov/known-exploited-vulnerabilities-catalog"}]},{"title":"Run a monthly phishing refresher using real incidents","detail":"Ten minutes with a recent scam example keeps staff and family alert. Agree on a rule: money or credential requests are always verified by a second channel.","cost":1,"eff":[0,1,0],"resources":[{"label":"FTC ReportFraud","url":"https://reportfraud.ftc.gov/"}]},{"title":"Adopt the NIST small-business basics","detail":"Use the Cybersecurity Framework's identify, protect, detect, respond and recover list as a checklist, and note which items are already covered.","cost":2,"eff":[-1,2,0],"resources":[{"label":"NIST Cybersecurity Framework","url":"https://www.nist.gov/cyberframework"}]}]},"regulatory":{"id":"regulatory","name":"Regulatory and compliance burden","why":"Rules change at the federal, state and local level, and missing a deadline is far more expensive than tracking it.","stat":1,"signal":"\u25bc Easing","count":11,"prev":17,"sev":2,"story":{"text":"Congress can\u2019t afford to botch the appointment of top government watchdog: Kristen Brengel, senior vice president at the Project on Government Oversight, says lawmakers should slow down the...","outlet":"federalnewsnetwork.com","url":"https://federalnewsnetwork.com/commentary/2026/11/congress-cant-afford-to-botch-the-appointment-of-top-government-watchdog/","sector":"Civic","region":"","kid_ok":true},"solutions":[{"title":"Keep a one-page compliance calendar","detail":"List every license, filing and renewal with a due date and a named owner. Review it at the start of each month.","cost":1,"eff":[0,0,1],"resources":[{"label":"IRS business resources","url":"https://www.irs.gov/businesses"}]},{"title":"Assign one owner for regulatory watch","detail":"Give one person a weekly 15-minute review of federal and state rule changes and oversight reports, so nothing falls between roles.","cost":1,"eff":[0,1,0],"resources":[{"label":"Federal Register","url":"https://www.federalregister.gov/"},{"label":"U.S. GAO","url":"https://www.gao.gov/"}]},{"title":"Use free agency guidance before paying for counsel","detail":"Most agencies publish plain-language guides and small-business help desks. Read those first and bring specific questions to a lawyer.","cost":1,"eff":[1,0,0],"resources":[{"label":"U.S. Small Business Administration","url":"https://www.sba.gov/"}]},{"title":"Check state and local rules before you expand","detail":"Requirements differ by state. Before entering a new state or launching a data- or AI-related feature, review that state's business and consumer-protection pages.","cost":1,"eff":[0,1,0],"resources":[{"label":"USA.gov state governments","url":"https://www.usa.gov/state-governments"}]}]},"supply_chain":{"id":"supply_chain","name":"Supply chain and infrastructure reliability","why":"One late shipment, closed road or grid outage can stall an operation that has no second option.","stat":2,"signal":"\u25b2 Rising","count":39,"prev":27,"sev":4,"story":{"text":"Henrico County\u2019s departments of Public Works and Public Utilities are advancing a sweeping slate of infrastructure upgrades this month, prioritizing pedestrian accessibility, traffic...","outlet":"instagram.com","url":"https://news.google.com/rss/articles/CBMiUkFVX3lxTE9JRTJUVGxXR1FyQ2Y3ZGhDcWpnRkhYUUtkc2d0ZWJFWGJ2WURrX1djRlRSeUdpQ2RobHVBS0JTZnVyRlM4ZEtFY3Y3X1lLcDZWRHc?oc=5","sector":"Infrastructure","region":"","kid_ok":true},"solutions":[{"title":"Qualify a backup supplier for every critical input","detail":"Place a small test order with a second vendor so switching is a phone call, not a project.","cost":2,"eff":[-1,0,2],"resources":[]},{"title":"Track materials costs and project delays","detail":"Construction and engineering trade news and price indices show shortages and delays early. Review them weekly if you buy or build.","cost":1,"eff":[1,0,0],"resources":[{"label":"Engineering News-Record","url":"https://www.enr.com/"},{"label":"Construction Dive","url":"https://www.constructiondive.com/"},{"label":"BLS Producer Price Index","url":"https://www.bls.gov/ppi/"}]},{"title":"Hold safety stock only where lead times are longest","detail":"Rank inputs by lead time and by how badly a stock-out hurts. Stock the few at the top of both lists, not everything.","cost":1,"eff":[0,0,1],"resources":[]},{"title":"Follow public infrastructure funding for both work and disruption","detail":"Road, port, utility and broadband spending creates contracts and closures. Check federal and state transportation announcements monthly.","cost":2,"eff":[2,0,-1],"resources":[{"label":"U.S. Department of Transportation","url":"https://www.transportation.gov/"}]}]},"technology":{"id":"technology","name":"Technology adoption and AI","why":"New tools promise big gains, but unfocused adoption wastes money and creates privacy and quality risks.","stat":2,"signal":"\u25b2 Rising","count":36,"prev":20,"sev":4,"story":{"text":"Market angst is driving investors into low-volatility stocks as AI trade stumbles: Anxiety in the U.S. stock market has surged amid a sharp selloff in artificial intelligence names and...","outlet":"marketwatch.com","url":"https://www.marketwatch.com/story/market-angst-is-driving-investors-into-low-volatility-stocks-as-ai-trade-stumbles-23d905e9?mod=mw_rss_topstories","sector":"Financial Exchange","region":"","kid_ok":true},"solutions":[{"title":"Pilot one measurable use case for 30 days","detail":"Pick one repetitive task, record time or errors before and after, and expand only if the numbers improve.","cost":1,"eff":[0,0,1],"resources":[]},{"title":"Prefer existing tools over custom builds","detail":"Check whether software you already pay for has the feature before buying or building something new.","cost":1,"eff":[1,0,0],"resources":[]},{"title":"Learn from public-sector and education case studies","detail":"Government and school technology outlets publish detailed, free write-ups of what worked and what failed.","cost":1,"eff":[0,0,1],"resources":[{"label":"StateScoop","url":"https://statescoop.com/"},{"label":"EdSurge","url":"https://www.edsurge.com/"},{"label":"Campus Technology","url":"https://campustechnology.com/"}]},{"title":"Write a one-page AI-use policy","detail":"Say what data may never be entered into outside tools and who reviews AI output before it reaches a customer.","cost":1,"eff":[0,1,0],"resources":[{"label":"NIST AI Risk Management Framework","url":"https://www.nist.gov/itl/ai-risk-management-framework"}]}]},"productivity":{"id":"productivity","name":"Time, productivity and burnout","why":"People are the constraint in most organizations, and constant reaction mode wears them down.","stat":1,"signal":"\u25b2 Rising","count":7,"prev":3,"sev":4,"story":{"text":"Official Site of the National Hockey League | NHL.com: WSH@OTT: Hutson nets his fifth goal of season to win in overtime","outlet":"nhl.com","url":"https://www.nhl.com","sector":"Sports","region":"","kid_ok":true},"solutions":[{"title":"Automate recurring reports and monitoring","detail":"Anything you compile by hand every week is a candidate for a script, a template or a scheduled export.","cost":2,"eff":[2,0,-1],"resources":[]},{"title":"Batch decisions into one weekly review","detail":"Collect non-urgent decisions and make them in a single set time, so people stop reacting all week.","cost":1,"eff":[0,0,1],"resources":[]},{"title":"Track five metrics, not fifty","detail":"Sports analytics works because teams watch a few numbers that predict winning. Pick the five that predict your results and drop the rest from your dashboard.","cost":1,"eff":[1,0,0],"resources":[]},{"title":"Protect recovery time","detail":"Set response-time norms, keep one meeting-free block a day, and watch overtime and turnover as early burnout signs.","cost":1,"eff":[0,0,1],"resources":[{"label":"CDC NIOSH work stress resources","url":"https://www.cdc.gov/niosh/"}]}]},"uncertainty":{"id":"uncertainty","name":"Uncertainty and information overload","why":"There is more data than anyone can read, and the signal that matters is usually buried in the noise.","stat":2,"signal":"\u25cf Steady","count":14,"prev":14,"sev":3,"story":{"text":"Stock market outlook, November 16-20: Nifty logs 3-week winning streak, first since June - Rally ahead or a pause?: Indian equities may extend their rally during November 16\u201320, though...","outlet":"livemint.com","url":"https://www.livemint.com/market/stock-market-news/stock-market-outlook-november-16-20-nifty-logs-3-week-winning-streak-first-since-june-rally-ahead-or-a-pause-11794738601982.html","sector":"Financial Exchange","region":"","kid_ok":true},"solutions":[{"title":"Replace dozens of feeds with one weekly briefing","detail":"Pick a fixed time each week to review a short, curated summary, and unsubscribe from the rest.","cost":1,"eff":[0,0,1],"resources":[]},{"title":"Keep a small leading-indicator scorecard","detail":"Track four or five series that move before your results do, such as rates, jobs, procurement and construction activity, and note direction only.","cost":1,"eff":[0,0,1],"resources":[{"label":"FRED economic data","url":"https://fred.stlouisfed.org/"}]},{"title":"Plan three scenarios with trigger points","detail":"Write a base, downside and upside case, plus the indicator level that would make you switch. Deciding in advance beats deciding in a panic.","cost":2,"eff":[-1,0,2],"resources":[]},{"title":"Review last week's call against what happened","detail":"Write down one expectation each week and check it the next. Over a quarter this shows which sources to trust.","cost":1,"eff":[0,1,0],"resources":[]}]}},"order":["cash_flow","inflation","growth","talent","cyber","regulatory","supply_chain","technology","productivity","uncertainty"],"schedule":["supply_chain","cyber","cash_flow","inflation","technology","uncertainty","productivity","regulatory"],"roles":[{"id":"cafe","name":"Cafe owner","blurb":"A neighborhood cafe with loyal regulars and thin margins.","labels":["Cash in the till","Regular customers","Backup plans"],"start":[5,7,5]},{"id":"town","name":"Town manager","blurb":"A small town with a tight budget and a lot of residents watching.","labels":["Town budget","Residents' trust","Readiness"],"start":[6,5,6]},{"id":"school","name":"School head","blurb":"A school balancing budgets, families and a stretched staff.","labels":["School budget","Family trust","Staff capacity"],"start":[5,7,6]},{"id":"home","name":"Household","blurb":"Your own household: bills, plans and peace of mind.","labels":["Savings","Peace of mind","Safety net"],"start":[5,6,6]}],"turns":8,"points":2,"ladder":[{"id":"standard","name":"Standard","bonus":0,"xp_mult":1.0},{"id":"challenge","name":"Challenge","bonus":1,"xp_mult":1.5},{"id":"crisis","name":"Crisis","bonus":2,"xp_mult":2.0},{"id":"emergency","name":"Emergency","bonus":3,"xp_mult":2.5},{"id":"legend","name":"Legend","bonus":4,"xp_mult":3.0}],"grading":{"A":0.98,"B":0.88,"C":0.55,"D":0.25,"runs":400},"habit_weeks":3,"habit_cap":3},"langs":[{"code":"en","native":"English","dir":"ltr","reviewed":true},{"code":"es","native":"Espa\u00f1ol","dir":"ltr","reviewed":false},{"code":"hi","native":"\u0939\u093f\u0928\u094d\u0926\u0940","dir":"ltr","reviewed":false},{"code":"ar","native":"\u0627\u0644\u0639\u0631\u0628\u064a\u0629","dir":"rtl","reviewed":false},{"code":"zh","native":"\u4e2d\u6587\uff08\u7b80\u4f53\uff09","dir":"ltr","reviewed":false},{"code":"pt","native":"Portugu\u00eas","dir":"ltr","reviewed":false},{"code":"fr","native":"Fran\u00e7ais","dir":"ltr","reviewed":false},{"code":"bn","native":"\u09ac\u09be\u0982\u09b2\u09be","dir":"ltr","reviewed":false},{"code":"ru","native":"\u0420\u0443\u0441\u0441\u043a\u0438\u0439","dir":"ltr","reviewed":false},{"code":"id","native":"Bahasa Indonesia","dir":"ltr","reviewed":false},{"code":"de","native":"Deutsch","dir":"ltr","reviewed":false},{"code":"ja","native":"\u65e5\u672c\u8a9e","dir":"ltr","reviewed":false},{"code":"ko","native":"\ud55c\uad6d\uc5b4","dir":"ltr","reviewed":false},{"code":"nl","native":"Nederlands","dir":"ltr","reviewed":false}],"pack_v":"8bf57d09","ad_optin_url":"","board_url":""}</script>
 <script>
 (function(){
 "use strict";
 var DATA = JSON.parse(document.getElementById("game-data").textContent);
 var WK = DATA.week, CASE = DATA.case, TOWN = DATA.town;
 var app = document.getElementById("app");
-
-/* ---------- tiny DOM helper (text only, never HTML) ---------- */
 function h(tag, attrs){
-  var e = document.createElement(tag);
-  if (attrs) Object.keys(attrs).forEach(function(k){
-    var v = attrs[k];
-    if (k === "class") e.className = v;
-    else if (k === "on") Object.keys(v).forEach(function(ev){ e.addEventListener(ev, v[ev]); });
-    else if (k === "text") e.textContent = v;
-    else if (v !== false && v != null) e.setAttribute(k, v);
-  });
-  for (var i = 2; i < arguments.length; i++) add(e, arguments[i]);
-  return e;
+var e = document.createElement(tag);
+if (attrs) Object.keys(attrs).forEach(function(k){
+var v = attrs[k];
+if (k === "class") e.className = v;
+else if (k === "on") Object.keys(v).forEach(function(ev){ e.addEventListener(ev, v[ev]); });
+else if (k === "text") e.textContent = v;
+else if (v !== false && v != null) e.setAttribute(k, v);
+});
+for (var i = 2; i < arguments.length; i++) add(e, arguments[i]);
+return e;
 }
 function add(e){
-  for (var i = 1; i < arguments.length; i++) {
-    var c = arguments[i];
-    if (c == null || c === false) continue;
-    if (Array.isArray(c)) { c.forEach(function(x){ add(e, x); }); continue; }
-    e.appendChild(typeof c === "object" ? c : document.createTextNode(String(c)));
-  }
+for (var i = 1; i < arguments.length; i++) {
+var c = arguments[i];
+if (c == null || c === false) continue;
+if (Array.isArray(c)) { c.forEach(function(x){ add(e, x); }); continue; }
+e.appendChild(typeof c === "object" ? c : document.createTextNode(String(c)));
+}
 }
 function safeUrl(u){ return /^https?:\/\//i.test(u || "") ? u : ""; }
-function link(label, url){
-  var u = safeUrl(url);
-  return u ? h("a", {href:u, target:"_blank", rel:"noopener noreferrer", text:label}) : document.createTextNode(label);
+var ORIG = JSON.parse(JSON.stringify(TOWN.problems)), ORIGROLES = JSON.parse(JSON.stringify(TOWN.roles));
+var LANG = "en", STRS = {}, NAMEMAP = {};
+function packOf(code){ var p = (window.SL_I18N || {})[code]; return p || {ui:{}, playbook:{}}; }
+function loadPack(code, cb){
+if (code === "en" || (window.SL_I18N && window.SL_I18N[code])) return cb();
+var done = false, finish = function(){ if (!done) { done = true; cb(); } };
+var sc = document.createElement("script");
+sc.src = "../i18n/" + encodeURIComponent(code) + ".js?v=" + encodeURIComponent(DATA.pack_v || "1");
+sc.onload = finish; sc.onerror = finish;
+setTimeout(finish, 6000);
+document.head.appendChild(sc);
 }
-
-/* ---------- progress (browser storage, optional) ---------- */
+function pbOf(pid){ var pb = packOf(LANG).playbook; return pb && pb[pid] ? pb[pid] : null; }
+function tn(v){ return NAMEMAP[v] || STRS[v] || v; }
+function fmtParam(v){
+if (v == null) return "";
+if (Array.isArray(v)) return v.map(function(p){ return tn(p[0]) + ": " + p[1]; }).join(", ");
+if (typeof v === "object" && v.why_of) {
+var w = pbOf(v.why_of), txt = (w && w.why) || ORIG[v.why_of].why;
+txt = txt.replace(/[.。]\s*$/, "");
+try { return txt.toLocaleLowerCase(LANG); } catch(e){ return txt; }
+}
+return typeof v === "string" ? tn(v) : String(v);
+}
+function t(key, params){
+var s = STRS[key] !== undefined ? STRS[key] : key;
+return params ? s.replace(/\{(\w+)\}/g, function(m, k){ return params[k] === undefined ? m : fmtParam(params[k]); }) : s;
+}
+function tp(n, one, many, params){ params = params || {}; params.n = n; return t(n === 1 ? one : many, params); }
+function qx(q, f){
+var e = q.i18n && q.i18n[f];
+if (!e || LANG === "en") return q[f];
+if (e[0] === "@detail") { var w = pbOf(e[1].pid); var d = w && w.solutions && w.solutions[e[1].i]; return d && d.detail ? d.detail : q[f]; }
+return t(e[0], e[1]);
+}
+function optLabel(o){
+if (o.ref) { var p = TOWN.problems[o.ref[0]]; return p ? p.solutions[o.ref[1]].title : o.label; }
+return tn(o.label);
+}
+function langInfo(code){ var r = null; (DATA.langs || []).forEach(function(l){ if (l.code === code) r = l; }); return r; }
+function bcp(code){ return code === "zh" ? "zh-Hans" : code; }
+function applyLang(code){
+var info = langInfo(code) || langInfo("en") || {code:"en", dir:"ltr"};
+LANG = info.code; STRS = packOf(LANG).ui || {};
+var pb = packOf(LANG).playbook || {};
+NAMEMAP = {};
+Object.keys(TOWN.problems).forEach(function(pid){
+var o = ORIG[pid], p = TOWN.problems[pid], tr = pb[pid] || {};
+p.name = tr.name || o.name; p.why = tr.why || o.why;
+p.solutions.forEach(function(s, i){ var ts = (tr.solutions || [])[i] || {}; s.title = ts.title || o.solutions[i].title; s.detail = ts.detail || o.solutions[i].detail; });
+NAMEMAP[o.name] = p.name;
+});
+TOWN.roles.forEach(function(r, i){ var o = ORIGROLES[i]; r.name = t(o.name); r.blurb = t(o.blurb); r.labels = o.labels.map(function(l){ return t(l); }); });
+var de = document.documentElement;
+de.setAttribute("lang", bcp(LANG)); de.setAttribute("dir", info.dir || "ltr");
+document.title = t("SovereignLab Weekly Game") + " - " + weekLabel();
+}
+function detectLang(){
+var prefs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || "en"];
+for (var i = 0; i < prefs.length; i++) {
+var c = String(prefs[i]).toLowerCase().split("-")[0];
+if (langInfo(c)) return c;
+}
+return "en";
+}
+function weekLabel(){
+try {
+var f = new Intl.DateTimeFormat(bcp(LANG), {month:"short", day:"numeric"});
+var a = new Date(WK.start + "T12:00:00"), b = new Date(WK.end + "T12:00:00");
+if (isNaN(a) || isNaN(b)) return WK.label;
+return f.format(a) + " - " + f.format(b) + ", " + b.getFullYear();
+} catch(e){ return WK.label; }
+}
 var KEY = "sovereignlab_weekly_game_v1", mem = null;
-function blank(){ return {xp:0, streak:0, maxStreak:0, org:null, lastWeek:-1, weeks:{}, picks:{}, sectors:{}, calib:{"1":[0,0],"2":[0,0],"3":[0,0]}}; }
+function blank(){ return {xp:0, streak:0, maxStreak:0, org:null, profile:null, lastWeek:-1, weeks:{}, picks:{}, sectors:{}, calib:{"1":[0,0],"2":[0,0],"3":[0,0]}}; }
 function load(){
-  try { var raw = localStorage.getItem(KEY); if (raw) return Object.assign(blank(), JSON.parse(raw)); } catch(e){}
-  return mem || blank();
+try { var raw = localStorage.getItem(KEY); if (raw) return Object.assign(blank(), JSON.parse(raw)); } catch(e){}
+return mem || blank();
 }
 var P = load();
 function fixOrg(){
-  var o = P.org;
-  if (!o || typeof o !== "object") { P.org = null; return; }
-  o.name = String(o.name || "My organization").slice(0, 30);
-  o.watch = Array.isArray(o.watch) ? o.watch.slice(0, 3) : [];
-  ["practice","habits","real"].forEach(function(k){ if (!o[k] || typeof o[k] !== "object") o[k] = {}; });
-  if (typeof o.cleared !== "number") o.cleared = -1;
-  if (typeof o.lastRung !== "number") o.lastRung = 0;
-  var L = o.life = (o.life && typeof o.life === "object") ? o.life : {};
-  ["runs","prevented","missions","best"].forEach(function(k){ if (typeof L[k] !== "number") L[k] = 0; });
-  if (!L.roles || typeof L.roles !== "object") L.roles = {};
-  if (!L.grades || typeof L.grades !== "object") L.grades = {};
+var o = P.org;
+if (!o || typeof o !== "object") { P.org = null; return; }
+o.name = String(o.name || "My organization").slice(0, 30);
+o.watch = Array.isArray(o.watch) ? o.watch.slice(0, 3) : [];
+["practice","habits","real"].forEach(function(k){ if (!o[k] || typeof o[k] !== "object") o[k] = {}; });
+if (typeof o.cleared !== "number") o.cleared = -1;
+if (typeof o.lastRung !== "number") o.lastRung = 0;
+var L = o.life = (o.life && typeof o.life === "object") ? o.life : {};
+["runs","prevented","missions","best"].forEach(function(k){ if (typeof L[k] !== "number") L[k] = 0; });
+if (!L.roles || typeof L.roles !== "object") L.roles = {};
+if (!L.grades || typeof L.grades !== "object") L.grades = {};
 }
-fixOrg();
+var AGES = ["kid", "teen", "adult", "senior", "none"];
+var SECTOR_LIST = ["Civic", "Ed-Tech", "Economics and Statistics", "Financial Exchange", "Infrastructure", "Sports"];
+function fixProfile(){
+var pr = P.profile;
+if (!pr || typeof pr !== "object") { P.profile = null; return; }
+if (!langInfo(pr.lang)) pr.lang = "en";
+if (AGES.indexOf(pr.age) < 0) pr.age = "none";
+pr.region = /^[A-Z]{2}$/.test(pr.region || "") ? pr.region : "";
+pr.interests = Array.isArray(pr.interests) ? pr.interests.filter(function(s){ return SECTOR_LIST.indexOf(s) >= 0; }) : [];
+pr.size = [0, 1, 2].indexOf(pr.size) >= 0 ? pr.size : 0;
+pr.contrast = !!pr.contrast; pr.readable = !!pr.readable; pr.nostories = !!pr.nostories;
+pr.ads = pr.ads === "interested" ? "interested" : "";
+}
+fixOrg(); fixProfile();
 function save(){ mem = P; try { localStorage.setItem(KEY, JSON.stringify(P)); } catch(e){} }
 function exportCode(){ try { return btoa(unescape(encodeURIComponent(JSON.stringify(P)))); } catch(e){ return ""; } }
 function importCode(code){
-  try {
-    var obj = JSON.parse(decodeURIComponent(escape(atob(code.trim()))));
-    if (!obj || typeof obj.xp !== "number" || typeof obj.weeks !== "object") return false;
-    P = Object.assign(blank(), obj); fixOrg(); save(); return true;
-  } catch(e){ return false; }
+try {
+var obj = JSON.parse(decodeURIComponent(escape(atob(code.trim()))));
+if (!obj || typeof obj.xp !== "number" || typeof obj.weeks !== "object") return false;
+P = Object.assign(blank(), obj); fixOrg(); fixProfile(); save(); loadPack(P.profile ? P.profile.lang : "en", function(){ applyProfile(); home(); }); return true;
+} catch(e){ return false; }
 }
-
+function isKid(){ return !!(P.profile && P.profile.age === "kid"); }
+function hideStories(){ return !!(P.profile && (P.profile.age === "kid" || P.profile.nostories)); }
+function adsEligible(){ return !!(DATA.ad_optin_url && P.profile && (P.profile.age === "adult" || P.profile.age === "senior")); }
+function showStory(s){ return !!s && !hideStories(); }
+function applyProfile(){
+var pr = P.profile || {lang:detectLang(), size:0, contrast:false, readable:false};
+applyLang(pr.lang);
+var de = document.documentElement;
+de.classList.toggle("s1", pr.size === 1); de.classList.toggle("s2", pr.size === 2);
+de.classList.toggle("hc", !!pr.contrast); de.classList.toggle("rf", !!pr.readable);
+}
+function link(label, url){
+var u = safeUrl(url);
+return (u && !isKid()) ? h("a", {href:u, target:"_blank", rel:"noopener noreferrer", text:label}) : document.createTextNode(label);
+}
+function regionName(code){
+try { return new Intl.DisplayNames([bcp(LANG), "en"], {type:"region"}).of(code) || code; } catch(e){ return code; }
+}
+var REGIONS = "AF AL DZ AD AO AG AR AM AU AT AZ BS BH BD BB BY BE BZ BJ BT BO BA BW BR BN BG BF BI CV KH CM CA CF TD CL CN CO KM CG CD CR CI HR CU CY CZ DK DJ DM DO EC EG SV GQ ER EE SZ ET FJ FI FR GA GM GE DE GH GR GD GT GN GW GY HT HN HU IS IN ID IR IQ IE IL IT JM JP JO KZ KE KI KW KG LA LV LB LS LR LY LI LT LU MG MW MY MV ML MT MH MR MU MX FM MD MC MN ME MA MZ MM NA NR NP NL NZ NI NE NG KP MK NO OM PK PW PA PG PY PE PH PL PT QA RO RU RW KN LC VC WS SM ST SA SN RS SC SL SG SK SI SB SO ZA KR SS ES LK SD SR SE CH SY TJ TZ TH TL TG TO TT TN TR TM TV UG UA AE GB US UY UZ VU VE VN YE ZM ZW PS TW HK PR".split(" ");
 function curIdx(){
-  var d = new Date(), day = (d.getDay() + 6) % 7;
-  var mon = new Date(d.getFullYear(), d.getMonth(), d.getDate() - day);
-  return Math.floor(Math.round((mon - new Date(2024, 0, 1)) / 86400000) / 7);
+var d = new Date(), day = (d.getDay() + 6) % 7;
+var mon = new Date(d.getFullYear(), d.getMonth(), d.getDate() - day);
+return Math.floor(Math.round((mon - new Date(2024, 0, 1)) / 86400000) / 7);
 }
 var ARCHIVE = WK.index < curIdx();   /* an earlier week: no streak, no predictions */
-
 var RANKS = [{n:"Rookie",xp:0,hints:3},{n:"Analyst",xp:60,hints:2},{n:"Senior Analyst",xp:160,hints:1},{n:"Chief Analyst",xp:320,hints:0}];
 function rankIdx(xp){ var r = 0; RANKS.forEach(function(x,i){ if (xp >= x.xp) r = i; }); return r; }
 function markWeekPlayed(){
-  if (ARCHIVE || P.lastWeek === WK.index) return;
-  P.streak = (P.lastWeek === WK.index - 1) ? P.streak + 1 : 1;
-  P.lastWeek = WK.index;
-  P.maxStreak = Math.max(P.maxStreak || 0, P.streak);
+if (ARCHIVE || P.lastWeek === WK.index) return;
+P.streak = (P.lastWeek === WK.index - 1) ? P.streak + 1 : 1;
+P.lastWeek = WK.index;
+P.maxStreak = Math.max(P.maxStreak || 0, P.streak);
 }
 function weekRec(){ return P.weeks[WK.id] || (P.weeks[WK.id] = {}); }
-
-/* ---------- shared pieces ---------- */
 function header(){
-  var r = rankIdx(P.xp), cur = RANKS[r], nxt = RANKS[r+1];
-  var pct = nxt ? Math.round((P.xp - cur.xp) / (nxt.xp - cur.xp) * 100) : 100;
-  return [
-    DATA.sample ? h("div", {class:"banner", role:"note", text:"SAMPLE DATA. This copy is built from test stories, not real reporting."}) : null,
-    h("div", {class:"top"},
-      h("div", null, h("div", {class:"brand"}, "SovereignLab Weekly Game", DATA.archive_url ? [" · ", h("a", {href:DATA.archive_url, text:"All weeks"})] : null), h("h1", {text:"Week of " + WK.label})),
-      h("div", {class:"strip"},
-        h("span", {class:"rank", text:cur.n}),
-        h("div", {class:"bar", role:"progressbar", "aria-label":"Progress to next rank", "aria-valuenow":pct, "aria-valuemin":0, "aria-valuemax":100}, h("i", {style:"width:" + pct + "%"})),
-        h("span", {class:"small muted", text:P.xp + " XP" + (nxt ? " / " + nxt.xp : "")}),
-        h("span", {class:"small muted", text:"Streak: " + P.streak + (P.streak === 1 ? " week" : " weeks")})))
-  ];
+var r = rankIdx(P.xp), cur = RANKS[r], nxt = RANKS[r+1];
+var pct = nxt ? Math.round((P.xp - cur.xp) / (nxt.xp - cur.xp) * 100) : 100;
+return [
+DATA.sample ? h("div", {class:"banner", role:"note", text:t("SAMPLE DATA. This copy is built from test stories, not real reporting.")}) : null,
+h("div", {class:"top"},
+h("div", null, h("div", {class:"brand"}, t("SovereignLab Weekly Game"), DATA.archive_url ? [" · ", h("a", {href:DATA.archive_url, text:t("All weeks")})] : null), h("h1", {text:t("Week of {label}", {label:weekLabel()})})),
+h("div", {class:"strip"},
+h("span", {class:"rank", text:t(cur.n)}),
+h("div", {class:"bar", role:"progressbar", "aria-label":t("Progress to next rank"), "aria-valuenow":pct, "aria-valuemin":0, "aria-valuemax":100}, h("i", {style:"width:" + pct + "%"})),
+h("span", {class:"small muted", text:nxt ? t("{xp} XP / {next}", {xp:P.xp, next:nxt.xp}) : t("{xp} XP", {xp:P.xp})}),
+h("span", {class:"small muted", text:tp(P.streak, "Streak: {n} week", "Streak: {n} weeks")}),
+h("button", {class:"btn ghost small", type:"button", "aria-label":t("Settings"), title:t("Settings"), text:"🌐 " + t("Settings"), on:{click:function(){ profileSetup(home, true); }}})))
+];
 }
 function shell(){
-  var kids = Array.prototype.slice.call(arguments);
-  app.textContent = "";
-  add(app, header());
-  add(app, kids);
-  window.scrollTo(0, 0);
+var kids = Array.prototype.slice.call(arguments);
+app.textContent = "";
+add(app, header());
+add(app, kids);
+window.scrollTo(0, 0);
 }
 function signalChip(sig){
-  var cls = /Rising/.test(sig) ? "up" : /Easing/.test(sig) ? "down" : "flat";
-  return h("span", {class:"chip " + cls, text:sig});
+var cls = /Rising/.test(sig) ? "up" : /Easing/.test(sig) ? "down" : "flat";
+return h("span", {class:"chip " + cls, text:t(sig)});
 }
 function storyBlock(s){
-  return h("div", {class:"story"}, h("div", {text:s.text}),
-    h("div", {class:"src"}, s.sector + " · ", link(s.outlet, s.url)));
+return h("div", {class:"story"}, h("div", {text:s.text}),
+h("div", {class:"src"}, t(s.sector) + " · ", link(s.outlet, s.url)));
 }
 function copyText(text, btn){
-  var done = function(){ var old = btn.textContent; btn.textContent = "Copied"; setTimeout(function(){ btn.textContent = old; }, 1500); };
-  try { navigator.clipboard.writeText(text).then(done, function(){ window.prompt("Copy this:", text); }); }
-  catch(e){ window.prompt("Copy this:", text); }
+var done = function(){ var old = btn.textContent; btn.textContent = t("Copied"); setTimeout(function(){ btn.textContent = old; }, 1500); };
+try { navigator.clipboard.writeText(text).then(done, function(){ window.prompt(t("Copy this:"), text); }); }
+catch(e){ window.prompt(t("Copy this:"), text); }
 }
-
-/* ---------- HOME ---------- */
+function profileSetup(done, editing, draftIn){
+var cur = P.profile || {lang:detectLang(), age:"", region:"", interests:[], size:0, contrast:false, readable:false, nostories:false, ads:""};
+var draft = draftIn || JSON.parse(JSON.stringify(cur));
+if (!langInfo(draft.lang)) draft.lang = "en";
+applyLang(draft.lang);
+var err = h("p", {class:"small", style:"color:var(--bad);min-height:1.2em", role:"alert"});
+var info = langInfo(draft.lang);
+function redraw(){ profileSetup(done, editing, draft); }
+var langBox = h("div", {class:"langs", role:"group", "aria-label":t("Language")}, (DATA.langs || []).map(function(l){
+var b = h("button", {type:"button", lang:bcp(l.code), class:"act" + (l.code === draft.lang ? " done" : ""), "aria-pressed":String(l.code === draft.lang), text:l.native});
+b.addEventListener("click", function(){ draft.lang = l.code; loadPack(l.code, redraw); });
+return b;
+}));
+var note = (info && !info.reviewed) ? h("p", {class:"small muted", text:t("This language is a machine translation that native speakers have not checked yet. Some wording may be off.")}) : null;
+var ageOpts = [["kid", t("Under 13")], ["teen", t("13 to 17")], ["adult", t("18 to 64")], ["senior", t("65 and over")], ["none", t("Prefer not to say")]];
+var ageBox = h("div", {class:"cards2", role:"group", "aria-label":t("Age band")}, ageOpts.map(function(a){
+var b = h("button", {type:"button", class:"act" + (draft.age === a[0] ? " done" : ""), "aria-pressed":String(draft.age === a[0])}, h("div", {class:"t", text:a[1]}));
+b.addEventListener("click", function(){ draft.age = a[0]; if (draft.age === "kid" || draft.age === "teen" || draft.age === "none") draft.ads = ""; if (draft.age === "senior" && !cur.age) draft.size = Math.max(draft.size, 1); redraw(); });
+return b;
+}));
+var sel = h("select", {id:"pf_region", "aria-label":t("Country or region")});
+sel.appendChild(h("option", {value:"", text:t("Prefer not to say")}));
+var rows = REGIONS.map(function(c){ return [c, regionName(c)]; });
+try { rows.sort(function(a, b){ return a[1].localeCompare(b[1], bcp(LANG)); }); } catch(e){}
+rows.forEach(function(r){ var o = h("option", {value:r[0], text:r[1]}); if (r[0] === draft.region) o.selected = true; sel.appendChild(o); });
+sel.addEventListener("change", function(){ draft.region = sel.value; });
+var interestBox = h("div", {class:"chk"}, SECTOR_LIST.map(function(sname, i){
+var cb = h("input", {type:"checkbox", id:"pf_i" + i}); cb.checked = draft.interests.indexOf(sname) >= 0;
+cb.addEventListener("change", function(){ var k = draft.interests.indexOf(sname); if (cb.checked && k < 0) draft.interests.push(sname); if (!cb.checked && k >= 0) draft.interests.splice(k, 1); });
+return h("label", {for:"pf_i" + i}, cb, " " + t(sname));
+}));
+function toggle(id, label, prop){
+var cb = h("input", {type:"checkbox", id:id}); cb.checked = !!draft[prop];
+cb.addEventListener("change", function(){ draft[prop] = cb.checked; if (prop === "contrast" || prop === "readable") applyDraftLook(draft); });
+return h("label", {for:id, style:"display:block;padding:6px 0"}, cb, " " + label);
+}
+var sizeBox = h("div", {class:"row", role:"group", "aria-label":t("Text size")}, [[0, t("Normal")], [1, t("Large")], [2, t("Larger")]].map(function(z){
+var b = h("button", {type:"button", class:"btn" + (draft.size === z[0] ? "" : " ghost"), "aria-pressed":String(draft.size === z[0]), text:z[1]});
+b.addEventListener("click", function(){ draft.size = z[0]; applyDraftLook(draft); redraw(); });
+return b;
+}));
+var adBox = null;
+if (DATA.ad_optin_url && (draft.age === "adult" || draft.age === "senior")) {
+var yes = draft.ads === "interested";
+adBox = h("div", {class:"card", style:"margin:12px 0 0"},
+h("h3", {text:t("Offers from sponsors (optional)")}),
+h("p", {class:"small muted", text:t("Would you like to hear about offers from sponsors SovereignLab has vetted? Saying no changes nothing. This game never collects your email: if you say yes, you get a separate sign-up page where you decide what to share, and you can unsubscribe at any time.")}),
+h("div", {class:"row"},
+(function(){ var b = h("button", {type:"button", class:"btn" + (yes ? " ghost" : ""), "aria-pressed":String(!yes), text:t("Not now")}); b.addEventListener("click", function(){ draft.ads = ""; redraw(); }); return b; })(),
+(function(){ var b = h("button", {type:"button", class:"btn" + (yes ? "" : " ghost"), "aria-pressed":String(yes), text:t("Yes, tell me more")}); b.addEventListener("click", function(){ draft.ads = "interested"; redraw(); }); return b; })()),
+yes ? h("p", {style:"margin-top:10px"}, link(t("Open the sponsor sign-up page"), DATA.ad_optin_url)) : null);
+}
+var save1 = h("button", {class:"btn", type:"button", text:editing ? t("Save settings") : t("Start playing"), on:{click:function(){
+if (!draft.age) { err.textContent = t("Please choose an age band so the game can fit you."); return; }
+P.profile = JSON.parse(JSON.stringify(draft)); fixProfile(); save(); applyProfile(); done();
+}}});
+app.textContent = "";
+add(app, h("div", {class:"top"}, h("div", null, h("div", {class:"brand", text:t("SovereignLab Weekly Game")}), h("h1", {text:editing ? t("Settings") : t("Welcome")}))));
+add(app, h("section", {class:"card"},
+h("h2", {text:"🌐 " + t("Language")}), langBox, note,
+h("h3", {style:"margin-top:14px", text:t("Age band")}),
+h("p", {class:"small muted", text:t("Used only to fit the game to you. For under 13 the game hides news stories and outside links. It is kept on this device and never sent anywhere.")}), ageBox,
+h("h3", {style:"margin-top:14px", text:t("Country or region")}), h("p", {class:"small muted", text:t("Optional. Stories from sites in your country appear first in \"For you\".")}), sel,
+h("h3", {style:"margin-top:14px", text:t("What are you interested in?")}), h("p", {class:"small muted", text:t("Optional. Pick any. Questions on these sectors come first.")}), interestBox,
+h("h3", {style:"margin-top:14px", text:t("Reading comfort")}), sizeBox,
+toggle("pf_c", t("High contrast"), "contrast"), toggle("pf_r", t("Easier-to-read font"), "readable"), toggle("pf_n", t("Summaries only (hide news stories)"), "nostories"),
+adBox, err,
+h("div", {class:"row", style:"margin-top:8px"}, save1, editing ? h("button", {class:"btn ghost", type:"button", text:t("Cancel"), on:{click:function(){ applyProfile(); done(); }}}) : null)));
+}
+function applyDraftLook(d){ var de = document.documentElement; de.classList.toggle("s1", d.size === 1); de.classList.toggle("s2", d.size === 2); de.classList.toggle("hc", !!d.contrast); de.classList.toggle("rf", !!d.readable); }
+function boardEligible(){ return !!(DATA.board_url && P.profile && P.profile.age !== "kid"); }
+function boardCard(){
+if (!boardEligible()) return null;
+return h("section", {class:"card"}, h("h2", {text:t("Community board")}),
+h("p", {text:t("Swap tips and strategies with other players. You'll use a random player name, and your game progress is not shared. Opens in a new tab.")}),
+h("p", null, link(t("Open the community board"), DATA.board_url)));
+}
+function boardShareLink(grade, T, steps){
+if (!boardEligible()) return null;
+var card = {kind:"town", week:WK.id, grade:grade, level:T.ladder.name, role:ORIGROLES[TOWN.roles.indexOf(T.role)].name, steps:steps};
+var tok = btoa(unescape(encodeURIComponent(JSON.stringify(card)))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+return h("p", {class:"small"}, link(t("Share this run on the community board"), DATA.board_url + "#share=" + tok));
+}
+function forYou(){
+if (hideStories() || !P.profile) return null;
+var seen = {}, list = [];
+function take(s){ if (s && !seen[s.text]) { seen[s.text] = 1; list.push(s); } }
+CASE.questions.forEach(function(q){ take(q.story); (q.stories || []).forEach(take); });
+Object.keys(TOWN.problems).forEach(function(pid){ take(TOWN.problems[pid].story); });
+var reg = P.profile.region, ints = P.profile.interests || [];
+var picked = list.map(function(s){ return {s:s, r:(reg && s.region === reg) ? 0 : (ints.indexOf(s.sector) >= 0 ? 1 : 2)}; })
+.filter(function(x){ return x.r < 2; }).sort(function(a, b){ return a.r - b.r; }).slice(0, 4);
+if (!picked.length) return null;
+return h("section", {class:"card"}, h("h3", {text:t("For you")}),
+h("p", {class:"small muted", text:t("Stories from your country or on the sectors you chose.")}),
+picked.map(function(x){ return storyBlock(x.s); }));
+}
 function home(){
-  var rec = P.weeks[WK.id] || {};
-  var pending = (CASE.resolutions || []).filter(function(r){ return P.picks[r.id] && !P.picks[r.id].resolved; });
-  var caseDone = rec.case ? "Done this week: " + rec.case.right + " of " + rec.case.total : "Not played yet";
-  var townDone = rec.town ? "Done this week: grade " + rec.town.grade : "Not played yet";
-  shell(
-    ARCHIVE ? h("div", {class:"toast", text:"You're playing an earlier week. XP counts, but streaks and predictions only apply to the current week."}) : null,
-    pending.length ? h("div", {class:"toast"}, "Last week you made " + pending.length + " prediction" + (pending.length > 1 ? "s" : "") + ". Your results are waiting in Case Files.") : null,
-    h("p", {class:"muted", text:"Every question and event below was built from the stories SovereignLab's sources produced this week (" + DATA.stories_this_week + " distinct stories). Same data as the Weekly Business Problem Brief. Nothing is sent anywhere."}),
-    h("div", {class:"grid"},
-      h("section", {class:"card mode"},
-        h("div", {class:"tag", text:"Solo puzzles · about 8 minutes"}),
-        h("h2", {text:"Case Files"}),
-        h("p", {text:"Read the evidence. Sort stories under the right problem, spot the one that doesn't belong, and make predictions that get graded next week."}),
-        h("p", {class:"small muted", text:caseDone}),
-        h("button", {class:"btn", on:{click:startCase}, text:rec.case ? "Replay for practice" : "Open the case files"})),
-      h("section", {class:"card mode"},
-        h("div", {class:"tag", text:"Role-play · about 10 minutes"}),
-        h("h2", {text:"Town Hall"}),
-        h("p", {text:"Run your own organization (a cafe, a town, a school or a household) week after week. This week's real problems hit you; the low-cost playbook steps are your tools, and the ones you keep using become lasting habits."}),
-        h("p", {class:"small muted", text:townDone}),
-        h("button", {class:"btn", on:{click:townEnter}, text:rec.town ? "Replay for practice" : (P.org ? "Run the week" : "Take the job")}))),
-    orgCard(),
-    progressPanel());
+var rec = P.weeks[WK.id] || {};
+var pending = (CASE.resolutions || []).filter(function(r){ return P.picks[r.id] && !P.picks[r.id].resolved; });
+var caseDone = rec.case ? t("Done this week: {right} of {total}", {right:rec.case.right, total:rec.case.total}) : t("Not played yet");
+var townDone = rec.town ? t("Done this week: grade {grade}", {grade:rec.town.grade}) : t("Not played yet");
+shell(
+ARCHIVE ? h("div", {class:"toast", text:t("You're playing an earlier week. XP counts, but streaks and predictions only apply to the current week.")}) : null,
+pending.length ? h("div", {class:"toast", text:tp(pending.length, "Last week you made {n} prediction. Your result is waiting in Case Files.", "Last week you made {n} predictions. Your results are waiting in Case Files.")}) : null,
+h("p", {class:"muted", text:t("Every question and event below was built from the stories SovereignLab's sources produced this week ({n} distinct stories). Same data as the Weekly Business Problem Brief. Nothing is sent anywhere.", {n:DATA.stories_this_week})}),
+h("div", {class:"grid"},
+h("section", {class:"card mode"},
+h("div", {class:"tag", text:t("Solo puzzles · about 8 minutes")}),
+h("h2", {text:t("Case Files")}),
+h("p", {text:t("Read the evidence. Sort stories under the right problem, spot the one that doesn't belong, and make predictions that get graded next week.")}),
+h("p", {class:"small muted", text:caseDone}),
+h("button", {class:"btn", on:{click:startCase}, text:rec.case ? t("Replay for practice") : t("Open the case files")})),
+h("section", {class:"card mode"},
+h("div", {class:"tag", text:t("Role-play · about 10 minutes")}),
+h("h2", {text:t("Town Hall")}),
+h("p", {text:t("Run your own organization (a cafe, a town, a school or a household) week after week. This week's real problems hit you; the low-cost playbook steps are your tools, and the ones you keep using become lasting habits.")}),
+h("p", {class:"small muted", text:townDone}),
+h("button", {class:"btn", on:{click:townEnter}, text:rec.town ? t("Replay for practice") : (P.org ? t("Run the week") : t("Take the job"))}))),
+forYou(),
+boardCard(),
+orgCard(),
+progressPanel());
 }
 function progressPanel(){
-  var sectors = Object.keys(P.sectors);
-  var rows = sectors.sort().map(function(s){
-    var a = P.sectors[s], pct = a[1] ? Math.round(a[0] / a[1] * 100) : 0;
-    return h("div", {class:"meter", style:"grid-template-columns:150px 1fr 54px"}, h("span", {text:s}), h("div", {class:"bar"}, h("i", {style:"width:" + pct + "%"})), h("span", {class:"small muted", text:a[0] + "/" + a[1]}));
-  });
-  var cal = ["1","2","3"].map(function(k){
-    var c = P.calib[k]; var label = k === "1" ? "Not sure" : k === "2" ? "Fairly sure" : "Very sure";
-    return h("tr", null, h("td", {text:label}), h("td", {text:c[1] ? Math.round(c[0] / c[1] * 100) + "% right" : "no graded calls yet"}), h("td", {class:"muted", text:c[1] + " graded"}));
-  });
-  var area = h("textarea", {readonly:"readonly", "aria-label":"Your progress code"}); area.value = exportCode();
-  var paste = h("textarea", {"aria-label":"Paste a progress code to restore", placeholder:"Paste a progress code here to restore"});
-  var msg = h("span", {class:"small muted"});
-  return h("details", {class:"card"},
-    h("summary", {text:"My progress"}),
-    rows.length ? h("div", {class:"meters"}, h("h3", {text:"Mastery by sector"}), rows) : h("p", {class:"muted", text:"Play Case Files to start building sector mastery."}),
-    h("h3", {text:"How well-calibrated are your predictions?"}),
-    h("table", null, cal),
-    h("p", {class:"small muted", text:"Good forecasters are right more often when they say they're very sure. Watch whether that holds for you."}),
-    h("h3", {text:"Save or move your progress"}),
-    h("p", {class:"small muted", text:"Your progress lives only in this browser. To keep it when you switch device or open a new week's file, copy the code below and paste it there."}),
-    area,
-    h("div", {class:"row", style:"margin:8px 0"},
-      h("button", {class:"btn ghost", text:"Copy code", on:{click:function(e){ copyText(area.value, e.target); }}})),
-    paste,
-    h("div", {class:"row", style:"margin:8px 0"},
-      h("button", {class:"btn ghost", text:"Restore", on:{click:function(){ msg.textContent = importCode(paste.value) ? "Restored." : "That code didn't work."; if (msg.textContent === "Restored.") setTimeout(home, 600); }}}), msg));
+var sectors = Object.keys(P.sectors);
+var rows = sectors.sort().map(function(s){
+var a = P.sectors[s], pct = a[1] ? Math.round(a[0] / a[1] * 100) : 0;
+return h("div", {class:"meter", style:"grid-template-columns:150px 1fr 54px"}, h("span", {text:t(s)}), h("div", {class:"bar"}, h("i", {style:"width:" + pct + "%"})), h("span", {class:"small muted", text:a[0] + "/" + a[1]}));
+});
+var cal = ["1","2","3"].map(function(k){
+var c = P.calib[k]; var label = k === "1" ? t("Not sure") : k === "2" ? t("Fairly sure") : t("Very sure");
+return h("tr", null, h("td", {text:label}), h("td", {text:c[1] ? t("{pct}% right", {pct:Math.round(c[0] / c[1] * 100)}) : t("no graded calls yet")}), h("td", {class:"muted", text:t("{n} graded", {n:c[1]})}));
+});
+var area = h("textarea", {readonly:"readonly", "aria-label":t("Your progress code"), dir:"ltr"}); area.value = exportCode();
+var paste = h("textarea", {"aria-label":t("Paste a progress code to restore"), placeholder:t("Paste a progress code here to restore"), dir:"ltr"});
+var msg = h("span", {class:"small muted"});
+return h("details", {class:"card"},
+h("summary", {text:t("My progress")}),
+rows.length ? h("div", {class:"meters"}, h("h3", {text:t("Mastery by sector")}), rows) : h("p", {class:"muted", text:t("Play Case Files to start building sector mastery.")}),
+h("h3", {text:t("How well-calibrated are your predictions?")}),
+h("table", null, cal),
+h("p", {class:"small muted", text:t("Good forecasters are right more often when they say they're very sure. Watch whether that holds for you.")}),
+h("h3", {text:t("Save or move your progress")}),
+h("p", {class:"small muted", text:t("Your progress lives only in this browser. To keep it when you switch device or open a new week's file, copy the code below and paste it there.")}),
+area,
+h("div", {class:"row", style:"margin:8px 0"},
+h("button", {class:"btn ghost", text:t("Copy code"), on:{click:function(e){ copyText(area.value, e.target); }}})),
+paste,
+h("div", {class:"row", style:"margin:8px 0"},
+h("button", {class:"btn ghost", text:t("Restore"), on:{click:function(){ var ok = importCode(paste.value); msg.textContent = ok ? t("Restored.") : t("That code didn't work."); if (ok) setTimeout(home, 600); }}}), msg));
 }
-
-/* ---------- CASE FILES ---------- */
 var C = null;
+function orderQuestions(list){
+var ints = (P.profile && P.profile.interests) || [];
+return list.map(function(q, i){
+var sec = q.skill; if (q.story) sec = q.story.sector;
+var pri = (q.type === "predict") ? 2 : (ints.indexOf(sec) >= 0 || ints.indexOf(q.skill) >= 0 ? 0 : 1);
+return {q:q, i:i, pri:pri};
+}).sort(function(a, b){ return (a.pri - b.pri) || (a.i - b.i); }).map(function(x){ return x.q; });
+}
 function startCase(){
-  var pending = (CASE.resolutions || []).filter(function(r){ return P.picks[r.id] && !P.picks[r.id].resolved; });
-  C = {qs:CASE.questions.filter(function(q){ return !(ARCHIVE && q.type === "predict"); }), i:0, right:0, scored:0, xp:0, hints:RANKS[rankIdx(P.xp)].hints, practice:!!(P.weeks[WK.id] && P.weeks[WK.id].case), hintShown:false, answered:false, conf:0, choice:null};
-  if (pending.length) return resolveView(pending);
-  caseQ();
+var pending = (CASE.resolutions || []).filter(function(r){ return P.picks[r.id] && !P.picks[r.id].resolved; });
+var qs = CASE.questions.filter(function(q){
+if (ARCHIVE && q.type === "predict") return false;
+if (hideStories() && (q.type === "sort" || q.type === "odd")) return false;
+return true;
+});
+C = {qs:orderQuestions(qs), i:0, right:0, scored:0, xp:0, hints:RANKS[rankIdx(P.xp)].hints, practice:!!(P.weeks[WK.id] && P.weeks[WK.id].case), hintShown:false, answered:false, conf:0, choice:null};
+if (pending.length) return resolveView(pending);
+caseQ();
 }
 function resolveView(list){
-  var gained = 0;
-  var rows = list.map(function(r){
-    var pk = P.picks[r.id], ok = pk.choice === r.outcome;
-    P.calib[pk.conf][1] += 1; if (ok) P.calib[pk.conf][0] += 1;
-    var xp = ok ? 5 * pk.conf : 0; gained += xp; pk.resolved = true;
-    var word = {more:"More", same:"About the same", fewer:"Fewer"};
-    return h("div", {class:"feedback " + (ok ? "ok" : "no")},
-      h("strong", {text:(ok ? "Right: " : "Not this time: ") + r.name}),
-      h("p", {class:"small", text:"Last week: " + r.then_n + " stories. This week: " + r.now_n + ". Outcome: " + word[r.outcome] + ". You said " + word[pk.choice] + " with " + pk.conf + " of 3 confidence" + (ok ? " (+" + xp + " XP)." : ".")}));
-  });
-  P.xp += gained; save();
-  shell(h("section", {class:"card"}, h("h2", {text:"Last week's calls, graded"}), rows,
-    h("p", {class:"muted small", text:"A wrong call is information, not failure. Ask what you missed: a one-off spike, or a trend you could have seen coming?"}),
-    h("button", {class:"btn", text:"On to this week's cases", on:{click:caseQ}})));
+var gained = 0;
+var word = {more:t("More"), same:t("About the same"), fewer:t("Fewer")};
+var rows = list.map(function(r){
+var pk = P.picks[r.id], ok = pk.choice === r.outcome;
+P.calib[pk.conf][1] += 1; if (ok) P.calib[pk.conf][0] += 1;
+var xp = ok ? 5 * pk.conf : 0; gained += xp; pk.resolved = true;
+return h("div", {class:"feedback " + (ok ? "ok" : "no")},
+h("strong", {text:(ok ? t("Right: ") : t("Not this time: ")) + tn(r.name)}),
+h("p", {class:"small", text:t("Last week: {then} stories. This week: {now}. Outcome: {outcome}. You said {said} with {conf} of 3 confidence.", {then:r.then_n, now:r.now_n, outcome:word[r.outcome], said:word[pk.choice], conf:pk.conf}) + (ok ? " " + t("(+{xp} XP)", {xp:xp}) : "")}));
+});
+P.xp += gained; save();
+shell(h("section", {class:"card"}, h("h2", {text:t("Last week's calls, graded")}), rows,
+h("p", {class:"muted small", text:t("A wrong call is information, not failure. Ask what you missed: a one-off spike, or a trend you could have seen coming?")}),
+h("button", {class:"btn", text:t("On to this week's cases"), on:{click:caseQ}})));
 }
 function caseQ(){
-  var qs = C.qs, q = qs[C.i];
-  if (!q) return caseEnd();
-  C.answered = false; C.hintShown = false; C.conf = 0; C.choice = null;
-  var prog = h("div", {class:"prog", "aria-hidden":"true"}, qs.map(function(_, k){ return h("i", {class:k <= C.i ? "on" : ""}); }));
-  var body = h("section", {class:"card"});
-  var fb = h("div", {"aria-live":"polite"});
-  var hintBtn = null, hintBox = h("div");
-  add(body, h("div", {class:"small muted", text:"Case " + (C.i + 1) + " of " + qs.length + (q.type === "predict" ? " · prediction" : "")}));
-  add(body, h("h2", {text:q.prompt}));
-  if (q.story) add(body, storyBlock(q.story));
-  var opts = h("div", {class:"opts", role:"group", "aria-label":"Answers"});
-  var submit = null, stars = null;
-  var buttons = [];
-  function setSel(btn, id){
-    C.choice = id; buttons.forEach(function(b){ b.classList.remove("sel"); }); btn.classList.add("sel");
-    if (submit) submit.disabled = !(C.choice !== null && (q.type !== "predict" || C.conf));
-    if (q.type !== "predict") lock(id);
-  }
-  if (q.type === "odd") {
-    q.stories.forEach(function(s, k){
-      var b = h("button", {class:"opt", type:"button", on:{click:function(){ setSel(b, k); }}}, h("div", {class:"story", style:"margin:0"}, h("div", {text:s.text}), h("div", {class:"src", text:s.sector + " · " + s.outlet})));
-      buttons.push(b); opts.appendChild(b);
-    });
-  } else {
-    var hard = q.options_hard && rankIdx(P.xp) >= 1;
-    if (hard) add(body, h("p", {class:"small muted", text:"Analyst mode: the wrong answers are look-alikes."}));
-    (hard ? q.options_hard : q.options).forEach(function(o){
-      var b = h("button", {class:"opt", type:"button", text:o.label, on:{click:function(){ setSel(b, o.id); }}});
-      b.dataset.id = String(o.id); buttons.push(b); opts.appendChild(b);
-    });
-  }
-  add(body, opts);
-  if (q.type === "predict") {
-    var sb = [];
-    stars = h("div", {class:"stars", role:"group", "aria-label":"How sure are you?"},
-      [["1","Not sure"],["2","Fairly sure"],["3","Very sure"]].map(function(p){
-        var b = h("button", {type:"button", text:p[1], on:{click:function(){ C.conf = +p[0]; sb.forEach(function(x){ x.classList.remove("sel"); }); b.classList.add("sel"); submit.disabled = C.choice === null; }}});
-        sb.push(b); return b; }));
-    submit = h("button", {class:"btn", type:"button", text:"Lock in my call", disabled:"disabled", on:{click:function(){ lock(C.choice); }}});
-    add(body, h("p", {class:"small muted", text:"How sure are you? Higher confidence earns more if you're right."}), stars, h("div", {style:"margin-top:12px"}, submit));
-  }
-  if (q.hint && C.hints > 0 && q.type !== "predict") {
-    hintBtn = h("button", {class:"btn ghost", type:"button", text:"Hint (" + C.hints + " left)", on:{click:function(){
-      if (C.hintShown || C.answered) return; C.hintShown = true; C.hints--; hintBtn.disabled = true; hintBox.textContent = ""; hintBox.appendChild(h("div", {class:"feedback info", text:q.hint}));
-    }}});
-    add(body, h("div", {style:"margin-top:8px"}, hintBtn));
-  }
-  add(body, hintBox, fb);
-  function lock(id){
-    if (C.answered) return; C.answered = true;
-    buttons.forEach(function(b){ b.disabled = true; });
-    if (submit) submit.disabled = true;
-    if (stars) Array.prototype.forEach.call(stars.children, function(b){ b.disabled = true; });
-    if (hintBtn) hintBtn.disabled = true;
-    var xp = 0, line;
-    if (q.type === "predict") {
-      xp = C.practice ? 0 : 3;
-      if (!C.practice) P.picks[q.id] = {choice:id, conf:C.conf, week:WK.id};
-      line = h("div", {class:"feedback info"}, h("strong", {text:"Call locked in."}), h("p", {class:"small", text:"Next week's game grades it against the real count of stories." + (C.practice ? "" : " (+3 XP for making the call.)")}));
-    } else {
-      var ok = String(id) === String(q.answer);
-      buttons.forEach(function(b, k){
-        var key = q.type === "odd" ? String(k) : b.dataset.id;
-        if (key === String(q.answer)) b.classList.add("correct"); else if (b.classList.contains("sel")) b.classList.add("wrong");
-      });
-      C.scored++; if (ok) C.right++;
-      xp = (!C.practice && ok) ? (C.hintShown ? 5 : 10) : 0;
-      if (xp && P.org && q.pid && P.org.watch.indexOf(q.pid) >= 0) xp = Math.round(xp * 1.5);
-      if (!C.practice) { var s = P.sectors[q.skill] || (P.sectors[q.skill] = [0,0]); s[1]++; if (ok) s[0]++; }
-      var extra = [];
-      if (q.resources && q.resources.length) extra.push(h("p", {class:"small"}, "Free resources: ", q.resources.map(function(r, k){ return [k ? ", " : "", link(r.label, r.url)]; })));
-      if (q.confidence_low) extra.push(h("p", {class:"small muted", text:"Only one keyword linked this story to its problem, so reasonable people could file it differently."}));
-      line = h("div", {class:"feedback " + (ok ? "ok" : "no")}, h("strong", {text:ok ? "Correct" + (xp ? " (+" + xp + " XP)" : "") : "Not quite"}), h("p", {text:q.explain}), extra);
-    }
-    C.xp += xp; P.xp += xp; save();
-    fb.textContent = ""; add(fb, line);
-    add(fb, h("button", {class:"btn", type:"button", text:C.i + 1 < qs.length ? "Next case" : "See my results", on:{click:function(){ C.i++; caseQ(); }}}));
-  }
-  shell(prog, body);
+var qs = C.qs, q = qs[C.i];
+if (!q) return caseEnd();
+C.answered = false; C.hintShown = false; C.conf = 0; C.choice = null;
+var prog = h("div", {class:"prog", "aria-hidden":"true"}, qs.map(function(_, k){ return h("i", {class:k <= C.i ? "on" : ""}); }));
+var body = h("section", {class:"card"});
+var fb = h("div", {"aria-live":"polite"});
+var hintBtn = null, hintBox = h("div");
+add(body, h("div", {class:"small muted", text:t("Case {i} of {n}", {i:C.i + 1, n:qs.length}) + (q.type === "predict" ? " · " + t("prediction") : "")}));
+add(body, h("h2", {text:qx(q, "prompt")}));
+if (q.story) add(body, storyBlock(q.story));
+var opts = h("div", {class:"opts", role:"group", "aria-label":t("Answers")});
+var submit = null, stars = null;
+var buttons = [];
+function setSel(btn, id){
+C.choice = id; buttons.forEach(function(b){ b.classList.remove("sel"); }); btn.classList.add("sel");
+if (submit) submit.disabled = !(C.choice !== null && (q.type !== "predict" || C.conf));
+if (q.type !== "predict") lock(id);
+}
+if (q.type === "odd") {
+q.stories.forEach(function(s, k){
+var b = h("button", {class:"opt", type:"button", on:{click:function(){ setSel(b, k); }}}, h("div", {class:"story", style:"margin:0"}, h("div", {text:s.text}), h("div", {class:"src", text:t(s.sector) + " · " + s.outlet})));
+buttons.push(b); opts.appendChild(b);
+});
+} else {
+var hard = q.options_hard && rankIdx(P.xp) >= 1;
+if (hard) add(body, h("p", {class:"small muted", text:t("Analyst mode: the wrong answers are look-alikes.")}));
+(hard ? q.options_hard : q.options).forEach(function(o){
+var b = h("button", {class:"opt", type:"button", text:optLabel(o), on:{click:function(){ setSel(b, o.id); }}});
+b.dataset.id = String(o.id); buttons.push(b); opts.appendChild(b);
+});
+}
+add(body, opts);
+if (q.type === "predict") {
+var sb = [];
+stars = h("div", {class:"stars", role:"group", "aria-label":t("How sure are you?")},
+[["1", t("Not sure")], ["2", t("Fairly sure")], ["3", t("Very sure")]].map(function(p){
+var b = h("button", {type:"button", text:p[1], on:{click:function(){ C.conf = +p[0]; sb.forEach(function(x){ x.classList.remove("sel"); }); b.classList.add("sel"); submit.disabled = C.choice === null; }}});
+sb.push(b); return b; }));
+submit = h("button", {class:"btn", type:"button", text:t("Lock in my call"), disabled:"disabled", on:{click:function(){ lock(C.choice); }}});
+add(body, h("p", {class:"small muted", text:t("How sure are you? Higher confidence earns more if you're right.")}), stars, h("div", {style:"margin-top:12px"}, submit));
+}
+if (q.hint && C.hints > 0 && q.type !== "predict") {
+hintBtn = h("button", {class:"btn ghost", type:"button", text:t("Hint ({n} left)", {n:C.hints}), on:{click:function(){
+if (C.hintShown || C.answered) return; C.hintShown = true; C.hints--; hintBtn.disabled = true; hintBox.textContent = ""; hintBox.appendChild(h("div", {class:"feedback info", text:qx(q, "hint")}));
+}}});
+add(body, h("div", {style:"margin-top:8px"}, hintBtn));
+}
+add(body, hintBox, fb);
+function lock(id){
+if (C.answered) return; C.answered = true;
+buttons.forEach(function(b){ b.disabled = true; });
+if (submit) submit.disabled = true;
+if (stars) Array.prototype.forEach.call(stars.children, function(b){ b.disabled = true; });
+if (hintBtn) hintBtn.disabled = true;
+var xp = 0, line;
+if (q.type === "predict") {
+xp = C.practice ? 0 : 3;
+if (!C.practice) P.picks[q.id] = {choice:id, conf:C.conf, week:WK.id};
+line = h("div", {class:"feedback info"}, h("strong", {text:t("Call locked in.")}), h("p", {class:"small", text:t("Next week's game grades it against the real count of stories.") + (C.practice ? "" : " " + t("(+3 XP for making the call.)"))}));
+} else {
+var ok = String(id) === String(q.answer);
+buttons.forEach(function(b, k){
+var key = q.type === "odd" ? String(k) : b.dataset.id;
+if (key === String(q.answer)) b.classList.add("correct"); else if (b.classList.contains("sel")) b.classList.add("wrong");
+});
+C.scored++; if (ok) C.right++;
+xp = (!C.practice && ok) ? (C.hintShown ? 5 : 10) : 0;
+if (xp && P.org && q.pid && P.org.watch.indexOf(q.pid) >= 0) xp = Math.round(xp * 1.5);
+if (!C.practice) { var s = P.sectors[q.skill] || (P.sectors[q.skill] = [0,0]); s[1]++; if (ok) s[0]++; }
+var extra = [];
+if (q.resources && q.resources.length) extra.push(h("p", {class:"small"}, t("Free resources: "), q.resources.map(function(r, k){ return [k ? ", " : "", link(r.label, r.url)]; })));
+if (q.confidence_low) extra.push(h("p", {class:"small muted", text:t("Only one keyword linked this story to its problem, so reasonable people could file it differently.")}));
+line = h("div", {class:"feedback " + (ok ? "ok" : "no")}, h("strong", {text:ok ? t("Correct") + (xp ? " " + t("(+{xp} XP)", {xp:xp}) : "") : t("Not quite")}), h("p", {text:qx(q, "explain")}), extra);
+}
+C.xp += xp; P.xp += xp; save();
+fb.textContent = ""; add(fb, line);
+add(fb, h("button", {class:"btn", type:"button", text:C.i + 1 < qs.length ? t("Next case") : t("See my results"), on:{click:function(){ C.i++; caseQ(); }}}));
+}
+shell(prog, body);
 }
 function caseEnd(){
-  var rec = weekRec();
-  if (!C.practice) { rec.case = {right:C.right, total:C.scored}; markWeekPlayed(); }
-  save();
-  var share = "SovereignLab Weekly Game " + WK.id + " · Case Files " + C.right + "/" + C.scored;
-  var shareBtn = h("button", {class:"btn ghost", type:"button", text:"Copy my result"}); shareBtn.addEventListener("click", function(){ copyText(share, shareBtn); });
-  var next = RANKS[rankIdx(P.xp) + 1];
-  shell(h("section", {class:"card"},
-    h("h2", {text:"Case closed: " + C.right + " of " + C.scored + " right"}),
-    h("p", {text:C.practice ? "Practice run: no XP this time." : "You earned " + C.xp + " XP this run."}),
-    next ? h("p", {class:"muted small", text:(next.xp - P.xp) + " XP to " + next.n + (rankIdx(P.xp) < 2 ? "." : ". Higher ranks get fewer hints, so the puzzles get harder as you improve.")}) : h("p", {class:"muted small", text:"You've reached the top rank. No hints from here on."}),
-    h("div", {class:"row"},
-      h("button", {class:"btn", type:"button", text:"Play Town Hall", on:{click:townEnter}}),
-      shareBtn,
-      h("button", {class:"btn ghost", type:"button", text:"Back to start", on:{click:home}}))));
+var rec = weekRec();
+if (!C.practice) { rec.case = {right:C.right, total:C.scored}; markWeekPlayed(); }
+save();
+var share = "SovereignLab Weekly Game " + WK.id + " · Case Files " + C.right + "/" + C.scored;
+var shareBtn = h("button", {class:"btn ghost", type:"button", text:t("Copy my result")}); shareBtn.addEventListener("click", function(){ copyText(share, shareBtn); });
+var next = RANKS[rankIdx(P.xp) + 1];
+shell(h("section", {class:"card"},
+h("h2", {text:t("Case closed: {right} of {total} right", {right:C.right, total:C.scored})}),
+h("p", {text:C.practice ? t("Practice run: no XP this time.") : t("You earned {xp} XP this run.", {xp:C.xp})}),
+next ? h("p", {class:"muted small", text:t("{n} XP to {rank}", {n:next.xp - P.xp, rank:t(next.n)}) + (rankIdx(P.xp) < 2 ? "." : ". " + t("Higher ranks get fewer hints, so the puzzles get harder as you improve."))}) : h("p", {class:"muted small", text:t("You've reached the top rank. No hints from here on.")}),
+h("div", {class:"row"},
+h("button", {class:"btn", type:"button", text:t("Play Town Hall"), on:{click:townEnter}}),
+shareBtn,
+h("button", {class:"btn ghost", type:"button", text:t("Back to start"), on:{click:home}}))));
 }
-
-/* ---------- ORGANIZATION (persistent, personal) ---------- */
 var LEVELS = [{n:"Fledgling",h:0},{n:"Steady",h:3},{n:"Resilient",h:6},{n:"Pillar",h:12}];
 function stepKey(pid, idx){ return pid + "#" + idx; }
 function habitCount(){ return P.org ? Object.keys(P.org.habits).length : 0; }
 function levelOf(){ var c = habitCount(), l = LEVELS[0]; LEVELS.forEach(function(x){ if (c >= x.h) l = x; }); return l; }
+function habitsText(n){ return tp(n, "{n} standing habit", "{n} standing habits"); }
 function roleById(id){ var r = null; TOWN.roles.forEach(function(x){ if (x.id === id) r = x; }); return r || TOWN.roles[0]; }
 function allSteps(){
-  var out = [];
-  TOWN.order.forEach(function(pid){ TOWN.problems[pid].solutions.forEach(function(s, i){ out.push({pid:pid, i:i, key:stepKey(pid, i), s:s, p:TOWN.problems[pid]}); }); });
-  return out;
+var out = [];
+TOWN.order.forEach(function(pid){ TOWN.problems[pid].solutions.forEach(function(s, i){ out.push({pid:pid, i:i, key:stepKey(pid, i), s:s, p:TOWN.problems[pid]}); }); });
+return out;
 }
 function realCount(){ var n = 0; if (P.org) Object.keys(P.org.real).forEach(function(k){ if (P.org.real[k].on) n++; }); return n; }
 function newOrg(name, role, watch){
-  return {name:name, role:role, watch:watch, practice:{}, habits:{}, real:{}, cleared:-1, lastRung:0,
-          life:{runs:0, prevented:0, missions:0, best:0, roles:{}, grades:{}}, created:WK.id};
+return {name:name, role:role, watch:watch, practice:{}, habits:{}, real:{}, cleared:-1, lastRung:0,
+life:{runs:0, prevented:0, missions:0, best:0, roles:{}, grades:{}}, created:WK.id};
 }
+function clearedName(o){ return o.cleared >= 0 ? t(TOWN.ladder[o.cleared].name) : t("none yet"); }
 function badges(){
-  var o = P.org, L = (o && o.life) || {}, hc = habitCount(), rc = realCount(), tot = 0, right = 0;
-  ["1","2","3"].forEach(function(k){ tot += P.calib[k][1]; right += P.calib[k][0]; });
-  var cleared = o ? o.cleared : -1;
-  return [
-    {n:"First week on the job", d:"Finish a Town Hall run.", on:(L.runs || 0) >= 1},
-    {n:"Habit formed", d:"Turn a playbook step into a standing habit.", on:hc >= 1},
-    {n:"Habit stack", d:"Build 5 standing habits.", on:hc >= 5},
-    {n:"Pillar of the community", d:"Build 12 standing habits.", on:hc >= 12},
-    {n:"Mission accomplished", d:"Complete a mission.", on:(L.missions || 0) >= 1},
-    {n:"Mission regular", d:"Complete 10 missions.", on:(L.missions || 0) >= 10},
-    {n:"Crisis tested", d:"Earn a B or better on the Crisis level.", on:cleared >= 2},
-    {n:"Legend", d:"Earn a B or better on the Legend level.", on:cleared >= 4},
-    {n:"Many hats", d:"Run your organization in all four roles.", on:Object.keys(L.roles || {}).length >= 4},
-    {n:"Four-week streak", d:"Play four weeks in a row.", on:(P.maxStreak || 0) >= 4},
-    {n:"Out in the real world", d:"Mark 5 playbook steps as done in real life.", on:rc >= 5},
-    {n:"The whole playbook", d:"Mark every playbook step as done in real life.", on:rc >= allSteps().length},
-    {n:"Sharp forecaster", d:"Be right on 60% or more of at least 10 graded predictions.", on:tot >= 10 && right / tot >= 0.6}
-  ];
+var o = P.org, L = (o && o.life) || {}, hc = habitCount(), rc = realCount(), tot = 0, right = 0;
+["1","2","3"].forEach(function(k){ tot += P.calib[k][1]; right += P.calib[k][0]; });
+var cleared = o ? o.cleared : -1;
+return [
+{n:"First week on the job", d:"Finish a Town Hall run.", on:(L.runs || 0) >= 1},
+{n:"Habit formed", d:"Turn a playbook step into a standing habit.", on:hc >= 1},
+{n:"Habit stack", d:"Build 5 standing habits.", on:hc >= 5},
+{n:"Pillar of the community", d:"Build 12 standing habits.", on:hc >= 12},
+{n:"Mission accomplished", d:"Complete a mission.", on:(L.missions || 0) >= 1},
+{n:"Mission regular", d:"Complete 10 missions.", on:(L.missions || 0) >= 10},
+{n:"Crisis tested", d:"Earn a B or better on the Crisis level.", on:cleared >= 2},
+{n:"Legend", d:"Earn a B or better on the Legend level.", on:cleared >= 4},
+{n:"Many hats", d:"Run your organization in all four roles.", on:Object.keys(L.roles || {}).length >= 4},
+{n:"Four-week streak", d:"Play four weeks in a row.", on:(P.maxStreak || 0) >= 4},
+{n:"Out in the real world", d:"Mark 5 playbook steps as done in real life.", on:rc >= 5},
+{n:"The whole playbook", d:"Mark every playbook step as done in real life.", on:rc >= allSteps().length},
+{n:"Sharp forecaster", d:"Be right on 60% or more of at least 10 graded predictions.", on:tot >= 10 && right / tot >= 0.6}
+];
 }
-
 function orgSetup(done){
-  var cur = P.org, role = cur ? cur.role : TOWN.roles[0].id, watch = cur ? cur.watch.slice() : [];
-  var nameIn = h("input", {type:"text", maxlength:"30", "aria-label":"Organization name", placeholder:"For example: Corner Cafe, Maple Town, my household"});
-  nameIn.value = cur ? cur.name : "";
-  var err = h("p", {class:"small", style:"color:var(--bad);min-height:1.2em"});
-  var roleBtns = [];
-  var roleBox = h("div", {class:"cards2"}, TOWN.roles.map(function(r){
-    var b = h("button", {class:"act" + (r.id === role ? " done" : ""), type:"button", "aria-pressed":String(r.id === role)},
-      h("div", {class:"t", text:r.name}), h("div", {class:"d", text:r.blurb + " Starts at " + r.start.join(" / ") + " (" + r.labels.join(", ") + ")."}));
-    b.addEventListener("click", function(){
-      role = r.id;
-      roleBtns.forEach(function(x){ var on = x.id === r.id; x.b.classList.toggle("done", on); x.b.setAttribute("aria-pressed", String(on)); });
-    });
-    roleBtns.push({b:b, id:r.id});
-    return b;
-  }));
-  var boxes = [], count = h("span", {class:"small muted"});
-  function upd(){ count.textContent = watch.length + " of 3 chosen"; boxes.forEach(function(cb){ cb.disabled = watch.length >= 3 && !cb.checked; }); }
-  var watchBox = h("div", {class:"chk"}, TOWN.order.map(function(pid){
-    var cb = h("input", {type:"checkbox", id:"w_" + pid});
-    cb.checked = watch.indexOf(pid) >= 0;
-    cb.addEventListener("change", function(){
-      var i = watch.indexOf(pid);
-      if (cb.checked && i < 0) watch.push(pid);
-      if (!cb.checked && i >= 0) watch.splice(i, 1);
-      upd();
-    });
-    boxes.push(cb);
-    return h("label", {for:"w_" + pid}, cb, " " + TOWN.problems[pid].name);
-  }));
-  upd();
-  var saveBtn = h("button", {class:"btn", type:"button", text:cur ? "Save changes" : "Create my organization", on:{click:function(){
-    var name = nameIn.value.replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, 30);
-    if (!name) { err.textContent = "Give your organization a name first."; nameIn.focus(); return; }
-    if (cur) { cur.name = name; cur.role = role; cur.watch = watch; }
-    else P.org = newOrg(name, role, watch);
-    save(); done();
-  }}});
-  shell(h("section", {class:"card"},
-    h("h2", {text:cur ? "Edit your organization" : "Create your organization"}),
-    h("p", {class:"muted", text:"This is yours. Your name, role and watchlist shape the week's briefing and questions, and what you build here carries from week to week. It all stays in your own browser."}),
-    h("label", {for:"orgname", class:"small muted"}, "Organization name"),
-    h("div", {style:"margin:4px 0 14px"}, (function(){ nameIn.id = "orgname"; return nameIn; })()),
-    h("h3", {text:"Your role"}), roleBox,
-    h("h3", {style:"margin-top:14px", text:"Your watchlist"}),
-    h("p", {class:"small muted"}, "Pick up to three problems you most want to keep an eye on. You'll get a short briefing on them each week and 50% more XP on Case Files questions about them. ", count),
-    watchBox, err,
-    h("div", {class:"row"}, saveBtn, h("button", {class:"btn ghost", type:"button", text:"Cancel", on:{click:function(){ cur ? orgPage() : home(); }}}))));
+var cur = P.org, role = cur ? cur.role : TOWN.roles[0].id, watch = cur ? cur.watch.slice() : [];
+var nameIn = h("input", {type:"text", maxlength:"30", "aria-label":t("Organization name"), placeholder:t("For example: Corner Cafe, Maple Town, my household")});
+nameIn.value = cur ? cur.name : "";
+var err = h("p", {class:"small", style:"color:var(--bad);min-height:1.2em", role:"alert"});
+var roleBtns = [];
+var roleBox = h("div", {class:"cards2"}, TOWN.roles.map(function(r){
+var b = h("button", {class:"act" + (r.id === role ? " done" : ""), type:"button", "aria-pressed":String(r.id === role)},
+h("div", {class:"t", text:r.name}), h("div", {class:"d", text:r.blurb + " " + t("Starts at {start} ({labels}).", {start:r.start.join(" / "), labels:r.labels.join(", ")})}));
+b.addEventListener("click", function(){
+role = r.id;
+roleBtns.forEach(function(x){ var on = x.id === r.id; x.b.classList.toggle("done", on); x.b.setAttribute("aria-pressed", String(on)); });
+});
+roleBtns.push({b:b, id:r.id});
+return b;
+}));
+var boxes = [], count = h("span", {class:"small muted"});
+function upd(){ count.textContent = t("{n} of 3 chosen", {n:watch.length}); boxes.forEach(function(cb){ cb.disabled = watch.length >= 3 && !cb.checked; }); }
+var watchBox = h("div", {class:"chk"}, TOWN.order.map(function(pid){
+var cb = h("input", {type:"checkbox", id:"w_" + pid});
+cb.checked = watch.indexOf(pid) >= 0;
+cb.addEventListener("change", function(){
+var i = watch.indexOf(pid);
+if (cb.checked && i < 0) watch.push(pid);
+if (!cb.checked && i >= 0) watch.splice(i, 1);
+upd();
+});
+boxes.push(cb);
+return h("label", {for:"w_" + pid}, cb, " " + TOWN.problems[pid].name);
+}));
+upd();
+var saveBtn = h("button", {class:"btn", type:"button", text:cur ? t("Save changes") : t("Create my organization"), on:{click:function(){
+var name = nameIn.value.replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, 30);
+if (!name) { err.textContent = t("Give your organization a name first."); nameIn.focus(); return; }
+if (cur) { cur.name = name; cur.role = role; cur.watch = watch; }
+else P.org = newOrg(name, role, watch);
+save(); done();
+}}});
+nameIn.id = "orgname";
+shell(h("section", {class:"card"},
+h("h2", {text:cur ? t("Edit your organization") : t("Create your organization")}),
+h("p", {class:"muted", text:t("This is yours. Your name, role and watchlist shape the week's briefing and questions, and what you build here carries from week to week. It all stays in your own browser.")}),
+h("label", {for:"orgname", class:"small muted"}, t("Organization name")),
+h("div", {style:"margin:4px 0 14px"}, nameIn),
+h("h3", {text:t("Your role")}), roleBox,
+h("h3", {style:"margin-top:14px", text:t("Your watchlist")}),
+h("p", {class:"small muted"}, t("Pick up to three problems you most want to keep an eye on. You'll get a short briefing on them each week and 50% more XP on Case Files questions about them.") + " ", count),
+watchBox, err,
+h("div", {class:"row"}, saveBtn, h("button", {class:"btn ghost", type:"button", text:t("Cancel"), on:{click:function(){ cur ? orgPage() : home(); }}}))));
 }
-
 function briefing(){
-  if (!P.org || !P.org.watch.length) return null;
-  return h("div", null, P.org.watch.map(function(pid){
-    var p = TOWN.problems[pid];
-    return h("div", {style:"margin:0 0 10px"},
-      h("div", null, h("strong", {text:p.name + " "}), signalChip(p.signal), h("span", {class:"chip", text:p.count + " stories (" + p.prev + " last week)"})),
-      p.story ? h("div", {class:"small muted", text:"In the news: " + p.story.text}) : h("div", {class:"small muted", text:p.why}),
-      h("div", {class:"small", text:"Start with: " + p.solutions[0].title}));
-  }));
+if (!P.org || !P.org.watch.length) return null;
+return h("div", null, P.org.watch.map(function(pid){
+var p = TOWN.problems[pid];
+return h("div", {style:"margin:0 0 10px"},
+h("div", null, h("strong", {text:p.name + " "}), signalChip(p.signal), h("span", {class:"chip", text:t("{n} stories ({prev} last week)", {n:p.count, prev:p.prev})})),
+(showStory(p.story)) ? h("div", {class:"small muted", text:t("In the news: ") + p.story.text}) : h("div", {class:"small muted", text:p.why}),
+h("div", {class:"small", text:t("Start with: ") + p.solutions[0].title}));
+}));
 }
 function orgCard(){
-  if (!P.org) return h("section", {class:"card"}, h("h2", {text:"Make it yours"}),
-    h("p", {text:"Create your own organization. Pick a role, choose up to three problems to watch, and build habits that protect you a little more every week. It keeps growing for as long as you play."}),
-    h("button", {class:"btn", type:"button", text:"Create my organization", on:{click:function(){ orgSetup(home); }}}));
-  var o = P.org, lv = levelOf();
-  return h("section", {class:"card"},
-    h("div", {class:"small muted", text:"Your organization"}), h("h2", {text:o.name}),
-    h("p", {text:roleById(o.role).name + " · " + lv.n + " · " + habitCount() + " standing habit" + (habitCount() === 1 ? "" : "s") + " · highest level cleared: " + (o.cleared >= 0 ? TOWN.ladder[o.cleared].name : "none yet")}),
-    o.watch.length ? [h("h3", {text:"This week on your watchlist"}), briefing()] : h("p", {class:"small muted", text:"Add problems to your watchlist for a personal weekly briefing."}),
-    h("button", {class:"btn ghost", type:"button", text:"Open my organization", on:{click:orgPage}}));
+if (!P.org) return h("section", {class:"card"}, h("h2", {text:t("Make it yours")}),
+h("p", {text:t("Create your own organization. Pick a role, choose up to three problems to watch, and build habits that protect you a little more every week. It keeps growing for as long as you play.")}),
+h("button", {class:"btn", type:"button", text:t("Create my organization"), on:{click:function(){ orgSetup(home); }}}));
+var o = P.org, lv = levelOf();
+return h("section", {class:"card"},
+h("div", {class:"small muted", text:t("Your organization")}), h("h2", {text:o.name}),
+h("p", {text:roleById(o.role).name + " · " + t(lv.n) + " · " + habitsText(habitCount()) + " · " + t("highest level cleared: {lvl}", {lvl:clearedName(o)})}),
+o.watch.length ? [h("h3", {text:t("This week on your watchlist")}), briefing()] : h("p", {class:"small muted", text:t("Add problems to your watchlist for a personal weekly briefing.")}),
+h("button", {class:"btn ghost", type:"button", text:t("Open my organization"), on:{click:orgPage}}));
 }
 function orgPage(){
-  var o = P.org;
-  if (!o) return orgSetup(orgPage);
-  var lv = levelOf(), hc = habitCount(), nextLv = null;
-  LEVELS.forEach(function(x){ if (!nextLv && x.h > hc) nextLv = x; });
-  var steps = allSteps();
-  var habits = steps.filter(function(x){ return o.habits[x.key]; });
-  var training = steps.filter(function(x){ return !o.habits[x.key] && (o.practice[x.key] || []).length > 0; });
-  var L = o.life;
-  var realTxt = h("span", {class:"small muted"});
-  function setReal(){ realTxt.textContent = realCount() + " of " + steps.length + " done in real life"; }
-  var realBox = h("div", null, TOWN.order.map(function(pid){
-    var p = TOWN.problems[pid];
-    return h("details", {style:"margin:0"}, h("summary", {text:p.name}),
-      p.solutions.map(function(s, i){
-        var key = stepKey(pid, i), cb = h("input", {type:"checkbox", id:"r_" + key});
-        cb.checked = !!(o.real[key] && o.real[key].on);
-        cb.addEventListener("change", function(){
-          var r = o.real[key] || (o.real[key] = {on:false, paid:false});
-          r.on = cb.checked;
-          if (r.on && !r.paid) { r.paid = true; P.xp += 5; }
-          save(); setReal();
-        });
-        return h("label", {for:"r_" + key, style:"display:block;padding:6px 0 6px 8px"}, cb, " " + s.title);
-      }));
-  }));
-  setReal();
-  var bd = badges();
-  var earned = bd.filter(function(b){ return b.on; }).length;
-  shell(
-    h("section", {class:"card"},
-      h("div", {class:"small muted", text:"Your organization"}), h("h2", {text:o.name}),
-      h("p", {text:roleById(o.role).name + " · " + lv.n + (nextLv ? " (" + (nextLv.h - hc) + " more habit" + (nextLv.h - hc === 1 ? "" : "s") + " to " + nextLv.n + ")" : " (top level)")}),
-      h("table", null,
-        h("tr", null, h("td", {text:"Weeks run"}), h("td", {text:String(L.runs)})),
-        h("tr", null, h("td", {text:"Damage prevented by your habits, all time"}), h("td", {text:String(L.prevented)})),
-        h("tr", null, h("td", {text:"Best total"}), h("td", {text:L.best + " / 30"})),
-        h("tr", null, h("td", {text:"Missions completed"}), h("td", {text:String(L.missions)})),
-        h("tr", null, h("td", {text:"Highest level cleared"}), h("td", {text:o.cleared >= 0 ? TOWN.ladder[o.cleared].name : "none yet"}))),
-      h("div", {class:"row", style:"margin-top:10px"},
-        h("button", {class:"btn", type:"button", text:"Run the week", on:{click:townReady}}),
-        h("button", {class:"btn ghost", type:"button", text:"Edit", on:{click:function(){ orgSetup(orgPage); }}}),
-        h("button", {class:"btn ghost", type:"button", text:"Back to start", on:{click:home}}))),
-    o.watch.length ? h("section", {class:"card"}, h("h3", {text:"Your watchlist this week"}), briefing()) : null,
-    h("section", {class:"card"},
-      h("h3", {text:"Standing habits"}),
-      h("p", {class:"small muted", text:"Use the same playbook step in " + TOWN.habit_weeks + " different weeks and it becomes a habit: from then on it protects you automatically, for free, whenever that problem hits. You choose which habits to build, so no two organizations grow the same way."}),
-      habits.length ? h("ul", {style:"margin:0;padding-left:18px"}, habits.map(function(x){ return h("li", {text:x.s.title + " (" + x.p.name + ")"}); })) : h("p", {class:"muted", text:"None yet."}),
-      training.length ? [h("h3", {style:"margin-top:12px", text:"In training"}), h("ul", {style:"margin:0;padding-left:18px"}, training.map(function(x){ return h("li", {text:x.s.title + ": " + o.practice[x.key].length + " of " + TOWN.habit_weeks + " weeks"}); }))] : null),
-    h("section", {class:"card"},
-      h("h3", {text:"Badges (" + earned + " of " + bd.length + ")"}),
-      h("div", {class:"badges"}, bd.map(function(b){ return h("div", {class:"badge" + (b.on ? " on" : "")}, h("strong", {text:(b.on ? "" : "Locked: ") + b.n}), h("div", {class:"small muted", text:b.d})); }))),
-    h("details", {class:"card"}, h("summary", {text:"My real-world playbook"}),
-      h("p", {class:"small muted", text:"This is where the game pays off. Tick a step when you have actually done it in your own life or organization (+5 XP the first time). Nothing is checked or sent anywhere; it's your own record."}),
-      realTxt, realBox),
-    h("div", {class:"row"}, h("button", {class:"btn ghost", type:"button", text:"Delete my organization", on:{click:function(){
-      if (window.confirm("Delete your organization, habits and real-world record from this browser? XP and ranks stay.")) { P.org = null; save(); home(); }
-    }}})));
+var o = P.org;
+if (!o) return orgSetup(orgPage);
+var lv = levelOf(), hc = habitCount(), nextLv = null;
+LEVELS.forEach(function(x){ if (!nextLv && x.h > hc) nextLv = x; });
+var steps = allSteps();
+var habits = steps.filter(function(x){ return o.habits[x.key]; });
+var training = steps.filter(function(x){ return !o.habits[x.key] && (o.practice[x.key] || []).length > 0; });
+var L = o.life;
+var realTxt = h("span", {class:"small muted"});
+function setReal(){ realTxt.textContent = t("{n} of {total} done in real life", {n:realCount(), total:steps.length}); }
+var realBox = h("div", null, TOWN.order.map(function(pid){
+var p = TOWN.problems[pid];
+return h("details", {style:"margin:0"}, h("summary", {text:p.name}),
+p.solutions.map(function(s, i){
+var key = stepKey(pid, i), cb = h("input", {type:"checkbox", id:"r_" + key});
+cb.checked = !!(o.real[key] && o.real[key].on);
+cb.addEventListener("change", function(){
+var r = o.real[key] || (o.real[key] = {on:false, paid:false});
+r.on = cb.checked;
+if (r.on && !r.paid) { r.paid = true; P.xp += 5; }
+save(); setReal();
+});
+return h("label", {for:"r_" + key, style:"display:block;padding:6px 0;padding-inline-start:8px"}, cb, " " + s.title);
+}));
+}));
+setReal();
+var bd = badges();
+var earned = bd.filter(function(b){ return b.on; }).length;
+shell(
+h("section", {class:"card"},
+h("div", {class:"small muted", text:t("Your organization")}), h("h2", {text:o.name}),
+h("p", {text:roleById(o.role).name + " · " + t(lv.n) + (nextLv ? " (" + tp(nextLv.h - hc, "{n} more habit to {level}", "{n} more habits to {level}", {level:t(nextLv.n)}) + ")" : " (" + t("top level") + ")")}),
+h("table", null,
+h("tr", null, h("td", {text:t("Weeks run")}), h("td", {text:String(L.runs)})),
+h("tr", null, h("td", {text:t("Damage prevented by your habits, all time")}), h("td", {text:String(L.prevented)})),
+h("tr", null, h("td", {text:t("Best total")}), h("td", {text:L.best + " / 30"})),
+h("tr", null, h("td", {text:t("Missions completed")}), h("td", {text:String(L.missions)})),
+h("tr", null, h("td", {text:t("Highest level cleared")}), h("td", {text:clearedName(o)}))),
+h("div", {class:"row", style:"margin-top:10px"},
+h("button", {class:"btn", type:"button", text:t("Run the week"), on:{click:townReady}}),
+h("button", {class:"btn ghost", type:"button", text:t("Edit"), on:{click:function(){ orgSetup(orgPage); }}}),
+h("button", {class:"btn ghost", type:"button", text:t("Back to start"), on:{click:home}}))),
+o.watch.length ? h("section", {class:"card"}, h("h3", {text:t("Your watchlist this week")}), briefing()) : null,
+h("section", {class:"card"},
+h("h3", {text:t("Standing habits")}),
+h("p", {class:"small muted", text:t("Use the same playbook step in {n} different weeks and it becomes a habit: from then on it protects you automatically, for free, whenever that problem hits. You choose which habits to build, so no two organizations grow the same way.", {n:TOWN.habit_weeks})}),
+habits.length ? h("ul", {style:"margin:0;padding-inline-start:18px"}, habits.map(function(x){ return h("li", {text:x.s.title + " (" + x.p.name + ")"}); })) : h("p", {class:"muted", text:t("None yet.")}),
+training.length ? [h("h3", {style:"margin-top:12px", text:t("In training")}), h("ul", {style:"margin:0;padding-inline-start:18px"}, training.map(function(x){ return h("li", {text:x.s.title + ": " + t("{n} of {total} weeks", {n:o.practice[x.key].length, total:TOWN.habit_weeks})}); }))] : null),
+h("section", {class:"card"},
+h("h3", {text:t("Badges ({n} of {total})", {n:earned, total:bd.length})}),
+h("div", {class:"badges"}, bd.map(function(b){ return h("div", {class:"badge" + (b.on ? " on" : "")}, h("strong", {text:(b.on ? "" : t("Locked: ")) + t(b.n)}), h("div", {class:"small muted", text:t(b.d)})); }))),
+h("details", {class:"card"}, h("summary", {text:t("My real-world playbook")}),
+h("p", {class:"small muted", text:t("This is where the game pays off. Tick a step when you have actually done it in your own life or organization (+5 XP the first time). Nothing is checked or sent anywhere; it's your own record.")}),
+realTxt, realBox),
+h("div", {class:"row"}, h("button", {class:"btn ghost", type:"button", text:t("Delete my organization"), on:{click:function(){
+if (window.confirm(t("Delete your organization, habits and real-world record from this browser? XP and ranks stay."))) { P.org = null; save(); home(); }
+}}})));
 }
-
-/* ---------- missions ---------- */
 var MISSIONS = [
-  {id:"rising", title:"Hold the line", desc:"Take no damage from any Rising problem.", ok:function(c){ return c.rising > 0; }, done:function(t){ return t.risingDmg === 0; }},
-  {id:"balanced", title:"Balanced books", desc:"Finish with all three areas at 6 or higher.", ok:function(){ return true; }, done:function(t){ return t.stats.every(function(v){ return v >= 6; }); }},
-  {id:"prepared", title:"Prepared mind", desc:"Prepare ahead for at least 4 problems before they arrive.", ok:function(){ return true; }, done:function(t){ return t.prepEvents >= 4; }},
-  {id:"lean", title:"Lean operator", desc:"Beat half of casual play using at most one 2-point step.", ok:function(){ return true; }, done:function(t, pct){ return t.cost2 <= 1 && pct >= 0.5; }},
-  {id:"watch", title:"Watchlist guardian", desc:"Take no damage from the problems on your watchlist.", ok:function(c){ return c.watchEvents > 0; }, done:function(t){ return t.watchDmg === 0; }},
-  {id:"nerves", title:"Steady nerves", desc:"Never let any area drop below 3.", ok:function(){ return true; }, done:function(t){ return t.minStat >= 3; }},
-  {id:"explore", title:"Try something new", desc:"Use at least 3 playbook steps you have never used before.", ok:function(c){ return c.fresh >= 3; }, done:function(t){ return t.newUsed >= 3; }},
-  {id:"frugal", title:"Cheap and cheerful", desc:"Use only 1-point steps, and at least 6 of them.", ok:function(){ return true; }, done:function(t){ return t.cost2 === 0 && t.actions >= 6; }}
+{id:"rising", title:"Hold the line", desc:"Take no damage from any Rising problem.", ok:function(c){ return c.rising > 0; }, done:function(t){ return t.risingDmg === 0; }},
+{id:"balanced", title:"Balanced books", desc:"Finish with all three areas at 6 or higher.", ok:function(){ return true; }, done:function(t){ return t.stats.every(function(v){ return v >= 6; }); }},
+{id:"prepared", title:"Prepared mind", desc:"Prepare ahead for at least 4 problems before they arrive.", ok:function(){ return true; }, done:function(t){ return t.prepEvents >= 4; }},
+{id:"lean", title:"Lean operator", desc:"Beat half of casual play using at most one 2-point step.", ok:function(){ return true; }, done:function(t, pct){ return t.cost2 <= 1 && pct >= 0.5; }},
+{id:"watch", title:"Watchlist guardian", desc:"Take no damage from the problems on your watchlist.", ok:function(c){ return c.watchEvents > 0; }, done:function(t){ return t.watchDmg === 0; }},
+{id:"nerves", title:"Steady nerves", desc:"Never let any area drop below 3.", ok:function(){ return true; }, done:function(t){ return t.minStat >= 3; }},
+{id:"explore", title:"Try something new", desc:"Use at least 3 playbook steps you have never used before.", ok:function(c){ return c.fresh >= 3; }, done:function(t){ return t.newUsed >= 3; }},
+{id:"frugal", title:"Cheap and cheerful", desc:"Use only 1-point steps, and at least 6 of them.", ok:function(){ return true; }, done:function(t){ return t.cost2 === 0 && t.actions >= 6; }}
 ];
 function missionById(id){ var m = null; MISSIONS.forEach(function(x){ if (x.id === id) m = x; }); return m; }
-function mulberry(a){ return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function mulberry(a){ return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; var x = Math.imul(a ^ a >>> 15, 1 | a); x = x + Math.imul(x ^ x >>> 7, 61 | x) ^ x; return ((x ^ x >>> 14) >>> 0) / 4294967296; }; }
 function hashStr(s){ var x = 2166136261; for (var i = 0; i < s.length; i++) { x ^= s.charCodeAt(i); x = Math.imul(x, 16777619); } return x >>> 0; }
 function offeredMissions(){
-  var o = P.org, sched = TOWN.schedule.map(function(id){ return TOWN.problems[id]; });
-  var ctx = {
-    rising: sched.filter(function(p){ return /Rising/.test(p.signal); }).length,
-    watchEvents: sched.filter(function(p){ return o.watch.indexOf(p.id) >= 0; }).length,
-    fresh: allSteps().filter(function(x){ return !o.habits[x.key] && o.practice[x.key] === undefined; }).length
-  };
-  var pool = MISSIONS.filter(function(m){ return m.ok(ctx); });
-  var rnd = mulberry(hashStr(WK.id + "|" + o.name)), out = [];
-  while (pool.length && out.length < 3) out.push(pool.splice(Math.floor(rnd() * pool.length), 1)[0]);
-  return out;
+var o = P.org, sched = TOWN.schedule.map(function(id){ return TOWN.problems[id]; });
+var ctx = {
+rising: sched.filter(function(p){ return /Rising/.test(p.signal); }).length,
+watchEvents: sched.filter(function(p){ return o.watch.indexOf(p.id) >= 0; }).length,
+fresh: allSteps().filter(function(x){ return !o.habits[x.key] && o.practice[x.key] === undefined; }).length
+};
+var pool = MISSIONS.filter(function(m){ return m.ok(ctx); });
+var rnd = mulberry(hashStr(WK.id + "|" + o.name)), out = [];
+while (pool.length && out.length < 3) out.push(pool.splice(Math.floor(rnd() * pool.length), 1)[0]);
+return out;
 }
-
-/* ---------- TOWN HALL ---------- */
 var T = null, RDY = {rung:null, mission:null};
 function clamp(v){ return Math.max(0, Math.min(10, v)); }
 function sevOf(p){ return p.sev + T.ladder.bonus; }
 function habitShieldFor(p, habits){
-  var s = 0;
-  p.solutions.forEach(function(sol, i){ if (habits[stepKey(p.id, i)]) s += sol.cost; });
-  return Math.min(TOWN.habit_cap, s);
+var s = 0;
+p.solutions.forEach(function(sol, i){ if (habits[stepKey(p.id, i)]) s += sol.cost; });
+return Math.min(TOWN.habit_cap, s);
 }
 function hitStats(stats, stat, dmg){
-  var out = [];
-  if (dmg > 0) {
-    stats[stat] = clamp(stats[stat] - dmg); out.push([stat, dmg]);
-    if (dmg >= 2) { var s2 = (stat + 1) % 3; stats[s2] = clamp(stats[s2] - 1); out.push([s2, 1]); }
-  }
-  return out;
+var out = [];
+if (dmg > 0) {
+stats[stat] = clamp(stats[stat] - dmg); out.push([stat, dmg]);
+if (dmg >= 2) { var s2 = (stat + 1) % 3; stats[s2] = clamp(stats[s2] - 1); out.push([s2, 1]); }
+}
+return out;
 }
 function townEnter(){ if (!P.org) return orgSetup(townEnter); townReady(); }
 function townReady(){
-  var o = P.org, role = roleById(o.role), maxRung = Math.min(TOWN.ladder.length - 1, o.cleared + 1);
-  if (RDY.rung === null) RDY.rung = Math.min(o.lastRung || 0, maxRung);
-  RDY.rung = Math.min(RDY.rung, maxRung);
-  var offered = offeredMissions();
-  if (RDY.mission && !offered.some(function(m){ return m.id === RDY.mission; })) RDY.mission = null;
-  var ladderBtns = TOWN.ladder.map(function(l, r){
-    var locked = r > maxRung;
-    var b = h("button", {class:"btn" + (RDY.rung === r ? "" : " ghost"), type:"button", "aria-pressed":String(RDY.rung === r),
-      disabled:locked ? "disabled" : false, title:locked ? "Earn a B or better on " + TOWN.ladder[r - 1].name + " to unlock" : false,
-      text:l.name + (locked ? " (locked)" : "")});
-    b.addEventListener("click", function(){ RDY.rung = r; townReady(); });
-    return b;
-  });
-  var lad = TOWN.ladder[RDY.rung];
-  var missionBtns = offered.map(function(m){
-    var on = RDY.mission === m.id;
-    var b = h("button", {class:"act" + (on ? " done" : ""), type:"button", "aria-pressed":String(on)}, h("div", {class:"t", text:m.title + "  (+15 XP)"}), h("div", {class:"d", text:m.desc}));
-    b.addEventListener("click", function(){ RDY.mission = on ? null : m.id; townReady(); });
-    return b;
-  });
-  var hc = habitCount();
-  shell(h("section", {class:"card"},
-    h("div", {class:"small muted", text:"Ready to run"}), h("h2", {text:o.name}),
-    h("p", {text:role.name + " · " + levelOf().n + " · " + hc + " standing habit" + (hc === 1 ? "" : "s") + (hc ? ". Your habits will protect you automatically." : ". Use a step in 3 different weeks to turn it into a habit.")}),
-    h("h3", {text:"Level"}),
-    h("div", {class:"row", style:"margin:0 0 6px"}, ladderBtns),
-    h("p", {class:"small muted", text:(lad.bonus ? "Every event hits " + lad.bonus + " point" + (lad.bonus > 1 ? "s" : "") + " harder and XP is worth " + lad.xp_mult + " times as much. " : "") +
-      "You are graded against casual play (random choices) on this same week, role and level with your same habits, so a higher grade always means better decisions. Earn a B or better to unlock the next level."}),
-    h("h3", {style:"margin-top:12px", text:"Choose a mission (optional)"}),
-    h("div", {class:"cards2"}, missionBtns),
-    h("div", {class:"row", style:"margin-top:12px"},
-      h("button", {class:"btn", type:"button", text:"Start the week", on:{click:function(){ startTown(role, RDY.rung, RDY.mission); }}}),
-      h("button", {class:"btn ghost", type:"button", text:"My organization", on:{click:orgPage}}),
-      h("button", {class:"btn ghost", type:"button", text:"Back", on:{click:home}}))));
+var o = P.org, role = roleById(o.role), maxRung = Math.min(TOWN.ladder.length - 1, o.cleared + 1);
+if (RDY.rung === null) RDY.rung = Math.min(o.lastRung || 0, maxRung);
+RDY.rung = Math.min(RDY.rung, maxRung);
+var offered = offeredMissions();
+if (RDY.mission && !offered.some(function(m){ return m.id === RDY.mission; })) RDY.mission = null;
+var ladderBtns = TOWN.ladder.map(function(l, r){
+var locked = r > maxRung;
+var b = h("button", {class:"btn" + (RDY.rung === r ? "" : " ghost"), type:"button", "aria-pressed":String(RDY.rung === r),
+disabled:locked ? "disabled" : false, title:locked ? t("Earn a B or better on {level} to unlock", {level:t(TOWN.ladder[r - 1].name)}) : false,
+text:t(l.name) + (locked ? " (" + t("locked") + ")" : "")});
+b.addEventListener("click", function(){ RDY.rung = r; townReady(); });
+return b;
+});
+var lad = TOWN.ladder[RDY.rung];
+var missionBtns = offered.map(function(m){
+var on = RDY.mission === m.id;
+var b = h("button", {class:"act" + (on ? " done" : ""), type:"button", "aria-pressed":String(on)}, h("div", {class:"t", text:t(m.title) + "  (+15 XP)"}), h("div", {class:"d", text:t(m.desc)}));
+b.addEventListener("click", function(){ RDY.mission = on ? null : m.id; townReady(); });
+return b;
+});
+var hc = habitCount();
+shell(h("section", {class:"card"},
+h("div", {class:"small muted", text:t("Ready to run")}), h("h2", {text:o.name}),
+h("p", {text:role.name + " · " + t(levelOf().n) + " · " + habitsText(hc) + ". " + (hc ? t("Your habits will protect you automatically.") : t("Use a step in 3 different weeks to turn it into a habit."))}),
+h("h3", {text:t("Level")}),
+h("div", {class:"row", style:"margin:0 0 6px"}, ladderBtns),
+h("p", {class:"small muted", text:(lad.bonus ? tp(lad.bonus, "Every event hits {n} point harder and XP is worth {x} times as much.", "Every event hits {n} points harder and XP is worth {x} times as much.", {x:lad.xp_mult}) + " " : "") +
+t("You are graded against casual play (random choices) on this same week, role and level with your same habits, so a higher grade always means better decisions. Earn a B or better to unlock the next level.")}),
+h("h3", {style:"margin-top:12px", text:t("Choose a mission (optional)")}),
+h("div", {class:"cards2"}, missionBtns),
+h("div", {class:"row", style:"margin-top:12px"},
+h("button", {class:"btn", type:"button", text:t("Start the week"), on:{click:function(){ startTown(role, RDY.rung, RDY.mission); }}}),
+h("button", {class:"btn ghost", type:"button", text:t("My organization"), on:{click:orgPage}}),
+h("button", {class:"btn ghost", type:"button", text:t("Back"), on:{click:home}}))));
 }
 function startTown(role, rung, missionId){
-  var o = P.org;
-  T = {rung:rung, ladder:TOWN.ladder[rung], role:role, mission:missionId, t:0, stats:role.start.slice(), pts:TOWN.points, prep:{}, shield:0, used:{}, acts:[], log:[], last:null,
-       practice:!!(P.weeks[WK.id] && P.weeks[WK.id].town), habits:JSON.parse(JSON.stringify(o.habits)),
-       minStat:Math.min.apply(null, role.start), prepEvents:0, risingDmg:0, watchDmg:0, cost2:0, actions:0, newUsed:0, prevented:0};
-  townTurn();
+var o = P.org;
+T = {rung:rung, ladder:TOWN.ladder[rung], role:role, mission:missionId, t:0, stats:role.start.slice(), pts:TOWN.points, prep:{}, shield:0, used:{}, acts:[], log:[], last:null,
+practice:!!(P.weeks[WK.id] && P.weeks[WK.id].town), habits:JSON.parse(JSON.stringify(o.habits)),
+minStat:Math.min.apply(null, role.start), prepEvents:0, risingDmg:0, watchDmg:0, cost2:0, actions:0, newUsed:0, prevented:0};
+townTurn();
 }
 function curProblem(i){ var id = TOWN.schedule[i]; return id ? TOWN.problems[id] : null; }
 function expectedDamage(p){ return Math.max(0, sevOf(p) - T.shield - (T.prep[p.id] || 0) - habitShieldFor(p, T.habits)); }
 function sign(n){ return (n > 0 ? "+" : "") + n; }
 function effChips(sol){
-  var out = [h("span", {class:"chip", text:sol.cost + " pt" + (sol.cost > 1 ? "s" : "")})];
-  sol.eff.forEach(function(v, k){ if (v) out.push(h("span", {class:"chip " + (v > 0 ? "down" : "up"), text:sign(v) + " " + T.role.labels[k]})); });
-  return out;
+var out = [h("span", {class:"chip", text:tp(sol.cost, "{n} pt", "{n} pts")})];
+sol.eff.forEach(function(v, k){ if (v) out.push(h("span", {class:"chip " + (v > 0 ? "down" : "up"), text:sign(v) + " " + T.role.labels[k]})); });
+return out;
 }
 function townTurn(){
-  var p = curProblem(T.t), nx = curProblem(T.t + 1);
-  var meters = h("div", {class:"meters"}, T.role.labels.map(function(lab, k){
-    var v = T.stats[k];
-    return h("div", {class:"meter"}, h("span", {text:lab}), h("div", {class:"bar", role:"progressbar", "aria-label":lab, "aria-valuenow":v, "aria-valuemin":0, "aria-valuemax":10}, h("i", {class:v <= 3 ? "low" : "", style:"width:" + v * 10 + "%"})), h("strong", {text:v}));
-  }));
-  var dmg = expectedDamage(p), hs = habitShieldFor(p, T.habits);
-  var mission = T.mission ? missionById(T.mission) : null;
-  var ev = h("section", {class:"card"},
-    h("div", {class:"small muted", text:"Turn " + (T.t + 1) + " of " + TOWN.turns + " · " + P.org.name + " · " + T.ladder.name + (mission ? " · Mission: " + mission.title : "")}),
-    h("h2", {text:p.name}),
-    h("div", null, signalChip(p.signal), h("span", {class:"chip", text:p.count + " stories this week (" + p.prev + " last week)"}), P.org.watch.indexOf(p.id) >= 0 ? h("span", {class:"chip", text:"On your watchlist"}) : null),
-    p.story ? [h("p", {class:"small muted", style:"margin:8px 0 0", text:"In the news this week:"}), storyBlock(p.story)] : h("p", {text:p.why}),
-    h("p", {class:"small"}, "This hits your ", h("strong", {text:T.role.labels[p.stat]}), " by up to ", h("strong", {text:sevOf(p)}), " when the turn ends (2 or more spills into a second area). ",
-      hs ? "Your standing habits already absorb " + hs + ". " : "",
-      h("strong", {text:dmg === 0 ? "You're fully protected." : "Expected damage right now: " + dmg + "."})),
-    nx ? h("p", {class:"small muted", text:"Forecast: next turn brings " + nx.name + " (" + nx.signal + ")."}) : h("p", {class:"small muted", text:"Final turn."}));
-  var acts = h("section", {class:"card"},
-    h("h3", {text:"Action points left: " + T.pts}),
-    h("p", {class:"small muted", text:"Each step helps in its own way. Steps for this turn's problem also block its damage now. Steps for next turn's problem block its damage when it arrives. Use a step in 3 different weeks and it becomes a free standing habit."}),
-    h("h3", {text:"Respond now: " + p.name}), solCards(p, true),
-    nx ? [h("h3", {style:"margin-top:14px", text:"Prepare for next turn: " + nx.name}), solCards(nx, false)] : null,
-    h("div", {style:"margin-top:12px"}, h("button", {class:"btn", type:"button", text:T.t + 1 < TOWN.turns ? "End turn" : "End the final turn", on:{click:endTurn}})));
-  shell(T.last ? h("div", {class:"toast", text:T.last}) : null, meters, ev, acts, radar());
+var p = curProblem(T.t), nx = curProblem(T.t + 1);
+var meters = h("div", {class:"meters"}, T.role.labels.map(function(lab, k){
+var v = T.stats[k];
+return h("div", {class:"meter"}, h("span", {text:lab}), h("div", {class:"bar", role:"progressbar", "aria-label":lab, "aria-valuenow":v, "aria-valuemin":0, "aria-valuemax":10}, h("i", {class:v <= 3 ? "low" : "", style:"width:" + v * 10 + "%"})), h("strong", {text:v}));
+}));
+var dmg = expectedDamage(p), hs = habitShieldFor(p, T.habits);
+var mission = T.mission ? missionById(T.mission) : null;
+var ev = h("section", {class:"card"},
+h("div", {class:"small muted", text:t("Turn {i} of {n}", {i:T.t + 1, n:TOWN.turns}) + " · " + P.org.name + " · " + t(T.ladder.name) + (mission ? " · " + t("Mission: {m}", {m:t(mission.title)}) : "")}),
+h("h2", {text:p.name}),
+h("div", null, signalChip(p.signal), h("span", {class:"chip", text:t("{n} stories this week ({prev} last week)", {n:p.count, prev:p.prev})}), P.org.watch.indexOf(p.id) >= 0 ? h("span", {class:"chip", text:t("On your watchlist")}) : null),
+showStory(p.story) ? [h("p", {class:"small muted", style:"margin:8px 0 0", text:t("In the news this week:")}), storyBlock(p.story)] : h("p", {text:p.why}),
+h("p", {class:"small"}, t("This hits your {stat} by up to {sev} when the turn ends (2 or more spills into a second area).", {stat:T.role.labels[p.stat], sev:sevOf(p)}) + " ",
+hs ? t("Your standing habits already absorb {n}.", {n:hs}) + " " : "",
+h("strong", {text:dmg === 0 ? t("You're fully protected.") : t("Expected damage right now: {n}.", {n:dmg})})),
+nx ? h("p", {class:"small muted", text:t("Forecast: next turn brings {name} ({signal}).", {name:nx.name, signal:t(nx.signal)})}) : h("p", {class:"small muted", text:t("Final turn.")}));
+var acts = h("section", {class:"card"},
+h("h3", {text:t("Action points left: {n}", {n:T.pts})}),
+h("p", {class:"small muted", text:t("Each step helps in its own way. Steps for this turn's problem also block its damage now. Steps for next turn's problem block its damage when it arrives. Use a step in 3 different weeks and it becomes a free standing habit.")}),
+h("h3", {text:t("Respond now: {name}", {name:p.name})}), solCards(p, true),
+nx ? [h("h3", {style:"margin-top:14px", text:t("Prepare for next turn: {name}", {name:nx.name})}), solCards(nx, false)] : null,
+h("div", {style:"margin-top:12px"}, h("button", {class:"btn", type:"button", text:T.t + 1 < TOWN.turns ? t("End turn") : t("End the final turn"), on:{click:endTurn}})));
+shell(T.last ? h("div", {class:"toast", text:T.last}) : null, meters, ev, acts, radar());
 }
 function solCards(p, respond){
-  return h("div", null, p.solutions.map(function(s, idx){
-    var key = stepKey(p.id, idx), used = !!T.used[key], habit = !!T.habits[key];
-    return h("button", {class:"act" + ((used || habit) ? " done" : ""), type:"button", disabled:(used || habit || s.cost > T.pts) ? "disabled" : false, on:{click:function(){ act(p, idx, respond); }}},
-      h("div", {class:"t", text:s.title + (habit ? " (standing habit)" : used ? " (done)" : "")}),
-      h("div", null, habit ? h("span", {class:"chip down", text:"Free and automatic"}) : effChips(s)),
-      h("div", {class:"d", text:s.detail}));
-  }));
+return h("div", null, p.solutions.map(function(s, idx){
+var key = stepKey(p.id, idx), used = !!T.used[key], habit = !!T.habits[key];
+return h("button", {class:"act" + ((used || habit) ? " done" : ""), type:"button", disabled:(used || habit || s.cost > T.pts) ? "disabled" : false, on:{click:function(){ act(p, idx, respond); }}},
+h("div", {class:"t", text:s.title + (habit ? " (" + t("standing habit") + ")" : used ? " (" + t("done") + ")" : "")}),
+h("div", null, habit ? h("span", {class:"chip down", text:t("Free and automatic")}) : effChips(s)),
+h("div", {class:"d", text:s.detail}));
+}));
 }
 function act(p, idx, respond){
-  var s = p.solutions[idx], key = stepKey(p.id, idx);
-  if (T.used[key] || T.habits[key] || s.cost > T.pts) return;
-  T.used[key] = 1; T.pts -= s.cost;
-  s.eff.forEach(function(v, k){ T.stats[k] = clamp(T.stats[k] + v); });
-  T.minStat = Math.min(T.minStat, Math.min.apply(null, T.stats));
-  if (respond) T.shield += s.cost; else T.prep[p.id] = (T.prep[p.id] || 0) + s.cost;
-  T.acts.push({title:s.title, respond:respond, pid:p.id});
-  T.actions++; if (s.cost >= 2) T.cost2++;
-  if (P.org.practice[key] === undefined) T.newUsed++;
-  T.last = null;
-  townTurn();
+var s = p.solutions[idx], key = stepKey(p.id, idx);
+if (T.used[key] || T.habits[key] || s.cost > T.pts) return;
+T.used[key] = 1; T.pts -= s.cost;
+s.eff.forEach(function(v, k){ T.stats[k] = clamp(T.stats[k] + v); });
+T.minStat = Math.min(T.minStat, Math.min.apply(null, T.stats));
+if (respond) T.shield += s.cost; else T.prep[p.id] = (T.prep[p.id] || 0) + s.cost;
+T.acts.push({title:s.title, respond:respond, pid:p.id});
+T.actions++; if (s.cost >= 2) T.cost2++;
+if (P.org.practice[key] === undefined) T.newUsed++;
+T.last = null;
+townTurn();
 }
 function endTurn(){
-  var p = curProblem(T.t), sev = sevOf(p), pre = T.shield + (T.prep[p.id] || 0), habit = habitShieldFor(p, T.habits);
-  var dmg = Math.max(0, sev - pre - habit), without = Math.max(0, sev - pre);
-  var hits = hitStats(T.stats, p.stat, dmg).map(function(x){ return T.role.labels[x[0]] + " -" + x[1]; });
-  T.minStat = Math.min(T.minStat, Math.min.apply(null, T.stats));
-  T.prevented += without - dmg;
-  if (T.prep[p.id]) T.prepEvents++;
-  if (/Rising/.test(p.signal)) T.risingDmg += dmg;
-  if (P.org.watch.indexOf(p.id) >= 0) T.watchDmg += dmg;
-  T.log.push({name:p.name, signal:p.signal, sev:sev, blocked:Math.min(pre + habit, sev), dmg:dmg, habit:habit, acts:T.acts.slice(), story:p.story});
-  T.last = "Last turn, " + p.name + " " + (dmg ? "hit you: " + hits.join(", ") + "." : "was fully absorbed. Nothing lost.") + (without - dmg > 0 ? " Your habits prevented " + (without - dmg) + "." : "");
-  T.t++; T.acts = []; T.shield = 0; T.pts = TOWN.points;
-  if (T.t >= TOWN.turns) return townEnd();
-  townTurn();
+var p = curProblem(T.t), sev = sevOf(p), pre = T.shield + (T.prep[p.id] || 0), habit = habitShieldFor(p, T.habits);
+var dmg = Math.max(0, sev - pre - habit), without = Math.max(0, sev - pre);
+var hits = hitStats(T.stats, p.stat, dmg).map(function(x){ return T.role.labels[x[0]] + " -" + x[1]; });
+T.minStat = Math.min(T.minStat, Math.min.apply(null, T.stats));
+T.prevented += without - dmg;
+if (T.prep[p.id]) T.prepEvents++;
+if (/Rising/.test(p.signal)) T.risingDmg += dmg;
+if (P.org.watch.indexOf(p.id) >= 0) T.watchDmg += dmg;
+T.log.push({name:p.name, signal:p.signal, sev:sev, blocked:Math.min(pre + habit, sev), dmg:dmg, habit:habit, acts:T.acts.slice(), story:p.story});
+T.last = (dmg ? t("Last turn, {name} hit you: {hits}.", {name:p.name, hits:hits.join(", ")}) : t("Last turn, {name} was fully absorbed. Nothing lost.", {name:p.name})) + (without - dmg > 0 ? " " + t("Your habits prevented {n}.", {n:without - dmg}) : "");
+T.t++; T.acts = []; T.shield = 0; T.pts = TOWN.points;
+if (T.t >= TOWN.turns) return townEnd();
+townTurn();
 }
 function radar(){
-  var rows = TOWN.order.map(function(id){
-    var p = TOWN.problems[id];
-    return h("tr", null, h("td", {text:p.name}), h("td", null, signalChip(p.signal)), h("td", {text:p.count + " / " + p.prev}));
-  });
-  return h("details", {class:"card"}, h("summary", {text:"This week's radar: all ten problems"}),
-    h("p", {class:"small muted", text:"Rising problems hit hardest. Stories this week / last week in the public sources SovereignLab tracks. It measures news attention, not how any one business is doing."}),
-    h("table", null, h("tr", null, h("th", {text:"Problem"}), h("th", {text:"Signal"}), h("th", {text:"Stories"})), rows));
+var rows = TOWN.order.map(function(id){
+var p = TOWN.problems[id];
+return h("tr", null, h("td", {text:p.name}), h("td", null, signalChip(p.signal)), h("td", {text:p.count + " / " + p.prev}));
+});
+return h("details", {class:"card"}, h("summary", {text:t("This week's radar: all ten problems")}),
+h("p", {class:"small muted", text:t("Rising problems hit hardest. Stories this week / last week in the public sources SovereignLab tracks. It measures news attention, not how any one business is doing.")}),
+h("table", null, h("tr", null, h("th", {text:t("Problem")}), h("th", {text:t("Signal")}), h("th", {text:t("Stories")})), rows));
 }
-
-/* Casual-play benchmark: the same week, role, level and habits, with random choices. */
 function benchmark(role, bonus, habits, n){
-  var rnd = mulberry(hashStr(WK.id + "|" + role.id + "|" + bonus + "|" + Object.keys(habits).sort().join(",")));
-  var totals = [];
-  for (var r = 0; r < n; r++) {
-    var st = role.start.slice(), prep = {};
-    for (var t = 0; t < TOWN.turns; t++) {
-      var p = TOWN.problems[TOWN.schedule[t]], nx = TOWN.problems[TOWN.schedule[t + 1]] || null, pts = TOWN.points, shield = 0, opts = [];
-      p.solutions.forEach(function(s, i){ if (!habits[stepKey(p.id, i)]) opts.push({p:p, s:s, resp:true}); });
-      if (nx) nx.solutions.forEach(function(s, i){ if (!habits[stepKey(nx.id, i)]) opts.push({p:nx, s:s, resp:false}); });
-      for (;;) {
-        var aff = opts.filter(function(o){ return o.s.cost <= pts; });
-        if (!aff.length) break;
-        var o = aff[Math.floor(rnd() * aff.length)];
-        opts.splice(opts.indexOf(o), 1); pts -= o.s.cost;
-        o.s.eff.forEach(function(v, k){ st[k] = clamp(st[k] + v); });
-        if (o.resp) shield += o.s.cost; else prep[o.p.id] = (prep[o.p.id] || 0) + o.s.cost;
-      }
-      hitStats(st, p.stat, Math.max(0, p.sev + bonus - shield - (prep[p.id] || 0) - habitShieldFor(p, habits)));
-    }
-    totals.push(st[0] + st[1] + st[2]);
-  }
-  return totals;
+var rnd = mulberry(hashStr(WK.id + "|" + role.id + "|" + bonus + "|" + Object.keys(habits).sort().join(",")));
+var totals = [];
+for (var r = 0; r < n; r++) {
+var st = role.start.slice(), prep = {};
+for (var tt = 0; tt < TOWN.turns; tt++) {
+var p = TOWN.problems[TOWN.schedule[tt]], nx = TOWN.problems[TOWN.schedule[tt + 1]] || null, pts = TOWN.points, shield = 0, opts = [];
+p.solutions.forEach(function(s, i){ if (!habits[stepKey(p.id, i)]) opts.push({p:p, s:s, resp:true}); });
+if (nx) nx.solutions.forEach(function(s, i){ if (!habits[stepKey(nx.id, i)]) opts.push({p:nx, s:s, resp:false}); });
+for (;;) {
+var aff = opts.filter(function(o){ return o.s.cost <= pts; });
+if (!aff.length) break;
+var o = aff[Math.floor(rnd() * aff.length)];
+opts.splice(opts.indexOf(o), 1); pts -= o.s.cost;
+o.s.eff.forEach(function(v, k){ st[k] = clamp(st[k] + v); });
+if (o.resp) shield += o.s.cost; else prep[o.p.id] = (prep[o.p.id] || 0) + o.s.cost;
+}
+hitStats(st, p.stat, Math.max(0, p.sev + bonus - shield - (prep[p.id] || 0) - habitShieldFor(p, habits)));
+}
+totals.push(st[0] + st[1] + st[2]);
+}
+return totals;
 }
 function gradeFor(total, pct){
-  var g = TOWN.grading;
-  if (total >= 30) return "A";
-  if (total <= 0) return "F";
-  return pct >= g.A ? "A" : pct >= g.B ? "B" : pct >= g.C ? "C" : pct >= g.D ? "D" : "F";
+var g = TOWN.grading;
+if (total >= 30) return "A";
+if (total <= 0) return "F";
+return pct >= g.A ? "A" : pct >= g.B ? "B" : pct >= g.C ? "C" : pct >= g.D ? "D" : "F";
 }
 function townEnd(){
-  var total = T.stats.reduce(function(a, b){ return a + b; }, 0);
-  var base = benchmark(T.role, T.ladder.bonus, T.habits, TOWN.grading.runs), less = 0, eq = 0;
-  base.forEach(function(v){ if (v < total) less++; else if (v === total) eq++; });
-  var pct = (less + eq / 2) / base.length, grade = gradeFor(total, pct);
-  var xpMap = {A:40, B:30, C:20, D:10, F:5}, xp = T.practice ? 0 : Math.round(xpMap[grade] * T.ladder.xp_mult);
-  var o = P.org, formed = [], trained = [], unlocked = null, mission = T.mission ? missionById(T.mission) : null, missionOk = !!(mission && mission.done(T, pct));
-  if (!T.practice) {
-    var rec = weekRec(); rec.town = {grade:grade, total:total, rung:T.rung};
-    markWeekPlayed();
-    o.life.runs++; o.life.prevented += T.prevented; o.life.best = Math.max(o.life.best, total);
-    o.life.roles[T.role.id] = true; o.life.grades[grade] = (o.life.grades[grade] || 0) + 1;
-    Object.keys(T.used).forEach(function(key){
-      var arr = o.practice[key] || (o.practice[key] = []);
-      if (arr.indexOf(WK.id) < 0) arr.push(WK.id);
-      if (arr.length >= TOWN.habit_weeks && !o.habits[key]) { o.habits[key] = true; formed.push(key); xp += 10; }
-      else if (!o.habits[key]) trained.push(key);
-    });
-    if ((grade === "A" || grade === "B") && T.rung > o.cleared) { o.cleared = T.rung; if (T.rung + 1 < TOWN.ladder.length) unlocked = TOWN.ladder[T.rung + 1].name; }
-    o.lastRung = T.rung;
-    if (missionOk) { o.life.missions++; xp += 15; }
-    P.xp += xp; save();
-  }
-  var stepByKey = {}; allSteps().forEach(function(x){ stepByKey[x.key] = x; });
-  var rising = T.log.filter(function(l){ return /Rising/.test(l.signal); });
-  var covered = rising.filter(function(l){ return l.blocked > 0; }).length;
-  var rows = T.log.map(function(l, k){
-    return h("tr", null, h("td", {text:String(k + 1)}), h("td", null, l.name, h("div", {class:"small muted", text:l.signal})),
-      h("td", {text:(l.habit ? "Habits (" + l.habit + ")" + (l.acts.length ? "; " : "") : "") + (l.acts.length ? l.acts.map(function(a){ return a.title; }).join("; ") : (l.habit ? "" : "No action"))}),
-      h("td", {text:l.dmg ? "-" + l.dmg : "Safe"}));
-  });
-  var share = "SovereignLab Weekly Game " + WK.id + " · Town Hall " + T.ladder.name + " (" + T.role.name + ") " + grade + " " + total + "/30";
-  var shareBtn = h("button", {class:"btn ghost", type:"button", text:"Copy my result"}); shareBtn.addEventListener("click", function(){ copyText(share, shareBtn); });
-  var sources = T.log.filter(function(l){ return l.story; }).slice(0, 4);
-  shell(h("section", {class:"card"},
-    h("h2", {text:"Grade " + grade + ": " + total + " out of 30"}),
-    h("p", {text:T.role.labels.map(function(lab, k){ return lab + " " + T.stats[k]; }).join(" · ") + " · " + T.ladder.name + " level"}),
-    h("p", {text:"Better than " + Math.round(pct * 100) + "% of casual play on this same setup."}),
-    h("p", {text:T.practice ? "Practice run: no XP and no progress this time." : "You earned " + xp + " XP."}),
-    T.prevented > 0 ? h("p", {class:"feedback ok", text:"Your standing habits prevented " + T.prevented + " damage this run."}) : null,
-    formed.length ? h("div", {class:"feedback ok"}, h("strong", {text:"New standing habit" + (formed.length > 1 ? "s" : "") + " (+10 XP each)"}), h("ul", {style:"margin:6px 0 0;padding-left:18px"}, formed.map(function(k){ return h("li", {text:stepByKey[k].s.title}); })), h("p", {class:"small", text:"These now protect you for free every time that problem hits."})) : null,
-    trained.length ? h("p", {class:"small muted", text:"In training: " + trained.slice(0, 4).map(function(k){ return stepByKey[k].s.title + " (" + o.practice[k].length + " of " + TOWN.habit_weeks + " weeks)"; }).join("; ") + (trained.length > 4 ? "; and " + (trained.length - 4) + " more." : ".")}) : null,
-    mission ? h("p", {class:"feedback " + (missionOk ? "ok" : "no"), text:"Mission \"" + mission.title + "\": " + (missionOk ? "complete" + (T.practice ? "." : " (+15 XP).") : "not this time. " + mission.desc)}) : null,
-    unlocked ? h("p", {class:"feedback info", text:"New level unlocked: " + unlocked + "."}) : null,
-    rising.length ? h("p", {class:"feedback info", text:"This week " + rising.length + " of your " + T.log.length + " events were Rising problems, and you protected against " + covered + " of them. In real life the same habit applies: act early on what the news says is building."}) : null,
-    h("h3", {text:"Your eight turns"}),
-    h("table", null, h("tr", null, h("th", {text:"#"}), h("th", {text:"Problem"}), h("th", {text:"What protected you"}), h("th", {text:"Result"})), rows),
-    sources.length ? h("div", {style:"margin-top:12px"}, h("h3", {text:"The stories behind your events"}), sources.map(function(l){ return storyBlock(l.story); })) : null,
-    h("p", {class:"small muted", text:"Steps in this game are real low-cost playbook steps from the Weekly Business Problem Brief. Tick the ones you've actually done under \"My real-world playbook\" in your organization. The scoring is a simplified model, not financial or legal advice."}),
-    h("div", {class:"row"},
-      h("button", {class:"btn", type:"button", text:"My organization", on:{click:orgPage}}),
-      shareBtn,
-      h("button", {class:"btn ghost", type:"button", text:"Back to start", on:{click:home}}))));
+var total = T.stats.reduce(function(a, b){ return a + b; }, 0);
+var base = benchmark(T.role, T.ladder.bonus, T.habits, TOWN.grading.runs), less = 0, eq = 0;
+base.forEach(function(v){ if (v < total) less++; else if (v === total) eq++; });
+var pct = (less + eq / 2) / base.length, grade = gradeFor(total, pct);
+var xpMap = {A:40, B:30, C:20, D:10, F:5}, xp = T.practice ? 0 : Math.round(xpMap[grade] * T.ladder.xp_mult);
+var o = P.org, formed = [], trained = [], unlocked = null, mission = T.mission ? missionById(T.mission) : null, missionOk = !!(mission && mission.done(T, pct));
+if (!T.practice) {
+var rec = weekRec(); rec.town = {grade:grade, total:total, rung:T.rung};
+markWeekPlayed();
+o.life.runs++; o.life.prevented += T.prevented; o.life.best = Math.max(o.life.best, total);
+o.life.roles[T.role.id] = true; o.life.grades[grade] = (o.life.grades[grade] || 0) + 1;
+Object.keys(T.used).forEach(function(key){
+var arr = o.practice[key] || (o.practice[key] = []);
+if (arr.indexOf(WK.id) < 0) arr.push(WK.id);
+if (arr.length >= TOWN.habit_weeks && !o.habits[key]) { o.habits[key] = true; formed.push(key); xp += 10; }
+else if (!o.habits[key]) trained.push(key);
+});
+if ((grade === "A" || grade === "B") && T.rung > o.cleared) { o.cleared = T.rung; if (T.rung + 1 < TOWN.ladder.length) unlocked = TOWN.ladder[T.rung + 1].name; }
+o.lastRung = T.rung;
+if (missionOk) { o.life.missions++; xp += 15; }
+P.xp += xp; save();
 }
-
-home();
+var stepByKey = {}; allSteps().forEach(function(x){ stepByKey[x.key] = x; });
+var rising = T.log.filter(function(l){ return /Rising/.test(l.signal); });
+var covered = rising.filter(function(l){ return l.blocked > 0; }).length;
+var rows = T.log.map(function(l, k){
+var what = (l.habit ? t("Habits ({n})", {n:l.habit}) + (l.acts.length ? "; " : "") : "") + (l.acts.length ? l.acts.map(function(a){ return a.title; }).join("; ") : (l.habit ? "" : t("No action")));
+return h("tr", null, h("td", {text:String(k + 1)}), h("td", null, l.name, h("div", {class:"small muted", text:t(l.signal)})),
+h("td", {text:what}), h("td", {text:l.dmg ? "-" + l.dmg : t("Safe")}));
+});
+var share = "SovereignLab Weekly Game " + WK.id + " · Town Hall " + T.ladder.name + " (" + ORIGROLES[TOWN.roles.indexOf(T.role)].name + ") " + grade + " " + total + "/30";
+var shareBtn = h("button", {class:"btn ghost", type:"button", text:t("Copy my result")}); shareBtn.addEventListener("click", function(){ copyText(share, shareBtn); });
+var sources = hideStories() ? [] : T.log.filter(function(l){ return l.story; }).slice(0, 4);
+shell(h("section", {class:"card"},
+h("h2", {text:t("Grade {grade}: {total} out of 30", {grade:grade, total:total})}),
+h("p", {text:T.role.labels.map(function(lab, k){ return lab + " " + T.stats[k]; }).join(" · ") + " · " + t("{level} level", {level:t(T.ladder.name)})}),
+h("p", {text:t("Better than {pct}% of casual play on this same setup.", {pct:Math.round(pct * 100)})}),
+h("p", {text:T.practice ? t("Practice run: no XP and no progress this time.") : t("You earned {xp} XP.", {xp:xp})}),
+T.prevented > 0 ? h("p", {class:"feedback ok", text:t("Your standing habits prevented {n} damage this run.", {n:T.prevented})}) : null,
+formed.length ? h("div", {class:"feedback ok"}, h("strong", {text:tp(formed.length, "New standing habit (+10 XP each)", "New standing habits (+10 XP each)")}), h("ul", {style:"margin:6px 0 0;padding-inline-start:18px"}, formed.map(function(k){ return h("li", {text:stepByKey[k].s.title}); })), h("p", {class:"small", text:t("These now protect you for free every time that problem hits.")})) : null,
+trained.length ? h("p", {class:"small muted", text:t("In training: ") + trained.slice(0, 4).map(function(k){ return stepByKey[k].s.title + " (" + t("{n} of {total} weeks", {n:o.practice[k].length, total:TOWN.habit_weeks}) + ")"; }).join("; ") + (trained.length > 4 ? "; " + t("and {n} more.", {n:trained.length - 4}) : ".")}) : null,
+mission ? h("p", {class:"feedback " + (missionOk ? "ok" : "no"), text:missionOk ? (T.practice ? t("Mission \"{m}\": complete.", {m:t(mission.title)}) : t("Mission \"{m}\": complete (+15 XP).", {m:t(mission.title)})) : t("Mission \"{m}\": not this time.", {m:t(mission.title)}) + " " + t(mission.desc)}) : null,
+unlocked ? h("p", {class:"feedback info", text:t("New level unlocked: {level}.", {level:t(unlocked)})}) : null,
+rising.length ? h("p", {class:"feedback info", text:t("This week {r} of your {n} events were Rising problems, and you protected against {c} of them. In real life the same habit applies: act early on what the news says is building.", {r:rising.length, n:T.log.length, c:covered})}) : null,
+h("h3", {text:t("Your eight turns")}),
+h("table", null, h("tr", null, h("th", {text:"#"}), h("th", {text:t("Problem")}), h("th", {text:t("What protected you")}), h("th", {text:t("Result")})), rows),
+sources.length ? h("div", {style:"margin-top:12px"}, h("h3", {text:t("The stories behind your events")}), sources.map(function(l){ return storyBlock(l.story); })) : null,
+h("p", {class:"small muted", text:t("Steps in this game are real low-cost playbook steps from the Weekly Business Problem Brief. Tick the ones you've actually done under \"My real-world playbook\" in your organization. The scoring is a simplified model, not financial or legal advice.")}),
+boardShareLink(grade, T, Object.keys(T.used).map(function(k){ return stepByKey[k] ? String(stepByKey[k].s.title).slice(0, 50) : ""; }).filter(Boolean).slice(0, 6)),
+h("div", {class:"row"},
+h("button", {class:"btn", type:"button", text:t("My organization"), on:{click:orgPage}}),
+shareBtn,
+h("button", {class:"btn ghost", type:"button", text:t("Back to start"), on:{click:home}}))));
+}
+loadPack(P.profile ? P.profile.lang : detectLang(), function(){
+applyProfile();
+if (!P.profile) profileSetup(home, false); else home();
+});
 })();
 </script>
 </body>

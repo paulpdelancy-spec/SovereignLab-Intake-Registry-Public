@@ -1,0 +1,20 @@
+SovereignLab Weekly Game - Terms of Use and Copyright Notice
+
+Copyright (c) 2026 SovereignLab. All rights reserved.
+
+The Weekly Game, including its design, rules, scoring and grading methods, questions, wording,
+code and translations, is protected by copyright and is provided for personal learning.
+
+You may play it and share its link.
+
+You may not, without written permission: copy, scrape, mirror, frame or republish it; sell it
+or offer it as your own; create derivative works or competing products from it; or use it,
+or any part of it, to train, fine-tune or evaluate a machine-learning model.
+
+Short story excerpts shown in the game come from third-party public sources and are linked to
+their original publishers, who keep all of their rights.
+
+The game is a learning aid built on simplified models. It is not financial, legal or
+professional advice, and it is provided as is, without warranty.
+
+Questions or permission requests: use the contact details on the SovereignLab sign-up page.
