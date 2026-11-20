@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src https://sovereignlab-board.sovereignlab-okc.workers.dev; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer"><meta name="robots" content="noindex,noai,noimageai">
+<meta name="board-api" content="https://sovereignlab-board.sovereignlab-okc.workers.dev"><meta name="subscribe-url" content="">
+<meta name="copyright" content="(c) 2026 SovereignLab. All rights reserved.">
+<title>SovereignLab Offers Preferences</title>
+<style>
+:root{--bg:#0f1720;--card:#18232f;--ink:#e8eef4;--mut:#9fb0c0;--acc:#4cc2a1;--bad:#ef6b6b;--line:#2a3a4a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px}h1{font-size:1.4rem}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:12px 0}
+.mut{color:var(--mut);font-size:.9rem}label{display:block;margin:8px 0}select{font:inherit;color:var(--ink);background:#0f1b26;border:1px solid var(--line);border-radius:8px;padding:8px 12px;width:100%}
+button{font:inherit;cursor:pointer;background:var(--acc);color:#06221a;border:0;border-radius:8px;padding:10px 16px;font-weight:600;margin:4px 6px 4px 0}button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:400}button:disabled{opacity:.45;cursor:default}
+.err{color:var(--bad)}.okc{color:var(--acc)}a{color:var(--acc)}fieldset{border:1px solid var(--line);border-radius:8px;margin:10px 0}
+</style></head><body><main id="app"><h1>SovereignLab offers</h1><p class="mut">Loading...</p>
+<script>
+(function(){
+"use strict";
+var API=document.querySelector('meta[name="board-api"]').content.replace(/\/+$/,""),SUB=document.querySelector('meta[name="subscribe-url"]').content,VERSION="v1";
+var COUNTRIES=[["US","United States"],["CA","Canada"],["GB","United Kingdom"],["DE","Germany"],["FR","France"],["NL","Netherlands"],["ES","Spain"],["MX","Mexico"],["BR","Brazil"],["IN","India"],["ID","Indonesia"],["JP","Japan"],["KR","South Korea"],["AU","Australia"],["NG","Nigeria"],["ZA","South Africa"],["KE","Kenya"],["EG","Egypt"],["SA","Saudi Arabia"],["BD","Bangladesh"],["OTHER","Another country"]];
+var INTERESTS=[["finance_tools","Finance and investing tools"],["business_software","Business software and services"],["education_training","Education and training"],["infrastructure_services","Infrastructure, energy and local services"],["sports_recreation","Sports and recreation"],["books_media","Books and media"],["travel_local","Travel and local experiences"]];
+var app=document.getElementById("app"),m=/[#&]t=([A-Za-z0-9_-]{16,64})/.exec(location.hash),TOKEN=m&&m[1],QUIT=/[#&]u=1/.test(location.hash);
+function h(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function clear(){while(app.firstChild)app.removeChild(app.firstChild);app.appendChild(h("h1",null,"SovereignLab offers"))}
+function card(){var c=h("div","card");app.appendChild(c);return c}
+function post(body){body.token=TOKEN;return fetch(API+"/api/consent",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body),cache:"no-store",referrerPolicy:"no-referrer"}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||"Something went wrong.");return j})})}
+function noLink(){clear();var c=card();c.appendChild(h("p",null,"To choose whether you receive offers, please use the personal link in your SovereignLab email. Offers are only for subscribers aged 18 and over, and are never sent unless you say yes."));
+if(/^https:\/\//.test(SUB)){var p=h("p"),a=h("a",null,"Subscribe to SovereignLab");a.href=SUB;a.rel="noopener noreferrer";p.appendChild(a);c.appendChild(p)}}
+function done(msg,optedIn){clear();var c=card();c.appendChild(h("p","okc",msg));
+if(optedIn){c.appendChild(h("p","mut","You can change your choices or stop at any time using this same link."))}
+var b=h("button","ghost",optedIn?"Change my choices":"Choose again");b.addEventListener("click",function(){form(optedIn?null:null)});c.appendChild(b)}
+function quit(){clear();var c=card();c.appendChild(h("p",null,"Stop sending me sponsored offers?"));var msg=h("p","err");
+var b=h("button",null,"Yes, stop the offers");b.addEventListener("click",function(){b.disabled=true;post({action:"optout"}).then(function(){done("Done. You will not receive sponsored offers. Your reports and the game are not affected.",false)},function(e){msg.textContent=e.message;b.disabled=false})});
+var k=h("button","ghost","Keep my choices");k.addEventListener("click",function(){start()});c.appendChild(b);c.appendChild(k);c.appendChild(msg)}
+function form(cur){clear();var c=card();
+c.appendChild(h("p",null,"Would you like to receive occasional emails with sponsored offers from advertisers? It is entirely optional, and your reports and the game stay exactly the same either way."));
+c.appendChild(h("p","mut","Advertisers never get your email address or any personal information. We only count how many people received an offer and how many clicked. Every ad is reviewed by a person and labelled as sponsored."));
+var age=h("input");age.type="checkbox";var la=h("label");la.appendChild(age);la.appendChild(document.createTextNode(" I am 18 years old or older."));c.appendChild(la);
+var sel=h("select"),o0=h("option",null,"Choose your country");o0.value="";sel.appendChild(o0);COUNTRIES.forEach(function(x){var o=h("option",null,x[1]);o.value=x[0];sel.appendChild(o)});
+var l2=h("label",null,"Your country (so offers fit where you live)");l2.appendChild(sel);c.appendChild(l2);
+var fs=h("fieldset"),lg=h("legend",null,"Topics you would like offers about (optional)");fs.appendChild(lg);var boxes=[];
+INTERESTS.forEach(function(x){var i=h("input");i.type="checkbox";i.value=x[0];boxes.push(i);var l=h("label");l.appendChild(i);l.appendChild(document.createTextNode(" "+x[1]));fs.appendChild(l)});c.appendChild(fs);
+var agree=h("input");agree.type="checkbox";var lc=h("label");lc.appendChild(agree);
+lc.appendChild(document.createTextNode(" I agree to receive occasional emails from SovereignLab containing sponsored offers from advertisers, matched to the country and topics I chose above. I can stop at any time."));c.appendChild(lc);
+var yes=h("button",null,"Yes, send me offers"),no=h("button","ghost","No thanks"),msg=h("p","err");yes.disabled=true;
+function chk(){yes.disabled=!(age.checked&&agree.checked&&sel.value)}age.addEventListener("change",chk);agree.addEventListener("change",chk);sel.addEventListener("change",chk);
+if(cur&&cur.status==="optin"){sel.value=cur.country||"";boxes.forEach(function(b){b.checked=(cur.interests||[]).indexOf(b.value)>=0})}
+yes.addEventListener("click",function(){yes.disabled=true;post({action:"optin",age18:age.checked,country:sel.value,interests:boxes.filter(function(b){return b.checked}).map(function(b){return b.value}),version:VERSION}).then(function(){done("Thank you. You will receive occasional sponsored offers. You can stop at any time.",true)},function(e){msg.textContent=e.message;chk()})});
+no.addEventListener("click",function(){post({action:"optout"}).then(function(){done("No problem. You will not receive sponsored offers.",false)},function(e){msg.textContent=e.message})});
+c.appendChild(yes);c.appendChild(no);c.appendChild(msg)}
+function start(){if(!TOKEN)return noLink();post({action:"status"}).then(function(s){if(QUIT&&s.status==="optin")return quit();
+if(s.status==="optin"){clear();var c=card();c.appendChild(h("p","okc","You are signed up for sponsored offers."));var ch=h("button",null,"Change my choices"),st=h("button","ghost","Stop the offers");ch.addEventListener("click",function(){form(s)});st.addEventListener("click",quit);c.appendChild(ch);c.appendChild(st)}
+else if(s.status==="optout"){clear();var c2=card();c2.appendChild(h("p",null,"You are not receiving sponsored offers."));var b=h("button",null,"Sign me up");b.addEventListener("click",function(){form(null)});c2.appendChild(b)}
+else form(null)},function(){clear();card().appendChild(h("p","err","That link is not valid. Please use the link in your latest SovereignLab email."))})}
+start();
+})();
+</script>
+<p class="mut">&copy; 2026 SovereignLab. All rights reserved.</p></main></body></html>

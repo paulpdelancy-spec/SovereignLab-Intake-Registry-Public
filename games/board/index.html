@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src https://sovereignlab-board.sovereignlab-okc.workers.dev; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="board-api" content="https://sovereignlab-board.sovereignlab-okc.workers.dev">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex,noai,noimageai">
+<meta name="copyright" content="(c) 2026 SovereignLab. All rights reserved.">
+<title>SovereignLab Community Board</title>
+<style>
+:root{--bg:#0f1720;--card:#18232f;--ink:#e8eef4;--mut:#9fb0c0;--acc:#4cc2a1;--warn:#f0b24c;--bad:#ef6b6b;--line:#2a3a4a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:760px;margin:0 auto;padding:16px}h1{font-size:1.4rem;margin:.2em 0}h2{font-size:1.1rem;margin:.8em 0 .3em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.mut{color:var(--mut);font-size:.9rem}.tag{font-size:.75rem;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--mut)}
+button,select,input,textarea{font:inherit;color:var(--ink);background:#0f1b26;border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+button{cursor:pointer;background:var(--acc);color:#06221a;border:0;font-weight:600}button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:400}button.danger{background:var(--bad);color:#2a0b0b}
+button:disabled{opacity:.5;cursor:default}textarea{width:100%;min-height:90px}input[type=text],input[type=password],select{width:100%}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.tabs button{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:400}.tabs button.on{background:var(--acc);color:#06221a;border-color:var(--acc);font-weight:600}
+.post{border-top:1px solid var(--line);padding:10px 0}.post:first-child{border-top:0}.body{white-space:pre-wrap;word-break:break-word}
+.reply{margin-inline-start:18px;border-inline-start:2px solid var(--line);padding-inline-start:10px}
+.note{border-inline-start:4px solid var(--warn);background:#2a2415;padding:8px 12px;border-radius:6px;margin:8px 0}.err{color:var(--bad)}.okc{color:var(--acc)}
+.msg{padding:6px 0}.me{text-align:end}.chat{max-height:50vh;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:8px;background:#0f1b26}
+code{background:#0f1b26;padding:1px 6px;border-radius:4px;word-break:break-all}
+label{display:block;margin:6px 0}.legal{margin:24px 0;color:var(--mut);font-size:.8rem}
+</style>
+</head>
+<body>
+<main id="app"><p class="mut">Loading...</p></main>
+<script>
+function slScrub(input) {
+  var found = {}, t = String(input == null ? "" : input);
+  function hit(label) { found[label] = (found[label] || 0) + 1; return "[" + label + " hidden]"; }
+  function rep(re, label, ok) { t = t.replace(re, function (m) { return (ok && !ok(m)) ? m : hit(label); }); }
+  function digits(s) { return s.replace(/\D/g, ""); }
+  function luhn(s) { var d = digits(s), sum = 0, alt = false; if (d.length < 13 || d.length > 19) return false;
+    for (var i = d.length - 1; i >= 0; i--) { var n = +d[i]; if (alt) { n *= 2; if (n > 9) n -= 9; } sum += n; alt = !alt; } return sum % 10 === 0; }
+  rep(/#k=\S+/g, "private key");
+  rep(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "email");
+  rep(/\b(?:https?:\/\/|www\.)\S+/gi, "link");
+  rep(/\b[a-z0-9-]+(?:\.[a-z0-9-]+)*\.(?:com|net|org|io|co|gov|edu|info|me|app|dev|ai|us|uk|de|fr|ru|cn|xyz|ly|ca|au|in|jp|kr|nl|br)(?:\/\S*)?(?![a-z0-9])/gi, "link");
+  rep(/\b(?:\d[ -]?){13,19}\b/g, "card number", luhn);
+  rep(/\b\d{3}[- ]\d{2}[- ]\d{4}\b/g, "ID number");
+  rep(/\b(?:\d{1,3}\.){3}\d{1,3}\b/g, "IP address");
+  rep(/\+?\d[\d\s().-]{7,}\d/g, "phone number", function (m) { var n = digits(m).length; return n >= 9 && n <= 15 && (/[\s().-]/.test(m) || m[0] === "+" || n >= 10); });
+  rep(/\b\d{1,5}\s+(?:[A-Za-z0-9.'-]+\s+){1,3}(?:street|st|avenue|ave|road|rd|boulevard|blvd|lane|ln|drive|dr|court|ct|way|place|pl|terrace|circle|highway|hwy)\b\.?/gi, "address");
+  rep(/\b[A-Z]{2}\s\d{5}(?:-\d{4})?\b/g, "address");
+  rep(/\b(?:my (?:full |real |first |last )?name is|i am called|call me|i'm called)\s+[A-Z][\w'-]+(?:\s+[A-Z][\w'-]+)?/g, "name");
+  rep(/\bi (?:live|reside|work|stay)\s+(?:at|on|near)\s+[^.,;\n]{3,40}/gi, "location");
+  rep(/\b(?:born|dob|d\.o\.b\.?|birthday|birthdate)\b[^.\n]{0,20}\d{1,4}[\/.-]\d{1,2}[\/.-]\d{1,4}/gi, "birth date");
+  rep(/\b(?:born|dob|birthday)\b[^.\n]{0,12}(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+\d{1,2},?\s+\d{4}/gi, "birth date");
+  rep(/\b(?:ghp|gho|github_pat|glpat|sk|pk|xox[bap]|AKIA|hf)[_-]?[A-Za-z0-9_\-]{10,}/g, "secret");
+  rep(/[A-Za-z0-9+\/=_-]{32,}/g, "secret");
+  rep(/(^|[\s(])@[A-Za-z0-9_.]{2,}/g, "handle");
+  return { text: t, found: found, count: Object.keys(found).reduce(function (a, k) { return a + found[k]; }, 0) };
+}
+
+(function () {
+"use strict";
+var API = (document.querySelector('meta[name="board-api"]').content || "").replace(/\/+$/, "");
+var STORE = "sovereignlab_board_v1", GAME_STORE = "sovereignlab_weekly_game_v1";
+var CATS = [["strategy", "Strategy"], ["tips", "Tips"], ["highlights", "Highlights"], ["expectations", "Expectations"], ["questions", "Questions"], ["runs", "Shared runs"]];
+var mem = {}, S = null, view = "board", app = document.getElementById("app"), pollTimer = null, groupKeys = {}, pubCache = {};
+
+function ls(k, v) { try { if (v === undefined) return localStorage.getItem(k); if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) { if (v === undefined) return mem[k] || null; if (v === null) delete mem[k]; else mem[k] = v; } return null; }
+function save() { ls(STORE, S ? JSON.stringify(S) : null); }
+function h(tag, attrs, kids) { var e = document.createElement(tag); for (var k in (attrs || {})) { var v = attrs[k]; if (k === "class") e.className = v; else if (k === "on") { for (var ev in v) e.addEventListener(ev, v[ev]); } else if (v === true) e.setAttribute(k, ""); else if (v !== false && v != null) e.setAttribute(k, v); } add(e, kids); return e; }
+function add(e, kids) { (Array.isArray(kids) ? kids : kids == null ? [] : [kids]).forEach(function (c) { if (c == null) return; e.appendChild(typeof c === "string" || typeof c === "number" ? document.createTextNode(String(c)) : c); }); return e; }
+function clear(e) { while (e.firstChild) e.removeChild(e.firstChild); }
+function b64e(buf) { var a = new Uint8Array(buf), s = ""; for (var i = 0; i < a.length; i++) s += String.fromCharCode(a[i]); return btoa(s); }
+function b64d(s) { var b = atob(s), a = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) a[i] = b.charCodeAt(i); return a; }
+var enc = new TextEncoder(), dec = new TextDecoder(), subtle = window.crypto && window.crypto.subtle;
+function isoWeek(d) { d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())); var n = d.getUTCDay() || 7; d.setUTCDate(d.getUTCDate() + 4 - n); var y = d.getUTCFullYear(), w = Math.ceil(((d - new Date(Date.UTC(y, 0, 1))) / 86400000 + 1) / 7); return y + "-W" + (w < 10 ? "0" : "") + w; }
+function ago(ts) { var s = Math.max(1, Math.floor(Date.now() / 1000 - ts)); if (s < 90) return "just now"; if (s < 5400) return Math.round(s / 60) + " min ago"; if (s < 129600) return Math.round(s / 3600) + " h ago"; return Math.round(s / 86400) + " d ago"; }
+function rank(n) { return n >= 50 ? "Guide" : n >= 20 ? "Mentor" : n >= 5 ? "Helper" : ""; }
+
+function api(method, path, body) {
+  var opt = { method: method, headers: {}, cache: "no-store", referrerPolicy: "no-referrer" };
+  if (S && S.token) opt.headers.Authorization = "Bearer " + S.token;
+  if (body !== undefined) { opt.headers["Content-Type"] = "application/json"; opt.body = JSON.stringify(body); }
+  return fetch(API + path, opt).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok) { var e = new Error(j.error || "Something went wrong."); e.status = r.status; throw e; } return j; }); });
+}
+function gameProfile() { try { return JSON.parse(ls(GAME_STORE) || "null"); } catch (e) { return null; } }
+
+// ---- crypto helpers (private groups) ----
+function ecdhKey(priv, pubJwk, usage) { return subtle.importKey("jwk", pubJwk, { name: "ECDH", namedCurve: "P-256" }, false, []).then(function (pk) { return subtle.deriveKey({ name: "ECDH", public: pk }, priv, { name: "AES-GCM", length: 256 }, false, usage); }); }
+function privKey() { return subtle.importKey("jwk", S.priv, { name: "ECDH", namedCurve: "P-256" }, false, ["deriveKey"]); }
+function wrapFor(theirPub, rawKey) { return privKey().then(function (pk) { return ecdhKey(pk, theirPub, ["encrypt"]); }).then(function (k) { var iv = crypto.getRandomValues(new Uint8Array(12)); return subtle.encrypt({ name: "AES-GCM", iv: iv }, k, rawKey).then(function (ct) { return { wrapped: b64e(ct), iv: b64e(iv) }; }); }); }
+function aesEnc(key, text) { var iv = crypto.getRandomValues(new Uint8Array(12)); return subtle.encrypt({ name: "AES-GCM", iv: iv }, key, enc.encode(text)).then(function (ct) { return { ct: b64e(ct), iv: b64e(iv) }; }); }
+function aesDec(key, ct, iv) { return subtle.decrypt({ name: "AES-GCM", iv: b64d(iv) }, key, b64d(ct)).then(function (p) { return dec.decode(p); }, function () { return "[could not be decrypted]"; }); }
+function groupKey(g) {
+  if (groupKeys[g.id]) return Promise.resolve(groupKeys[g.id]);
+  return privKey().then(function (pk) { return ecdhKey(pk, g.by_pub, ["decrypt"]); }).then(function (k) { return subtle.decrypt({ name: "AES-GCM", iv: b64d(g.iv) }, k, b64d(g.wrapped)); })
+    .then(function (raw) { return subtle.importKey("raw", raw, "AES-GCM", true, ["encrypt", "decrypt"]); }).then(function (k) { groupKeys[g.id] = k; return k; });
+}
+function fingerprint(pub) { return subtle.digest("SHA-256", enc.encode(pub.x + "." + pub.y)).then(function (d) { var hx = Array.prototype.map.call(new Uint8Array(d).slice(0, 8), function (x) { return ("0" + x.toString(16)).slice(-2); }).join(""); return hx.replace(/(.{4})/g, "$1 ").trim(); }); }
+function getPub(handle) { if (pubCache[handle]) return Promise.resolve(pubCache[handle]); return api("GET", "/api/users/" + encodeURIComponent(handle)).then(function (u) { pubCache[handle] = u; return u; }); }
+function pass2key(pass, salt) { return subtle.importKey("raw", enc.encode(pass), "PBKDF2", false, ["deriveKey"]).then(function (k) { return subtle.deriveKey({ name: "PBKDF2", salt: salt, iterations: 200000, hash: "SHA-256" }, k, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]); }); }
+
+// ---- layout ----
+function frame(content) { clear(app); add(app, [h("h1", null, "SovereignLab Community Board"), content,
+  h("p", { class: "legal" }, "© 2026 SovereignLab. Share game strategy, not personal details. A learning community, not financial, legal or professional advice.")]); }
+function gate(msg, extra) { frame(h("div", { class: "card" }, [h("p", null, msg), extra || null])); }
+
+function boot() {
+  if (!subtle || !API || API.indexOf("__BOARD") === 0) return gate("The community board is not switched on yet. Please check back soon.");
+  var gp = gameProfile();
+  if (gp && gp.profile && gp.profile.age === "kid") return gate("The community board is for players aged 13 and over. Keep playing, and ask a grown-up to enjoy it with you!");
+  try { S = JSON.parse(ls(STORE) || "null"); } catch (e) { S = null; }
+  var m = /[#&]invite=([A-Za-z0-9_-]{16,64})/.exec(location.hash);
+  if (!S && m) return joinScreen(m[1]);
+  if (!S) return noInvite();
+  api("GET", "/api/me").then(function (me) { S.adult = me.adult; S.helpful = me.helpful; S.trusted = me.trusted; save(); main(); }, function (e) { if (e.status === 401) { S = null; save(); noInvite("Your sign-in is no longer valid. Use your invite link, or restore from a backup code."); } else gate(e.message); });
+}
+function noInvite(note) {
+  var code = h("input", { type: "text", placeholder: "Paste backup code (starts with SLB1.)", autocomplete: "off" }), pw = h("input", { type: "password", placeholder: "Backup passphrase", autocomplete: "off" }), msg = h("p", { class: "err" });
+  gate(note || "The board is open to SovereignLab subscribers. Your invite link arrives by email.", h("div", null, [h("h2", null, "Already joined on another device?"), code, pw,
+    h("p", null, h("button", { on: { click: function () { restore(code.value.trim(), pw.value, msg); } } }, "Restore my account")), msg]));
+}
+function joinScreen(inv) {
+  var age = "", msg = h("p", { class: "err" }), btn = h("button", { disabled: true, on: { click: go } }, "Join the board");
+  function pick(v) { age = v; btn.disabled = v === "under"; }
+  function go() {
+    if (!age || age === "under") return; btn.disabled = true; msg.textContent = "Creating your private keys...";
+    subtle.generateKey({ name: "ECDH", namedCurve: "P-256" }, true, ["deriveKey"]).then(function (kp) { return Promise.all([subtle.exportKey("jwk", kp.publicKey), subtle.exportKey("jwk", kp.privateKey)]); }).then(function (k) {
+      var pub = { kty: k[0].kty, crv: k[0].crv, x: k[0].x, y: k[0].y };
+      return api("POST", "/api/redeem", { invite: inv, age: age, pub: pub }).then(function (r) { S = { token: r.token, handle: r.handle, adult: r.adult, priv: k[1], pub: pub }; save(); history.replaceState(null, "", location.pathname); view = "me"; main(true); });
+    }).catch(function (e) { msg.textContent = e.message; btn.disabled = false; });
+  }
+  function radio(v, text) { return h("label", null, [h("input", { type: "radio", name: "age", on: { change: function () { pick(v); } } }), " " + text]); }
+  gate("Welcome! You will get a random player name, so nobody sees who you are.", h("div", null, [
+    h("p", null, "Please tell us your age group:"), radio("teen", "I am 13 to 17"), radio("adult", "I am 18 or older"), radio("under", "I am under 13"),
+    h("div", { class: "note" }, "Be kind and keep it about the game. Never share your real name, email, phone, address, school, workplace, or any other personal details. Posts are scanned and hidden if they contain any. Moderators review new players' first posts. Private groups are for players 18 and over."),
+    h("p", null, btn), msg]));
+}
+
+function main(firstTime) {
+  clear(app); stopPoll();
+  var tabs = h("div", { class: "tabs" }), body = h("div");
+  [["board", "Board"], ["groups", "Private groups"], ["rules", "Rules"], ["me", "Me"]].forEach(function (t) { add(tabs, h("button", { class: view === t[0] ? "on" : "", on: { click: function () { view = t[0]; main(); } } }, t[1])); });
+  var rk = rank(S.helpful || 0);
+  frame(h("div", null, [h("div", { class: "row" }, [h("span", null, ["You are ", h("strong", null, S.handle)]), rk ? h("span", { class: "tag" }, rk) : null, h("span", { class: "tag" }, S.adult ? "18+" : "13-17")]), tabs, body]));
+  if (view === "board") boardView(body); else if (view === "groups") groupsView(body); else if (view === "rules") rulesView(body); else meView(body, firstTime);
+}
+
+// ---- board ----
+var boardCat = "", pendingCard = null;
+(function () { var m = /[#&]share=([A-Za-z0-9+\/=_-]{4,1500})/.exec(location.hash); if (m) { try { var c = JSON.parse(dec.decode(b64d(m[1].replace(/-/g, "+").replace(/_/g, "/")))); if (c && (c.kind === "town" || c.kind === "case")) pendingCard = c; } catch (e) {} } })();
+function boardView(root) {
+  var list = h("div"), more = h("p"), msg = h("p", { class: "mut" });
+  var cat = h("select", null, CATS.filter(function (c) { return c[0] !== "runs" || pendingCard; }).map(function (c) { return h("option", { value: c[0] }, c[1]); }));
+  if (pendingCard) cat.value = "runs";
+  var week = h("input", { type: "text", value: pendingCard && pendingCard.week ? pendingCard.week : isoWeek(new Date()), maxlength: "8", "aria-label": "Game week" });
+  var ta = h("textarea", { maxlength: "1200", placeholder: "Share a tip, a strategy, a highlight, or ask a question about the game...", "aria-label": "Your post" }), prev = h("p", { class: "mut" });
+  ta.addEventListener("input", function () { var r = slScrub(ta.value); prev.textContent = r.count ? "These will be hidden before posting: " + Object.keys(r.found).join(", ") + "." : ""; });
+  var send = h("button", { on: { click: function () { post(null, cat.value, week.value, ta, msg, send, true); } } }, "Post");
+  var card = pendingCard ? h("div", { class: "note" }, "Your run summary is attached: " + cardText(pendingCard)) : null;
+  add(root, h("div", { class: "card" }, [h("div", { class: "row" }, [h("div", { style: "flex:1;min-width:140px" }, cat), h("div", { style: "width:110px" }, week)]), card, ta, prev, h("div", { class: "row" }, [send, msg])]));
+  var filt = h("div", { class: "tabs" }); [["", "All"]].concat(CATS).forEach(function (c) { add(filt, h("button", { class: boardCat === c[0] ? "on" : "", on: { click: function () { boardCat = c[0]; main(); } } }, c[1])); });
+  add(root, [filt, h("div", { class: "card" }, [list, more])]);
+  var oldest = 0;
+  function load(first) {
+    api("GET", "/api/posts?category=" + encodeURIComponent(boardCat) + (first ? "" : "&before=" + oldest)).then(function (r) {
+      if (first) clear(list); if (first && !r.posts.length) add(list, h("p", { class: "mut" }, "Nothing here yet. Be the first to share a tip!"));
+      r.posts.forEach(function (p) { add(list, postEl(p)); oldest = p.id; }); clear(more); if (r.posts.length >= 25) add(more, h("button", { class: "ghost", on: { click: function () { load(false); } } }, "Older posts"));
+    }, function (e) { clear(list); add(list, h("p", { class: "err" }, e.message)); });
+  }
+  load(true);
+}
+function cardText(c) { return (c.kind === "town" ? "Town Hall" : "Case Files") + (c.week ? " " + c.week : "") + (c.level ? ", " + c.level : "") + (c.role ? ", " + c.role : "") + (c.grade ? ", grade " + c.grade : "") + (c.steps && c.steps.length ? ". Steps: " + c.steps.join(", ") : ""); }
+function post(parent, cat, week, ta, msg, btn, withCard) {
+  if (!ta.value.trim()) return; btn.disabled = true; msg.textContent = "";
+  var body = { category: cat, week: /^\d{4}-W\d{2}$/.test(week) ? week : null, body: ta.value, parent_id: parent };
+  if (withCard && pendingCard && cat === "runs") body.card = pendingCard;
+  api("POST", "/api/posts", body).then(function (r) {
+    ta.value = ""; if (withCard && pendingCard) { pendingCard = null; history.replaceState(null, "", location.pathname); }
+    var t = r.status === "pending" ? "Thanks! A moderator will review your first posts before they appear." : "Posted!";
+    if (r.hidden && r.hidden.length) t += " (Hidden for your privacy: " + r.hidden.join(", ") + ".)";
+    if (parent) { main(); } else { msg.className = "okc"; msg.textContent = t; setTimeout(function () { if (view === "board") main(); }, 1500); }
+  }, function (e) { msg.className = "err"; msg.textContent = e.message; }).then(function () { btn.disabled = false; });
+}
+function postEl(p) {
+  var box = h("div", { class: "post" }), rk = rank(p.rank), act = h("div", { class: "row" }), rep = h("div");
+  add(box, [h("div", { class: "row" }, [h("strong", null, p.handle), rk ? h("span", { class: "tag" }, rk) : null, h("span", { class: "tag" }, p.category), p.week ? h("span", { class: "tag" }, p.week) : null, h("span", { class: "mut" }, ago(p.created)), p.status === "pending" ? h("span", { class: "tag" }, "awaiting review") : null]),
+    p.card ? h("div", { class: "note" }, cardText(p.card)) : null, h("div", { class: "body" }, p.body), act, rep]);
+  if (p.status === "live" && !p.mine) add(act, h("button", { class: "ghost", on: { click: function (ev) { var b = ev.target; api("POST", "/api/posts/" + p.id + "/helpful").then(function () { b.textContent = "Thanks! Marked helpful"; b.disabled = true; }, function (e) { b.textContent = e.message; }); } } }, p.voted ? "Marked helpful" : "Helpful (" + p.helpful + ")"));
+  if (p.status === "live" && !p.parent_id) add(act, h("button", { class: "ghost", on: { click: function () { replyBox(rep, p); } } }, "Reply"));
+  if (!p.mine && p.status === "live") add(act, h("button", { class: "ghost", on: { click: function (ev) { var b = ev.target; api("POST", "/api/posts/" + p.id + "/report", { reason: "reported" }).then(function () { b.textContent = "Reported, thank you"; b.disabled = true; }, function (e) { b.textContent = e.message; }); } } }, "Report"));
+  if (p.mine) add(act, h("button", { class: "ghost", on: { click: function () { api("DELETE", "/api/posts/" + p.id).then(main); } } }, "Delete"));
+  (p.replies || []).forEach(function (r) { var el = postEl(r); el.className = "post reply"; add(rep, el); });
+  return box;
+}
+function replyBox(root, p) { if (root.querySelector("textarea.rb")) return; var ta = h("textarea", { class: "rb", maxlength: "1200", placeholder: "Write a reply..." }), msg = h("span", { class: "err" }), b = h("button", { on: { click: function () { post(p.id, p.category, p.week, ta, msg, b, false); } } }, "Send reply"); root.insertBefore(h("div", null, [ta, h("div", { class: "row" }, [b, msg])]), root.firstChild); }
+
+// ---- private groups ----
+function stopPoll() { if (pollTimer) { clearInterval(pollTimer); pollTimer = null; } }
+function groupsView(root) {
+  if (!S.adult) return add(root, h("div", { class: "card" }, "Private groups are for players aged 18 and over. The public board is open to everyone 13 and up."));
+  var list = h("div"), msg = h("p", { class: "err" });
+  var nm = h("input", { type: "text", maxlength: "40", placeholder: "Group name (kept private, encrypted)" }), mem = h("input", { type: "text", placeholder: "Player names to invite, separated by commas (e.g. Amber-Falcon-4821)" });
+  add(root, [h("div", { class: "card" }, [h("div", { class: "note" }, "Private groups are end-to-end encrypted: only members can read them, not even SovereignLab. Messages are deleted automatically after 30 days. Because we can't read them, we can't recover them if you lose your keys. Back them up in the Me tab."),
+    h("h2", null, "Start a private group"), nm, mem, h("p", null, h("button", { on: { click: function () { create(nm.value, mem.value, msg); } } }, "Create group")), msg]), h("div", { class: "card" }, [h("h2", null, "Your groups"), list])]);
+  api("GET", "/api/groups").then(function (r) {
+    if (!r.groups.length) return add(list, h("p", { class: "mut" }, "No groups yet."));
+    r.groups.forEach(function (g) { groupKey(g).then(function (k) { return aesDec(k, g.name_ct, g.name_iv); }).then(function (name) { g.name = name; add(list, h("p", null, h("button", { class: "ghost", on: { click: function () { chat(root, g); } } }, name + " (" + g.members.length + " players)"))); }, function () { add(list, h("p", { class: "err" }, "A group could not be opened on this device. Restore your backup to read it.")); }); });
+  }, function (e) { add(list, h("p", { class: "err" }, e.message)); });
+}
+function create(name, members, msg) {
+  var hs = members.split(",").map(function (s) { return s.trim(); }).filter(Boolean); if (hs.indexOf(S.handle) < 0) hs.unshift(S.handle);
+  if (!name.trim() || hs.length < 2 || hs.length > 12) { msg.textContent = "Add a group name and invite 1 to 11 other players."; return; } msg.textContent = "Creating...";
+  var raw = crypto.getRandomValues(new Uint8Array(32)), key;
+  subtle.importKey("raw", raw, "AES-GCM", false, ["encrypt", "decrypt"]).then(function (k) { key = k; return Promise.all(hs.map(function (hn) { return (hn === S.handle ? Promise.resolve({ handle: hn, pub: S.pub, adult: true }) : getPub(hn)).then(function (u) { if (!u.adult) throw new Error(hn + " can't join private groups."); return wrapFor(u.pub, raw).then(function (w) { return { handle: hn, wrapped: w.wrapped, iv: w.iv }; }); }); })); })
+    .then(function (ms) { return aesEnc(key, name.trim()).then(function (n) { return api("POST", "/api/groups", { name_ct: n.ct, name_iv: n.iv, members: ms }); }); }).then(function () { main(); }, function (e) { msg.textContent = e.status === 404 ? "One of those player names wasn't found." : e.message; });
+}
+function chat(root, g) {
+  stopPoll(); clear(root); var log = h("div", { class: "chat" }), ta = h("textarea", { maxlength: "1500", placeholder: "Write an encrypted message..." }), msg = h("p", { class: "err" }), warn = h("div"), last = 0, key;
+  var fp = h("div", { class: "mut" }), add2 = h("input", { type: "text", placeholder: "Add a player (e.g. Amber-Falcon-4821)" });
+  add(root, [h("div", { class: "row" }, [h("button", { class: "ghost", on: { click: function () { main(); } } }, "Back"), h("strong", null, g.name)]), h("p", { class: "mut" }, "Players: " + g.members.join(", ")), log, warn, ta,
+    h("div", { class: "row" }, [h("button", { on: { click: function () { attempt(false); } } }, "Send"), h("button", { class: "ghost", on: { click: function () { api("POST", "/api/groups/" + g.id + "/leave").then(function () { main(); }); } } }, "Leave group")]), msg,
+    h("details", null, [h("summary", null, "Add a player / verify safety codes"), h("p", { class: "mut" }, "Compare these codes with each player in person or another trusted way, never on this board. If they match, nobody is intercepting your group."), fp, add2, h("button", { class: "ghost", on: { click: function () { addMember(); } } }, "Add")])]);
+  groupKey(g).then(function (k) { key = k; return Promise.all(g.members.map(function (hn) { return (hn === S.handle ? Promise.resolve({ pub: S.pub }) : getPub(hn)).then(function (u) { return fingerprint(u.pub).then(function (f) { add(fp, h("div", null, [hn + ": ", h("code", null, f)])); }); }); })); }).then(function () { poll(); pollTimer = setInterval(poll, 6000); }, function () { msg.textContent = "This group can't be opened on this device."; });
+  function poll() { api("GET", "/api/groups/" + g.id + "/messages?after=" + last).then(function (r) { r.messages.forEach(function (m) { last = Math.max(last, m.id); aesDec(key, m.ct, m.iv).then(function (t) { line(m, t); }); }); }, function () {}); }
+  function line(m, t) { var mine = m.sender === S.handle, d = h("div", { class: "msg" + (mine ? " me" : "") }, [h("strong", null, mine ? "You" : m.sender), h("span", { class: "mut" }, "  " + ago(m.created)), h("div", { class: "body" }, t)]);
+    if (!mine) add(d, h("button", { class: "ghost", on: { click: function (ev) { ev.target.disabled = true; api("POST", "/api/groups/" + g.id + "/report", { reason: "reported", text: t }).then(function () { ev.target.textContent = "Reported to moderators"; }, function () { ev.target.disabled = false; }); } } }, "Report this message")); add(log, d); log.scrollTop = log.scrollHeight; }
+  function attempt(force) {
+    var text = ta.value.trim(); if (!text || !key) return; var r = slScrub(text); clear(warn);
+    if (r.count && !force) { add(warn, h("div", { class: "note" }, ["This looks like it contains personal details (" + Object.keys(r.found).join(", ") + "). Anyone in the group could screenshot it. ", h("button", { class: "ghost", on: { click: function () { ta.value = r.text; clear(warn); attempt(true); } } }, "Hide them and send"), " ", h("button", { class: "ghost", on: { click: function () { clear(warn); attempt(true); } } }, "Send anyway")])); return; }
+    aesEnc(key, text).then(function (e) { return api("POST", "/api/groups/" + g.id + "/messages", { ct: e.ct, iv: e.iv }); }).then(function () { ta.value = ""; msg.textContent = ""; poll(); }, function (e) { msg.textContent = e.message; });
+  }
+  function addMember() { var hn = add2.value.trim(); if (!hn) return; Promise.all([getPub(hn), subtle.exportKey("raw", key)]).then(function (a) { if (!a[0].adult) throw new Error("That player can't be added."); return wrapFor(a[0].pub, new Uint8Array(a[1])); }).then(function (w) { return api("POST", "/api/groups/" + g.id + "/members", { handle: hn, wrapped: w.wrapped, iv: w.iv }); }).then(function () { msg.className = "okc"; msg.textContent = "Added."; add2.value = ""; }, function (e) { msg.className = "err"; msg.textContent = e.message; }); }
+}
+
+// ---- rules / me ----
+function rulesView(root) {
+  add(root, h("div", { class: "card" }, [h("h2", null, "How we keep everyone safe"), h("ul", null, [
+    "Stay on topic: strategy, tips, highlights, expectations and questions about SovereignLab games.",
+    "Never share personal details: real names, emails, phone numbers, addresses, school or work, photos, or links. We hide what we can detect, but please don't try.",
+    "Be kind. No harassment, hate or spam. Use Report if something isn't right.",
+    "Nothing here is financial, legal or professional advice. The games are learning aids.",
+    "A moderator reviews each new player's first posts. Repeated reports hide a post until a person checks it.",
+    "Public posts are encrypted where they are stored and deleted after 180 days. Private groups are end-to-end encrypted and deleted after 30 days.",
+    "We never see your email here. Your name on the board is random. You can delete everything you've posted in the Me tab."
+  ].map(function (t) { return h("li", null, t); }))]));
+}
+function meView(root, first) {
+  var out = h("p"), pw = h("input", { type: "password", placeholder: "Choose a backup passphrase (at least 10 characters)", autocomplete: "new-password" }), code = h("div");
+  add(root, [first ? h("div", { class: "note" }, "You're in! Make a backup now so you can use the board on another device and never lose your private groups.") : null,
+    h("div", { class: "card" }, [h("h2", null, "Back up my account"), h("p", { class: "mut" }, "Your private keys live only in this browser. The backup code is locked with your passphrase. Keep both somewhere safe: anyone with both can act as you."), pw,
+      h("p", null, h("button", { on: { click: function () { backup(pw.value, code, out); } } }, "Create backup code")), code, out]),
+    h("div", { class: "card" }, [h("h2", null, "Delete my data"), h("p", { class: "mut" }, "Removes your player name, posts and group memberships from the board."),
+      h("button", { class: "danger", on: { click: function (ev) { if (ev.target.dataset.sure !== "1") { ev.target.dataset.sure = "1"; ev.target.textContent = "Tap again to confirm deletion"; return; } api("DELETE", "/api/me").then(function () { S = null; save(); noInvite("Your board data has been deleted."); }); } } }, "Delete everything")]),
+    h("div", { class: "card" }, h("button", { class: "ghost", on: { click: function () { S = null; save(); groupKeys = {}; noInvite("Signed out. Use your backup code to come back."); } } }, "Sign out on this device"))]);
+}
+function backup(pass, codeBox, out) {
+  if (pass.length < 10) { out.className = "err"; out.textContent = "Use a passphrase of at least 10 characters."; return; }
+  var salt = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12));
+  pass2key(pass, salt).then(function (k) { return subtle.encrypt({ name: "AES-GCM", iv: iv }, k, enc.encode(JSON.stringify({ h: S.handle, t: S.token, a: S.adult, p: S.priv, u: S.pub }))); }).then(function (ct) {
+    var all = new Uint8Array(16 + 12 + ct.byteLength); all.set(salt, 0); all.set(iv, 16); all.set(new Uint8Array(ct), 28); clear(codeBox); add(codeBox, h("code", null, "SLB1." + b64e(all))); out.className = "okc"; out.textContent = "Copy this code and keep it safe.";
+  });
+}
+function restore(code, pass, msg) {
+  if (code.indexOf("SLB1.") !== 0) { msg.textContent = "That doesn't look like a backup code."; return; }
+  var all; try { all = b64d(code.slice(5)); } catch (e) { msg.textContent = "That backup code is damaged."; return; }
+  pass2key(pass, all.slice(0, 16)).then(function (k) { return subtle.decrypt({ name: "AES-GCM", iv: all.slice(16, 28) }, k, all.slice(28)); }).then(function (p) { var o = JSON.parse(dec.decode(p)); S = { handle: o.h, token: o.t, adult: o.a, priv: o.p, pub: o.u }; save(); view = "board"; boot(); }, function () { msg.textContent = "The passphrase or the code is wrong."; });
+}
+boot();
+})();
+</script>
+</body>
+</html>
